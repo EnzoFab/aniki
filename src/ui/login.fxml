@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane focusTraversable="false" minHeight="320.0" mouseTransparent="false" prefHeight="320.0" prefWidth="608.0" style="-fx-background-color: #8080ff" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.LoginController">
+  <children>
+    <Button fx:id="loginButton" layoutX="447.0" layoutY="278.0" mnemonicParsing="false" onMouseEntered="#mouseEntered" opacity="0.67" prefHeight="28.0" prefWidth="139.0" text="Login" />
+    <TextField fx:id="mailField" layoutX="93.0" layoutY="123.0" prefHeight="28.0" prefWidth="415.0" />
+    <PasswordField fx:id="passwordField" layoutX="93.0" layoutY="206.0" prefHeight="28.0" prefWidth="414.9999000000025" />
+    <Label labelFor="$mailField" layoutX="93.0" layoutY="103.0" text="Mail" textAlignment="LEFT" wrapText="false">
+      <font>
+        <Font name="System Bold" size="15.0" fx:id="x1" />
+      </font>
+      <textFill>
+        <Color blue="0.000" green="0.800" red="1.000" fx:id="x2" />
+      </textFill>
+    </Label>
+    <Label font="$x1" labelFor="$passwordField" layoutX="93.0" layoutY="186.0" text="Password" textFill="$x2" />
+    <Label layoutX="253.0" layoutY="9.0" text="LOGIN" textFill="$x2">
+      <font>
+        <Font name="System Bold" size="45.0" />
+      </font>
+    </Label>
+    <Hyperlink fx:id="forgotPwd" font="$x1" layoutX="93.0" layoutY="234.0" opacity="0.64" text="I forgot my password" textFill="#000099" textOverrun="ELLIPSIS" underline="true" />
+  </children>
+</AnchorPane>
