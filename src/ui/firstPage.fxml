@@ -14,5 +14,7 @@
         <Image url="@../media/img/logo-aniki.png" />
       </image>
     </ImageView>
+    <Label fx:id="labelLoading" layoutX="285.0" layoutY="354.0" style="-fx-background-color:Red;" text="Loading..." />
+    <Button fx:id="buttonId" layoutX="550.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#buttonClick" text="Button" />
   </children>
 </AnchorPane>
