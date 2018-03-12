@@ -5,6 +5,9 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -24,6 +27,10 @@ public class LoginController implements Initializable {
     private final String BUTTON_DEFAULT_TXT_COLOR = "#ffcc00";
     private final String HYPERLINK_DEFAULT_COLOR ="#000099";
 
+    private final Image crossImg = new Image("media/img/red_cross.png");
+    private final Image checkImg = new Image("media/img/check.png");
+
+
     private LoginManager loginManager;
 
 
@@ -42,11 +49,29 @@ public class LoginController implements Initializable {
 
     @FXML private Label errorInformation;
 
+    /**
+     * red cross if
+     */
+    @FXML private ImageView stateImg;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         errorPane.setVisible(false); // hide the errorPane
         ConnectionDB.getInstance(); // deplace in the first page
         loginManager = new LoginManager();
+        stateImg.setImage(crossImg);
+        stateImg.setVisible(false);
+
+        mailField.textProperty().addListener((obs, oldText, newText) -> {
+           if(!stateImg.isVisible()){
+                stateImg.setVisible(true);
+            }
+            if(loginManager.exists(newText) )
+                stateImg.setImage(checkImg);
+
+        });
+
+
 
     }
 
@@ -68,8 +93,8 @@ public class LoginController implements Initializable {
         forgotPwd.setStyle("-fx-text-fill: "+HYPERLINK_DEFAULT_COLOR);
     }
 
-    @FXML private void buttonLoginClick(MouseEvent mouseEvent) {
-        //check if fields aren't empty
+    @FXML private void buttonLoginClick() {
+        //checkImg if fields aren't empty
         if(passwordField.getText().isEmpty() && mailField.getText().isEmpty() ){
             passwordField.setStyle("-fx-background-color: #ff471a");
             mailField.setStyle("-fx-background-color: #ff471a");
@@ -87,8 +112,20 @@ public class LoginController implements Initializable {
             showError("All fields are not filled");
             clearField();
         }else{
-            loginManager.login(mailField.getText(),passwordField.getText());
+            String resultat = loginManager.login(mailField.getText(),passwordField.getText());
             clearField();
+            switch (resultat){
+                case "Success":
+                    // connection with success
+                    System.out.println("Connection success");
+                    break;
+                case "Error":
+                    this.showError("An error has occured please contact the administrator");
+                    break;
+                case "Failed":
+                    this.showError("Wrong password and/or email please check it out and retry");
+                    break;
+            }
 
         }
     }
@@ -125,6 +162,8 @@ public class LoginController implements Initializable {
      */
     @FXML private void pwdKeyEntered(KeyEvent keyEvent) {
         pwdClick();
+        if(keyEvent.getCode() == KeyCode.ENTER)
+            buttonLoginClick();
     }
 
     /**
@@ -133,8 +172,27 @@ public class LoginController implements Initializable {
      */
     public void mailKeyEntered(KeyEvent keyEvent) {
         mailClick();
+        if(keyEvent.getCode() == KeyCode.ENTER)
+            buttonLoginClick();
+        else if(keyEvent.getCode() == KeyCode.BACK_SPACE){
+            if(mailField.getText().isEmpty())
+                stateImg.setVisible(false);
+            else if(loginManager.exists(mailField.getText()) && ! stateImg.getImage().equals(checkImg))
+                stateImg.setImage(checkImg);
+            else if(stateImg.getImage().equals(checkImg))
+                stateImg.setImage(crossImg);
+
+        }
+
     }
 
+
+
+    /*
+    ********************************************************************************************************************
+                                                    Basic Methods
+    ********************************************************************************************************************
+     */
 
     /**
      * Fade in or out a Region
@@ -180,18 +238,15 @@ public class LoginController implements Initializable {
     }
 
 
-    /*
-    ********************************************************************************************************************
-                                                    Basic Methods
-    ********************************************************************************************************************
-     */
-
-
     /**
      * Delete the text in the Field
      */
     private void clearField(){
         passwordField.setText("");
         mailField.setText("");
+        stateImg.setImage( crossImg);
+        stateImg.setVisible(false);
+
+
     }
 }

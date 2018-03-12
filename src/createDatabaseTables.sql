@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "User" (
+CREATE TABLE IF NOT EXISTS "Anikiuser" (
   "user_mail" VARCHAR(255) NOT NULL,
   "user_name" VARCHAR(255) NULL,
   "user_first_name" VARCHAR(255) NULL,

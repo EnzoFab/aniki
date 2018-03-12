@@ -24,4 +24,8 @@ public class AnualBudget {
         return listName;
     }
 
+    public int balance(){
+        return 0;
+    }
+
 }

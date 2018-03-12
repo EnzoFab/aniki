@@ -21,21 +21,43 @@ public class LoginManager {
      * @param pwd
      * @return
      */
-    public boolean login(String mail, String pwd){
-        boolean egal=false;
+    public String login(String mail, String pwd){
+        String result;
+
         UserDao dao = factory.createUserDao();
         user = dao.getUserById(mail);
-        if(user !=null && user.getPassword()==pwd){
-            egal=true;
-            System.out.println("heu");
+        if(user ==null )
+            result="Error";
+        else if(user.getPassword().equals(pwd))
+            result = "Success";
+        else{
+            result= "Failed" ;
         }
+        return result;
+    }
 
-        return egal;
+    public boolean exists(String mail){
+        UserDao dao = factory.createUserDao();
+        return dao.getUserById(mail) != null;
+
     }
 
     public String getUserName(){
+        if(user != null)
+            return user.getName();
         return "";
     }
+
+    public String getUserFirstName(){
+        if(user !=null)
+            return user.getFirstName();
+        return "";
+    }
+
+
+
+
+
 
 
 

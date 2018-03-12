@@ -25,4 +25,9 @@ public class Budget {
     public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
+
+
+    public int balance(){
+        return 0;
+    }
 }
