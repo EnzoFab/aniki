@@ -14,10 +14,16 @@ public class LoginManager {
         factory = new DaoPostgresFactory();
     }
 
-    public User login(String mail, String pwd){
+    public boolean login(String mail, String pwd){
+        boolean egal=false;
         UserDao dao = factory.createUserDao();
-        user =dao.create(mail,pwd);
-        return user ;
+        user = dao.getUserById(mail);
+        if(user.getPassword()==pwd){
+            egal=true;
+            System.out.println("heu");
+        }
+
+        return egal;
     }
 
     public String getUserName(){

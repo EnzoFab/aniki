@@ -1,9 +1,11 @@
 package ui;
 
+import facade.LoginManager;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
@@ -21,6 +23,8 @@ public class LoginController implements Initializable {
     private final String BUTTON_DEFAULT_BG_COLOR = "#6666ff";
     private final String BUTTON_DEFAULT_TXT_COLOR = "#ffcc00";
     private final String HYPERLINK_DEFAULT_COLOR ="#000099";
+
+    private LoginManager loginManager;
 
 
 
@@ -42,6 +46,7 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         errorPane.setVisible(false); // hide the errorPane
         ConnectionDB.getInstance(); // deplace in the first page
+        loginManager = new LoginManager();
 
     }
 
@@ -76,8 +81,21 @@ public class LoginController implements Initializable {
             mailField.setStyle("-fx-background-color: #ff471a");
             showError("All fields are not filled");
         }else{
-
+            loginManager.login(mailField.getText(),passwordField.getText());
         }
+    }
+
+    public void mailClick() {
+        mailField.setStyle("-fx-background-color: white");
+        if(errorPane.isVisible())
+            hideError();
+
+    }
+
+    public void pwdClick() {
+        passwordField.setStyle("-fx-background-color: white");
+        if(errorPane.isVisible())
+            hideError();
     }
 
     public void buttonLoginMouseEntered(MouseEvent mouseEvent) {
@@ -123,4 +141,18 @@ public class LoginController implements Initializable {
         playSound("src/media/sound/error.mp3");
     }
 
+
+    private void hideError(){
+        errorPane.setVisible(false);
+        fadeEffect(1,0,200,errorPane);
+    }
+
+
+    public void pwdKeyEntered(KeyEvent keyEvent) {
+        pwdClick();
+    }
+
+    public void mailKeyEntered(KeyEvent keyEvent) {
+        mailClick();
+    }
 }
