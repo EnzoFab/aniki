@@ -44,5 +44,10 @@
         </ImageView>
       </children>
     </Pane>
+    <ImageView fitHeight="50.25" fitWidth="67.0" layoutX="187.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@../media/img/logo-aniki.png" />
+      </image>
+    </ImageView>
   </children>
 </AnchorPane>

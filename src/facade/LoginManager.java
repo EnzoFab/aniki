@@ -14,11 +14,18 @@ public class LoginManager {
         factory = new DaoPostgresFactory();
     }
 
+    /**
+     * Called when an User is trying to connect to the Application
+     * uses the factory to create a DaoUser and the use the method provided
+     * @param mail
+     * @param pwd
+     * @return
+     */
     public boolean login(String mail, String pwd){
         boolean egal=false;
         UserDao dao = factory.createUserDao();
         user = dao.getUserById(mail);
-        if(user.getPassword()==pwd){
+        if(user !=null && user.getPassword()==pwd){
             egal=true;
             System.out.println("heu");
         }

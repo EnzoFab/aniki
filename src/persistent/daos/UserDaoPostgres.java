@@ -26,7 +26,7 @@ public class UserDaoPostgres extends UserDao {
         User user=null;
         try {
             Statement state = connect.createStatement();
-            ResultSet result = state.executeQuery("SELECT * FROM User");
+            ResultSet result = state.executeQuery("SELECT * FROM user U WHERE U.user_mail ="+mail);
             user = new User(result.getString("user_mail"), result.getString("user_first_name"),
                     result.getString("user_name"), result.getString("user_password"), result.getString("user_phone"));
         } catch (SQLException e) {

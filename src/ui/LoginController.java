@@ -50,21 +50,25 @@ public class LoginController implements Initializable {
 
     }
 
+    /*
+    ********************************************************************************************************************
+                                                    FXML Methods
+    ********************************************************************************************************************
+     */
 
-  
-    public void hyperlinkClick(MouseEvent mouseEvent) {
+    @FXML private void hyperlinkClick(MouseEvent mouseEvent) {
 
     }
 
-    public void hyperlinkMouseEntered(MouseEvent mouseEvent) {
+    @FXML private void hyperlinkMouseEntered(MouseEvent mouseEvent) {
         forgotPwd.setStyle("-fx-text-fill: #d6d6f5; -fx-text-fill:"+BUTTON_DEFAULT_TXT_COLOR);
     }
 
-    public void hyperlinkMouseExited(MouseEvent mouseEvent) {
+    @FXML private void hyperlinkMouseExited(MouseEvent mouseEvent) {
         forgotPwd.setStyle("-fx-text-fill: "+HYPERLINK_DEFAULT_COLOR);
     }
 
-    public void buttonLoginClick(MouseEvent mouseEvent) {
+    @FXML private void buttonLoginClick(MouseEvent mouseEvent) {
         //check if fields aren't empty
         if(passwordField.getText().isEmpty() && mailField.getText().isEmpty() ){
             passwordField.setStyle("-fx-background-color: #ff471a");
@@ -76,38 +80,61 @@ public class LoginController implements Initializable {
         }else if(passwordField.getText().isEmpty()){
             passwordField.setStyle("-fx-background-color: #ff471a");
             showError("All fields are not filled");
+            clearField();
 
         }else if(mailField.getText().isEmpty()){
             mailField.setStyle("-fx-background-color: #ff471a");
             showError("All fields are not filled");
+            clearField();
         }else{
             loginManager.login(mailField.getText(),passwordField.getText());
+            clearField();
+
         }
     }
 
-    public void mailClick() {
+    @FXML private void mailClick() {
         mailField.setStyle("-fx-background-color: white");
         if(errorPane.isVisible())
             hideError();
 
     }
 
-    public void pwdClick() {
+    @FXML private void pwdClick() {
         passwordField.setStyle("-fx-background-color: white");
         if(errorPane.isVisible())
             hideError();
     }
 
-    public void buttonLoginMouseEntered(MouseEvent mouseEvent) {
+    @FXML private void buttonLoginMouseEntered(MouseEvent mouseEvent) {
         loginButton.setStyle("-fx-background-color: #ccccff; -fx-text-fill: #0f0f3d");
             // change the button background
 
 
     }
 
-    public void buttonLoginMouseExited(MouseEvent mouseEvent) {
+    @FXML private void buttonLoginMouseExited(MouseEvent mouseEvent) {
         this.loginButton.setStyle("-fx-background-color: "+ BUTTON_DEFAULT_BG_COLOR);
     }
+
+
+
+    /**
+     * When a text is typed in the password field
+     * @param keyEvent
+     */
+    @FXML private void pwdKeyEntered(KeyEvent keyEvent) {
+        pwdClick();
+    }
+
+    /**
+     * When a text is typed in the mail field
+     * @param keyEvent
+     */
+    public void mailKeyEntered(KeyEvent keyEvent) {
+        mailClick();
+    }
+
 
     /**
      * Fade in or out a Region
@@ -133,7 +160,10 @@ public class LoginController implements Initializable {
         mediaPlayer.play();
     }
 
-
+    /**
+     * Display the error pane with the customized error text
+     * @param error
+     */
     private void showError(String error){
         errorInformation.setText(error);
         errorPane.setVisible(true);
@@ -141,18 +171,27 @@ public class LoginController implements Initializable {
         playSound("src/media/sound/error.mp3");
     }
 
-
+    /**
+     * Hide the errorPane
+     */
     private void hideError(){
         errorPane.setVisible(false);
         fadeEffect(1,0,200,errorPane);
     }
 
 
-    public void pwdKeyEntered(KeyEvent keyEvent) {
-        pwdClick();
-    }
+    /*
+    ********************************************************************************************************************
+                                                    Basic Methods
+    ********************************************************************************************************************
+     */
 
-    public void mailKeyEntered(KeyEvent keyEvent) {
-        mailClick();
+
+    /**
+     * Delete the text in the Field
+     */
+    private void clearField(){
+        passwordField.setText("");
+        mailField.setText("");
     }
 }

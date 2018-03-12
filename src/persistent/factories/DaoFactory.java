@@ -11,9 +11,6 @@ import java.sql.Connection;
 public abstract class DaoFactory {
     protected Connection connect;
 
-    public DaoFactory(){
-    }
-
     public abstract UserDao createUserDao();
 
 }
