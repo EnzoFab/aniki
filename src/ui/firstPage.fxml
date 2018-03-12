@@ -7,7 +7,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="450.0" prefWidth="641.0" style="-fx-background-color: #8080ff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.FirstPage">
+<AnchorPane prefHeight="450.0" prefWidth="641.0" style="-fx-background-color: #8080ff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.FirstPageController">
   <children>
     <ImageView fitHeight="324.5" fitWidth="324.5" layoutX="158.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
