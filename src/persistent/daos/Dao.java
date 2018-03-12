@@ -10,4 +10,8 @@ public abstract class Dao {
     }
 
     public abstract void deleteById(String id);
+
+    public Connection getConnect(){
+        return connect;
+    }
 }
