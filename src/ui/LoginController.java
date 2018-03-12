@@ -10,7 +10,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-import persistent.ConnectionBD;
+import persistent.ConnectionDB;
 
 import java.io.File;
 import java.net.URL;
@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         errorPane.setVisible(false); // hide the errorPane
-        ConnectionBD.getInstance(); // deplace in the first page
+        ConnectionDB.getInstance(); // deplace in the first page
 
     }
 
