@@ -19,8 +19,8 @@
         <Color blue="0.000" green="0.800" red="1.000" fx:id="x2" />
       </textFill>
     </Button>
-    <TextField fx:id="mailField" layoutX="77.0" layoutY="157.0" prefHeight="28.0" prefWidth="415.0" />
-    <PasswordField fx:id="passwordField" layoutX="77.0" layoutY="240.0" prefHeight="28.0" prefWidth="414.9999000000025" />
+    <TextField fx:id="mailField" layoutX="77.0" layoutY="157.0" onKeyPressed="#mailKeyEntered" onMouseClicked="#mailClick" prefHeight="28.0" prefWidth="415.0" />
+    <PasswordField fx:id="passwordField" layoutX="77.0" layoutY="240.0" onKeyPressed="#pwdKeyEntered" onMouseClicked="#pwdClick" prefHeight="28.0" prefWidth="414.9999000000025" />
     <Label font="$x1" labelFor="$mailField" layoutX="77.0" layoutY="137.0" text="Mail" textAlignment="LEFT" textFill="$x2" wrapText="false" />
     <Label font="$x1" labelFor="$passwordField" layoutX="77.0" layoutY="220.0" text="Password" textFill="$x2" />
     <Label layoutX="253.0" layoutY="9.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="LOGIN" textFill="$x2">
