@@ -20,6 +20,10 @@ public class LoginManager {
         return user ;
     }
 
+    public String getUserName(){
+        return "";
+    }
+
 
 
 
