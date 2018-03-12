@@ -1,6 +1,6 @@
 package persistent;
 
-import logs.Log;
+import logs.ConnectionLog;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +14,7 @@ public abstract class ConnectionDB {
     {
         if(connect == null){
             try {
-                connect = DriverManager.getConnection(Log.getUrl(), Log.getUser(), Log.getPwd());
+                connect = DriverManager.getConnection(ConnectionLog.getUrl(), ConnectionLog.getUser(), ConnectionLog.getPwd());
                 System.out.println("Connexion effective !");
             } catch (SQLException e) {
                 e.printStackTrace();
