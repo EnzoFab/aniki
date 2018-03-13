@@ -8,10 +8,13 @@ public class Budget {
 
     private Team team;
 
-    private ArrayList<Transaction> transactions;
+    private ArrayList transactions;
 
-    public Budget (int amount){
+    public Budget (int amount, Team team){
         this.amount = amount;
+        transactions = new ArrayList();
+        this.team = team;
+
     }
 
     public int getAmount() {
@@ -22,7 +25,7 @@ public class Budget {
         return team;
     }
 
-    public ArrayList<Transaction> getTransactions() {
+    public ArrayList getTransactions() {
         return transactions;
     }
 
