@@ -3,7 +3,11 @@ package ui;
 import facade.LoginManager;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,12 +18,17 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import persistent.ConnectionDB;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static ui.Main.fadeEffect;
+import static ui.Main.playSound;
 
 public class LoginController implements Initializable {
 
@@ -81,7 +90,8 @@ public class LoginController implements Initializable {
     ********************************************************************************************************************
      */
 
-    @FXML private void hyperlinkClick(MouseEvent mouseEvent) {
+    @FXML private void hyperlinkClick(MouseEvent mouseEvent) throws IOException {
+        Main.changeScene(getClass(),"forgotPassword.fxml","Forgot password");
 
     }
 
@@ -194,29 +204,9 @@ public class LoginController implements Initializable {
     ********************************************************************************************************************
      */
 
-    /**
-     * Fade in or out a Region
-     * all component extends of Region
-     * a and b determine the type of fade
-     * if a =1 and b= 0 fade out else if
-     * a= 0 and b= 1 fade in
-     * @param a
-     * @param b
-     * @param duration
-     * @param r
-     */
-    private void fadeEffect(int a, int b, int duration,Region r){
-        FadeTransition ft = new FadeTransition(Duration.millis(duration), r);
-        ft.setFromValue(a);
-        ft.setToValue(b);
-        ft.play();
-    }
 
-    private void playSound(String filename){
-        Media sound = new Media(new File(filename).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-    }
+
+
 
     /**
      * Display the error pane with the customized error text
