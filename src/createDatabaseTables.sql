@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "Anikiuser" (
+CREATE TABLE IF NOT EXISTS "anikiuser" (
   "user_mail" VARCHAR(255) NOT NULL,
   "user_name" VARCHAR(255) NULL,
   "user_first_name" VARCHAR(255) NULL,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS "Anikiuser" (
 -- -----------------------------------------------------
 -- Table "Team"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Team" (
+CREATE TABLE IF NOT EXISTS "team" (
   "team_id" SERIAL,
   "team_name" VARCHAR(255) NULL,
   PRIMARY KEY ("team_id"))
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS "Team" (
 -- -----------------------------------------------------
 -- Table "Role"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Role" (
+CREATE TABLE IF NOT EXISTS "role" (
   "Team_team_id" SERIAL,
   "User_user_mail" VARCHAR(255) NOT NULL,
   "role_name" VARCHAR(255) NULL,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS "Role" (
 -- -----------------------------------------------------
 -- Table "Event"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Event" (
+CREATE TABLE IF NOT EXISTS "event" (
   "event_id" SERIAL,
   "event_label" VARCHAR(255) NULL,
   "event_date_start" DATE NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS "Event" (
 -- -----------------------------------------------------
 -- Table "Contact"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Contact" (
+CREATE TABLE IF NOT EXISTS "contact" (
   "contact_id" SERIAL,
   "contact_name" VARCHAR(255) NULL,
   "contact_first_name" VARCHAR(255) NULL,
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS "Contact" (
 -- -----------------------------------------------------
 -- Table "Todolist"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Todolist" (
+CREATE TABLE IF NOT EXISTS "todolist" (
   "todolist_id" SERIAL,
   "todolist_name" VARCHAR(255) NULL,
   "Event_event_id" INT NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS "Todolist" (
 -- -----------------------------------------------------
 -- Table "Task"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Task" (
+CREATE TABLE IF NOT EXISTS "task" (
   "task_id" SERIAL,
   "task_content" TEXT NULL,
   "Todolist_todolist_id" INT NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS "Task" (
 -- -----------------------------------------------------
 -- Table "Note"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Note" (
+CREATE TABLE IF NOT EXISTS "note" (
   "note_id" SERIAL,
   "note_title" VARCHAR(255) NULL,
   "note_text" TEXT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS "Note" (
 -- -----------------------------------------------------
 -- Table "Type"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Type" (
+CREATE TABLE IF NOT EXISTS "type" (
   "type_id" SERIAL,
   "type_name" VARCHAR(255) NULL,
   PRIMARY KEY ("type_id"))
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS "Type" (
 -- -----------------------------------------------------
 -- Table "Article"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Article" (
+CREATE TABLE IF NOT EXISTS "article" (
   "article_id" SERIAL,
   "article_name" VARCHAR(255) NULL,
   "article_description" TEXT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS "Article" (
 -- -----------------------------------------------------
 -- Table "Paymentmethode"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Paymentmethode" (
+CREATE TABLE IF NOT EXISTS "paymentmethod" (
   "paymentmethode" SERIAL,
   "paymentmethode_label" VARCHAR(255) NULL,
   PRIMARY KEY ("paymentmethode"))
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS "Paymentmethode" (
 -- -----------------------------------------------------
 -- Table "Anualbudget"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Anualbudget" (
+CREATE TABLE IF NOT EXISTS "anualbudget" (
   "anualbudget_id" SERIAL,
   "anualbudget_amount" numeric NULL,
   "anualbudget_year" VARCHAR(10) NULL,
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS "Anualbudget" (
 -- -----------------------------------------------------
 -- Table "Budget"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Budget" (
+CREATE TABLE IF NOT EXISTS "budget" (
   "budget_id" SERIAL,
   "budget_amount" INT NULL,
   "Anualbudget_anualbudget_id" INT NOT NULL,
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS "Budget" (
 -- -----------------------------------------------------
 -- Table "Transaction"
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "Transaction" (
+CREATE TABLE IF NOT EXISTS "transaction" (
   "transaction_id" SERIAL,
   "transaction_label" VARCHAR(255) NULL,
   "transaction_amount" numeric NULL,
