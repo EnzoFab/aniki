@@ -5,6 +5,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -22,6 +24,10 @@ public class ForgotPasswordController implements Initializable{
     private final String BUTTON_DEFAULT_TXT_COLOR = "#ffcc00";
     private final String HYPERLINK_DEFAULT_COLOR ="#000099";
 
+    private final Image crossImg = new Image("media/img/red_cross.png");
+    private final Image checkImg = new Image("media/img/check.png");
+
+
 
     @FXML private Label errorText;
 
@@ -31,10 +37,13 @@ public class ForgotPasswordController implements Initializable{
 
     @FXML private  TextField mailField;
 
+    @FXML private ImageView stateImg;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         errorPane.setVisible(false);
+        stateImg.setVisible(false);
 
     }
 
@@ -61,6 +70,11 @@ public class ForgotPasswordController implements Initializable{
         resetButton.setStyle("-fx-background-color: "+ BUTTON_DEFAULT_BG_COLOR);
     }
 
+    /**
+     * Back arrow to return to the login page
+     * @param mouseEvent
+     * @throws IOException
+     */
     @FXML private void back(MouseEvent mouseEvent) throws IOException {
         Main.changeScene(getClass(),"login.fxml","Login");
     }
