@@ -16,9 +16,11 @@ public class UserDaoPostgres extends UserDao {
     }
 
     @Override
-    public User create(String mail, String pwd) {
+    public User insert(String mail, String pwd) {
         return null;
     }
+
+
 
     @Override
     public User getUserById(String mail) {

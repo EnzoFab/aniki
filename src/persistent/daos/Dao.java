@@ -3,15 +3,17 @@ package persistent.daos;
 import java.sql.Connection;
 
 public abstract class Dao {
-    private Connection connect;
+
+    private final Connection connect;
 
     public Dao(Connection c){
         connect = c;
     }
 
+
     public abstract void deleteById(String id);
 
-    public Connection getConnect(){
+    protected final Connection getConnect(){
         return connect;
     }
 }

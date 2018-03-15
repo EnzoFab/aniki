@@ -16,7 +16,7 @@ public class LoginManager {
 
     /**
      * Called when an User is trying to connect to the Application
-     * uses the factory to create a DaoUser and the use the method provided
+     * uses the factory to insert a DaoUser and the use the method provided
      * @param mail
      * @param pwd
      * @return
