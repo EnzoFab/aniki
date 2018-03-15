@@ -34,7 +34,7 @@ public class ForgotPasswordController implements Initializable{
     private final Image backArrowImg = new Image("media/img/back_arrow.png");
     private final Image blueBackArrowImg = new Image("media/img/back_arrow.png");
 
-
+  
 
 
     private LoginManager loginManager;

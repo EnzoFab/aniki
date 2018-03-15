@@ -71,7 +71,7 @@ public class LoginController implements Initializable {
         stateImg.setImage(crossImg);
         stateImg.setVisible(false);
 
-
+        forgotPwd.setTooltip(new Tooltip("We will try to find out your password "));
 
         mailField.textProperty().addListener((obs, oldText, newText) -> {
            if(!stateImg.isVisible()){

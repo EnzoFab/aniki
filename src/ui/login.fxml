@@ -28,11 +28,7 @@
         <Font name="System Bold" size="45.0" />
       </font>
     </Label>
-    <Hyperlink fx:id="forgotPwd" font="$x1" layoutX="77.0" layoutY="268.0" onMouseClicked="#hyperlinkClick" onMouseEntered="#hyperlinkMouseEntered" onMouseExited="#hyperlinkMouseExited" opacity="0.64" text="I forgot my password" textFill="#000099" textOverrun="ELLIPSIS" underline="true">
-      <tooltip>
-        <Tooltip font="$x1" text="We will try to find out your password" textAlignment="CENTER" />
-      </tooltip>
-    </Hyperlink>
+    <Hyperlink fx:id="forgotPwd" font="$x1" layoutX="77.0" layoutY="268.0" onMouseClicked="#hyperlinkClick" onMouseEntered="#hyperlinkMouseEntered" onMouseExited="#hyperlinkMouseExited" opacity="0.64" text="I forgot my password" textFill="#000099" textOverrun="ELLIPSIS" underline="true" />
     <Pane fx:id="errorPane" layoutX="34.0" layoutY="69.0" prefHeight="68.0" prefWidth="578.0" style="-fx-background-color:#ff9980;&#10;-fx-border-color:red;&#10;-fx-border-width:3px;">
       <children>
         <Label layoutX="48.0" layoutY="7.0" text="Error:" textFill="#cc3100" underline="true">
