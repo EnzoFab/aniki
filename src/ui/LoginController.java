@@ -154,14 +154,18 @@ public class LoginController implements Initializable {
     }
 
     @FXML private void buttonLoginMouseEntered(MouseEvent mouseEvent) {
-        loginButton.setStyle("-fx-background-color: #ccccff; -fx-text-fill: #0f0f3d");
+        loginButton.setStyle("-fx-background-color: #ccccff; -fx-text-fill: #0f0f3d;" +
+                " -fx-background-radius: 10; "+
+                " -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); ");
             // change the button background
 
 
     }
 
     @FXML private void buttonLoginMouseExited(MouseEvent mouseEvent) {
-        this.loginButton.setStyle("-fx-background-color: "+ BUTTON_DEFAULT_BG_COLOR);
+        this.loginButton.setStyle("-fx-background-color: "+ BUTTON_DEFAULT_BG_COLOR+"; " +
+                "-fx-background-radius: 10;" +
+                " -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); ");
     }
 
 
