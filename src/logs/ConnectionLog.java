@@ -3,7 +3,7 @@ package logs;
 public class ConnectionLog {
     private final static String url ="jdbc:postgresql://localhost:5432/anikidb";
     private final static String user= "postgres";
-    private final static String pwd ="Clarisse6996";
+    private final static String pwd ="";
 
 
     public static String getUrl(){
