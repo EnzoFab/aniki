@@ -10,6 +10,10 @@ public abstract class ConnectionDB {
 
     private static Connection connect;
 
+    /**
+     * Try to connect to the database
+     * @return
+     */
     public static Connection getInstance()
     {
         if(connect == null){

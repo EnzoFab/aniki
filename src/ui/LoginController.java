@@ -71,6 +71,8 @@ public class LoginController implements Initializable {
         stateImg.setImage(crossImg);
         stateImg.setVisible(false);
 
+
+
         mailField.textProperty().addListener((obs, oldText, newText) -> {
            if(!stateImg.isVisible()){
                 stateImg.setVisible(true);

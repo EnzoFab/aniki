@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -30,6 +31,12 @@ public class ForgotPasswordController implements Initializable{
     private final Image crossImg = new Image("media/img/red_cross.png");
     private final Image checkImg = new Image("media/img/check.png");
 
+    private final Image backArrowImg = new Image("media/img/back_arrow.png");
+    private final Image blueBackArrowImg = new Image("media/img/back_arrow.png");
+
+
+
+
     private LoginManager loginManager;
 
 
@@ -51,14 +58,20 @@ public class ForgotPasswordController implements Initializable{
         stateImg.setVisible(false);
         loginManager = new LoginManager();
 
+
+
         mailField.textProperty().addListener((obs, oldText, newText) -> {
             if(!stateImg.isVisible()){
                 stateImg.setVisible(true);
             }
-            if(loginManager.exists(newText) )
+            if(loginManager.exists(newText) ){
                 stateImg.setImage(checkImg);
 
+            }
+
+
         });
+
 
     }
 
@@ -129,4 +142,9 @@ public class ForgotPasswordController implements Initializable{
     }
 
 
+    @FXML private void imageMouseOut(MouseEvent mouseEvent) {
+    }
+
+    @FXML private void imageMouseIn(MouseEvent mouseEvent) {
+    }
 }
