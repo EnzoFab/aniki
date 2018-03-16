@@ -7,11 +7,11 @@ import persistent.factories.DaoPostgresFactory;
 
 public class LoginManager {
     private User user;
-    private DaoFactory factory;
+    private final DaoFactory factory;
 
     public LoginManager() {
         user = null;
-        factory = new DaoPostgresFactory();
+        factory = DaoPostgresFactory.getInstance();
     }
 
     /**
