@@ -34,7 +34,7 @@ public class ForgotPasswordController implements Initializable{
     private final Image backArrowImg = new Image("media/img/back_arrow.png");
     private final Image blueBackArrowImg = new Image("media/img/back_arrow.png");
 
-  
+    private final Tooltip tooltip = new Tooltip();
 
 
     private LoginManager loginManager;
@@ -59,6 +59,7 @@ public class ForgotPasswordController implements Initializable{
         loginManager = new LoginManager();
 
 
+        Tooltip.install(stateImg,tooltip);
 
         mailField.textProperty().addListener((obs, oldText, newText) -> {
             if(!stateImg.isVisible()){
@@ -66,7 +67,10 @@ public class ForgotPasswordController implements Initializable{
             }
             if(loginManager.exists(newText) ){
                 stateImg.setImage(checkImg);
+                tooltip.setText("An email has been find with success");
 
+            }else{
+                tooltip.setText("Can't find this email...");
             }
 
 

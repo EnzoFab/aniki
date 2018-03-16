@@ -23,7 +23,7 @@ public class Main extends Application {
         applicationStage = primaryStage;
         applicationStage.getIcons().add(new Image("media/img/logo-aniki-icone.png"));
             // set the application logo
-        changeScene(getClass(),"login.fxml","login");
+        changeScene(getClass(),"login.fxml","Login");
     }
 
     /**
