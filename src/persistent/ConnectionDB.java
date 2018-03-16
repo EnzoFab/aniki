@@ -19,10 +19,10 @@ public abstract class ConnectionDB {
         if(connect == null){
             try {
                 connect = DriverManager.getConnection(ConnectionLog.getUrl(), ConnectionLog.getUser(), ConnectionLog.getPwd());
-                System.out.println("Connexion effective !");
+                System.out.println("Connection effective !");
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println("Connexion failed !");
+                System.out.println("Connection failed !");
                connect = null;
             }
         }
