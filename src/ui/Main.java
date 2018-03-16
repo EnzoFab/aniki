@@ -27,7 +27,7 @@ public class Main extends Application {
     }
 
     /**
-     * Allow to switch between several scene
+     * Allows to switch between several scene
      * Has to be called every time we want to change scene
      * @param c
      * @param fxmlFile

@@ -12,7 +12,7 @@ public abstract class DaoFactory {
 
     protected final Connection connect;
 
-    protected static DaoFactory factory;
+    protected static DaoFactory factory=null;
 
     protected DaoFactory(){
         this.connect = ConnectionDB.getInstance();
