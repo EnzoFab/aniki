@@ -3,10 +3,7 @@ package ui;
 import facade.LoginManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -16,6 +13,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static ui.Main.changeScene;
@@ -106,6 +104,18 @@ public class ForgotPasswordController implements Initializable{
             mailField.setStyle("-fx-background-color: #ff471a");
             showError("Please fill the field below");
         }else{
+            if(loginManager.forgotPwd(mailField.getText()) ){
+                Optional<ButtonType> result = alertMaker(
+                        Alert.AlertType.INFORMATION,"Password sent", "Success",
+                        "The password has been sent to: \n"+mailField.getText());
+                if( result.get() == ButtonType.OK){
+                    try {
+                        changeScene(getClass(),"login.fxml","Login");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
             // check if the mail exist
             // use facade method in order to reset the pwd and send it by mail
         }
@@ -132,6 +142,12 @@ public class ForgotPasswordController implements Initializable{
         changeScene(getClass(),"login.fxml","Login");
     }
 
+    @FXML private void imageMouseOut(MouseEvent mouseEvent) {
+    }
+
+    @FXML private void imageMouseIn(MouseEvent mouseEvent) {
+    }
+
 
     private void showError(String error){
         errorText.setText(error);
@@ -145,10 +161,24 @@ public class ForgotPasswordController implements Initializable{
         fadeEffect(1,0,200,errorPane);
     }
 
+    /**
+     * show an alert dialog and return the Optional Button
+     * @param type
+     * @param title
+     * @param headerText
+     * @param contentText
+     * @return
+     */
+    private  Optional<ButtonType> alertMaker(Alert.AlertType type, String title, String headerText, String contentText){
+        // change it to dialog in order styling it has our app
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
 
-    @FXML private void imageMouseOut(MouseEvent mouseEvent) {
+        return alert.showAndWait();
     }
 
-    @FXML private void imageMouseIn(MouseEvent mouseEvent) {
-    }
+
+
 }

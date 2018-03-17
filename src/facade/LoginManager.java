@@ -56,13 +56,13 @@ public class LoginManager {
         return "";
     }
 
-    /**
+    /*/**
      * Reset the user password and send the new one by mail
      * @param mail
      * @see Couple
      * @return
      */
-    public boolean resetPwd(String mail){
+    /*public boolean resetPwd(String mail){
         boolean result = false;
         String newPasswordValue = ""; // change the password
         if(factory.createUserDao().update(mail, new Couple("password",newPasswordValue)) ){
@@ -72,11 +72,20 @@ public class LoginManager {
             return MailSender.sendHtmlMail(mail,"aniki","New password",content);
         }
         return  result;
+    }*/
+
+
+
+    public boolean forgotPwd(String mail){
+        User user = factory.createUserDao().getUserById(mail);
+        if(user != null){
+            String content = "<img src='media/img/logo-aniki.png'/><p>" +
+                    "Your best friend has found this for you: <i>" + user.getPassword()+"</i></p><b>Use it wisely </b>";
+            return MailSender.sendHtmlMail(mail,"aniki","Password",content);
+        }else{
+            return false;
+        }
     }
-
-
-
-
 
 
 
