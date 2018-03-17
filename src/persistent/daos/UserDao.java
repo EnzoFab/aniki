@@ -1,7 +1,6 @@
 package persistent.daos;
 
 import business_logic.User;
-import persistent.daos.Dao;
 
 import java.sql.Connection;
 
@@ -29,4 +28,6 @@ public abstract class UserDao extends Dao {
      * @return
      */
     public abstract User getUserById(String mail);
+
+
 }

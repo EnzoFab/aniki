@@ -1,7 +1,7 @@
 package persistent.daos;
 
+import helpers.Couple;
 import business_logic.User;
-import persistent.daos.UserDao;
 
 import java.sql.*;
 
@@ -13,6 +13,11 @@ public class UserDaoPostgres extends UserDao {
     @Override
     public void deleteById(String id) {
 
+    }
+
+    @Override
+    public boolean update(String mail, Couple... setData) {
+        return true;
     }
 
     @Override

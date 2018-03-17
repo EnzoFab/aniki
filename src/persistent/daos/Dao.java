@@ -1,5 +1,7 @@
 package persistent.daos;
 
+import helpers.Couple;
+
 import java.sql.Connection;
 
 public abstract class Dao {
@@ -16,4 +18,12 @@ public abstract class Dao {
     protected final Connection getConnect(){
         return connect;
     }
+
+    /**
+     * Update a user given by his mail
+     * @param mail
+     * @param setData
+     * @return
+     */
+    public abstract boolean update(String mail, Couple ...setData);
 }

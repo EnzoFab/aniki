@@ -1,6 +1,8 @@
 package facade;
 
+import helpers.Couple;
 import business_logic.User;
+import helpers.MailSender;
 import persistent.daos.UserDao;
 import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
@@ -53,6 +55,24 @@ public class LoginManager {
             return user.getFirstName();
         return "";
     }
+
+    /**
+     * Reset the user password and send the new one by mail
+     * @param mail
+     * @return
+     */
+    public boolean resetPwd(String mail){
+        boolean result = false;
+        String newPasswordValue = ""; // change the password
+        if(factory.createUserDao().update(mail, new Couple("password",newPasswordValue)) ){
+            String content = "<img src='media/img/logo-aniki.png'/><p>" +
+                    "Your password has been update to: <i>" + newPasswordValue+"</i></p><b>Don't lose it ;) </b>";
+            return MailSender.sendHtmlMail(mail,"aniki","New password",content);
+        }
+        return  result;
+    }
+
+
 
 
 
