@@ -59,12 +59,14 @@ public class LoginManager {
     /**
      * Reset the user password and send the new one by mail
      * @param mail
+     * @see Couple
      * @return
      */
     public boolean resetPwd(String mail){
         boolean result = false;
         String newPasswordValue = ""; // change the password
         if(factory.createUserDao().update(mail, new Couple("password",newPasswordValue)) ){
+            // essaie de mettre a jour le mail mot de passe de l'utilisateur si c'est ok on l'envoie par mail
             String content = "<img src='media/img/logo-aniki.png'/><p>" +
                     "Your password has been update to: <i>" + newPasswordValue+"</i></p><b>Don't lose it ;) </b>";
             return MailSender.sendHtmlMail(mail,"aniki","New password",content);

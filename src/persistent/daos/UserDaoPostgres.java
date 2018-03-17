@@ -17,6 +17,8 @@ public class UserDaoPostgres extends UserDao {
 
     @Override
     public boolean update(String mail, Couple... setData) {
+        // empty to implement
+        // in the Set clause foreach setData do ""+setData.getAttributeName()+" = "setData.getAttributeValue()
         return true;
     }
 

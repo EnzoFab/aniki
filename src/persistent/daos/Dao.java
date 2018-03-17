@@ -24,6 +24,7 @@ public abstract class Dao {
      * @param mail
      * @param setData
      * @return
+     * @see Couple
      */
     public abstract boolean update(String mail, Couple ...setData);
 }
