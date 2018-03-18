@@ -103,21 +103,17 @@ public class ForgotPasswordController implements Initializable{
         if(mailField.getText().isEmpty()){
             mailField.setStyle("-fx-background-color: #ff471a");
             showError("Please fill the field below");
-        }else{
-            if(loginManager.forgotPwd(mailField.getText()) ){
-                Optional<ButtonType> result = alertMaker(
-                        Alert.AlertType.INFORMATION,"Password sent", "Success",
+        }else if(loginManager.forgotPwd(mailField.getText()) ){
+            Optional<ButtonType> result = alertMaker(
+                    Alert.AlertType.INFORMATION,"Password sent", "Success",
                         "The password has been sent to: \n"+mailField.getText());
-                if( result.get() == ButtonType.OK){
-                    try {
-                        changeScene(getClass(),"login.fxml","Login");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+            if( result.get() == ButtonType.OK){
+                try {
+                    changeScene(getClass(),"login.fxml","Login");
+                } catch (IOException e) {e.printStackTrace(); }
             }
-            // check if the mail exist
-            // use facade method in order to reset the pwd and send it by mail
+        }else{
+            showError("unfortunetly, Aniki coudn't find this email try another one");
         }
     }
 

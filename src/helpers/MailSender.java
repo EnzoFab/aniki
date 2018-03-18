@@ -32,10 +32,10 @@ public final class MailSender {
                     InternetAddress.parse(to));
             message.setSubject(subject);
             message.setContent(content, "text/html; charset=utf-8");
-
+            System.out.println("Try to send mail to: "+to);
             Transport.send(message);
 
-            System.out.println("Mail send to "+to);
+            System.out.println("Mail sent to "+to);
             return true;
 
         } catch (MessagingException e) {
@@ -85,9 +85,10 @@ public final class MailSender {
             // Send the complete message parts
             message.setContent(multipart );
 
+            System.out.println("Try to send mail to: "+to);
             Transport.send(message);
 
-            System.out.println("Mail send to "+to);
+            System.out.println("Mail sent to "+to);
             return true;
 
         } catch (MessagingException e) {
