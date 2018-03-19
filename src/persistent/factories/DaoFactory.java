@@ -1,7 +1,8 @@
 package persistent.factories;
 
 import persistent.ConnectionDB;
-import persistent.daos.UserDao;
+import persistent.daos.*;
+
 
 import java.sql.Connection;
 
@@ -27,10 +28,69 @@ public abstract class DaoFactory {
     }
 
 
+
+
     /**
-     * Create an UserDao
      * @return
      */
-    public abstract UserDao createUserDao();
+    public abstract UserDAO createUserDAO();
+
+    /**
+     * @return
+     */
+    public abstract TeamDAO createTeamDAO();
+
+    /**
+     * @return
+     */
+    public abstract ToDoListDAO createTodoListDAO();
+
+    /**
+     * @return
+     */
+    public BudgetDAO createBudgetDAO() {
+        // TODO implement here
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    public abstract EventDAO createEventDAO();
+
+    /**
+     * @return
+     */
+    public abstract TaskDAO createTaskDAO();
+
+    /**
+     * @return
+     */
+    public abstract TransactionDAO createTransactionDAO();
+
+    /**
+     * @return
+     */
+    public abstract ArticleDAO createArticleDAO();
+
+    /**
+     * @return
+     */
+    public abstract StoryMadeDAO createStoryMadeDAO();
+
+    /**
+     * @return
+     */
+    public abstract AnualBudgetDAO createAnualBudgetDAO();
+
+    /**
+     * @return
+     */
+    public abstract ContactDAO createContactDAO();
+
+    /**
+     * @return
+     */
+    public abstract RoleDAO createRoleDAO();
 
 }

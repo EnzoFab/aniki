@@ -1,18 +1,25 @@
-package persistent.daos;
+package persistent.daos.postgre;
 
 import helpers.Couple;
 import business_logic.User;
+import persistent.daos.UserDAO;
 
 import java.sql.*;
+import java.util.ArrayList;
 
-public class UserDaoPostgres extends UserDao {
-    public UserDaoPostgres(Connection c){
+public class UserDAOPostgres extends UserDAO {
+    public UserDAOPostgres(Connection c){
         super(c);
     }
 
     @Override
     public void deleteById(String id) {
 
+    }
+
+    @Override
+    public boolean insert(String... param) {
+        return false;
     }
 
     @Override
@@ -48,5 +55,15 @@ public class UserDaoPostgres extends UserDao {
         }
 
         return user;
+    }
+
+    @Override
+    public ArrayList getAllUserByTeam(String idTeam) {
+        return null;
+    }
+
+    @Override
+    public void deleteByID(String id) {
+
     }
 }

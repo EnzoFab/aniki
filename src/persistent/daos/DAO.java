@@ -1,14 +1,15 @@
 package persistent.daos;
 
+import business_logic.User;
 import helpers.Couple;
 
 import java.sql.Connection;
 
-public abstract class Dao {
+public abstract class DAO {
 
     private final Connection connect;
 
-    public Dao(Connection c){
+    public DAO(Connection c){
         connect = c;
     }
 
@@ -18,6 +19,12 @@ public abstract class Dao {
     protected final Connection getConnect(){
         return connect;
     }
+
+    /**
+     * @param  param
+     * @return
+     */
+    public abstract boolean insert(String ...param);
 
     /**
      * Update a user given by his mail

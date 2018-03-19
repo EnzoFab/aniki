@@ -3,11 +3,12 @@ package persistent.daos;
 import business_logic.User;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
-public abstract class UserDao extends Dao {
+public abstract class UserDAO extends DAO {
 
 
-    public UserDao(Connection c){
+    public UserDAO(Connection c){
         super(c);
     }
 
@@ -28,6 +29,20 @@ public abstract class UserDao extends Dao {
      * @return
      */
     public abstract User getUserById(String mail);
+
+
+
+    /**
+     * @param  idTeam
+     * @return
+     */
+    public abstract ArrayList getAllUserByTeam( String idTeam);
+
+    /**
+     * @param  id
+     * @return
+     */
+    public abstract void deleteByID( String id);
 
 
 }

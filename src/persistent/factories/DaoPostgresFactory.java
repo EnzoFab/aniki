@@ -1,7 +1,8 @@
 package persistent.factories;
 
-import persistent.daos.UserDao;
-import persistent.daos.UserDaoPostgres;
+import persistent.daos.*;
+import persistent.daos.postgre.UserDAOPostgres;
+
 
 public class DaoPostgresFactory extends DaoFactory{
 
@@ -16,9 +17,60 @@ public class DaoPostgresFactory extends DaoFactory{
         return factory;
     }
 
+
     @Override
-    public UserDao createUserDao() {
-        return new UserDaoPostgres(connect);
+    public TeamDAO createTeamDAO() {
+        return null;
+    }
+
+    @Override
+    public ToDoListDAO createTodoListDAO() {
+        return null;
+    }
+
+    @Override
+    public EventDAO createEventDAO() {
+        return null;
+    }
+
+    @Override
+    public TaskDAO createTaskDAO() {
+        return null;
+    }
+
+    @Override
+    public TransactionDAO createTransactionDAO() {
+        return null;
+    }
+
+    @Override
+    public ArticleDAO createArticleDAO() {
+        return null;
+    }
+
+    @Override
+    public StoryMadeDAO createStoryMadeDAO() {
+        return null;
+    }
+
+    @Override
+    public AnualBudgetDAO createAnualBudgetDAO() {
+        return null;
+    }
+
+    @Override
+    public ContactDAO createContactDAO() {
+        return null;
+    }
+
+    @Override
+    public RoleDAO createRoleDAO() {
+        return null;
+    }
+
+    @Override
+    public UserDAO createUserDAO() {
+        return new UserDAOPostgres(connect);
     }
 
 

@@ -1,9 +1,8 @@
 package facade;
 
-import helpers.Couple;
 import business_logic.User;
 import helpers.MailSender;
-import persistent.daos.UserDao;
+import persistent.daos.UserDAO;
 import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
 
@@ -26,7 +25,7 @@ public class LoginManager {
     public String login(String mail, String pwd){
         String result;
 
-        UserDao dao = factory.createUserDao();
+        UserDAO dao = factory.createUserDAO();
         user = dao.getUserById(mail);
         if(user ==null )
             result="Error";
@@ -39,7 +38,7 @@ public class LoginManager {
     }
 
     public boolean exists(String mail){
-        UserDao dao = factory.createUserDao();
+        UserDAO dao = factory.createUserDAO();
         return dao.getUserById(mail) != null;
 
     }
@@ -77,7 +76,7 @@ public class LoginManager {
 
 
     public boolean forgotPwd(String mail){
-        User user = factory.createUserDao().getUserById(mail);
+        User user = factory.createUserDAO().getUserById(mail);
         if(user != null){
             String content = "<img src='media/img/logo-aniki.png'/><p>" +
                     "Your best friend has found this for you: <i>" + user.getPassword()+"</i></p><b>Use it wisely </b>";
