@@ -1,18 +1,50 @@
 package business_logic;
 
-import java.util.Date;
+import java.util.*;
 
+/**
+ * 
+ */
 public class StoryMade {
 
-    private Date date;
-    private String text;
+    /**
+     *
+     */
+    private final int idS;
+
+    /**
+     *
+     */
     private String label;
 
-    private Event event;
+    /**
+     *
+     */
+    private Date date;
 
-    public StoryMade (Date date, String text, String label){
+    /**
+     *
+     */
+    private String text;
+
+
+    public StoryMade(int idS, String label, Date date, String text) {
+        this.idS = idS;
+        this.label = label;
         this.date = date;
         this.text = text;
+    }
+
+
+    public int getIdS() {
+        return idS;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
         this.label = label;
     }
 
@@ -20,15 +52,15 @@ public class StoryMade {
         return date;
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public String getText() {
         return text;
     }
 
-    public String getLabel() {
-        return label;
-    }
-
-    public Event getEvent() {
-        return event;
+    public void setText(String text) {
+        this.text = text;
     }
 }

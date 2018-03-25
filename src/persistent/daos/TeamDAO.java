@@ -3,50 +3,38 @@ package persistent.daos;
 import business_logic.Team;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.*;
 
 /**
  * 
  */
-public abstract class TeamDAO extends DAO {
+public abstract class TeamDAO  extends DAO{
 
-    /**
-     * Default constructor
-     */
-    public TeamDAO(Connection c) {
-        super(c);
+
+    public TeamDAO(Connection connection) {
+        super(connection);
     }
 
-
     /**
-     * @param  idTeam
-     * @param  userMail
      * @return
      */
-    public abstract Team addUser(String idTeam, String userMail);
-
+    public abstract ResultSet selectAll();
     /**
-     * @param  id
+     * @param team 
      * @return
      */
-    public abstract Team findTeamById( String id);
+    public abstract ResultSet select(String team) ;
 
     /**
-     * @param  param
+     * @param team 
      * @return
      */
-    public abstract boolean insert( String ...param);
+    public abstract boolean insert(Team team) ;
 
     /**
-     * @param  userMail
+     * @param team 
      * @return
      */
-    public abstract ArrayList getAllTeamforUser( String userMail);
-
-    /**
-     * @param  id
-     * @return
-     */
-    public abstract void deleteByID( String id);
-
+    public abstract boolean delete(String team) ;
 }

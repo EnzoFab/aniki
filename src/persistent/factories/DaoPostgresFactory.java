@@ -1,7 +1,7 @@
 package persistent.factories;
 
 import persistent.daos.*;
-import persistent.daos.postgre.UserDAOPostgres;
+import persistent.daos.postgres.UserDAOPostgres;
 
 
 public class DaoPostgresFactory extends DaoFactory{

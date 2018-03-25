@@ -1,6 +1,6 @@
 package ui;
 
-import facade.LoginManager;
+import facade.LoginFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -35,7 +35,7 @@ public class ForgotPasswordController implements Initializable{
     private final Tooltip tooltip = new Tooltip();
 
 
-    private LoginManager loginManager;
+    private LoginFacade loginManager;
 
 
 
@@ -54,7 +54,7 @@ public class ForgotPasswordController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         errorPane.setVisible(false);
         stateImg.setVisible(false);
-        loginManager = new LoginManager();
+        loginManager = new LoginFacade();
 
 
         Tooltip.install(stateImg,tooltip);

@@ -3,6 +3,7 @@ package persistent.daos;
 import business_logic.User;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public abstract class UserDAO extends DAO {
@@ -13,14 +14,10 @@ public abstract class UserDAO extends DAO {
     }
 
     /**
-     * insert a new User in the database
-     * return the user insert in case of success
-     * else return null
-     * @param mail
-     * @param pwd
+     * @param user
      * @return
      */
-    public abstract User insert(String mail, String pwd);
+    public abstract boolean insert(User user) ;
 
     /**
      * Giving a idea insert a model User if one user with this id exists
@@ -28,7 +25,17 @@ public abstract class UserDAO extends DAO {
      * @param mail
      * @return
      */
-    public abstract User getUserById(String mail);
+    public abstract ResultSet select(String mail);
+
+    /**
+     * @param mail
+     * @param firstName
+     * @param name
+     * @param pwd
+     * @param phone
+     * @return
+     */
+    public abstract boolean update(String mail, String firstName, String name, String pwd, String phone);
 
 
 
@@ -36,13 +43,15 @@ public abstract class UserDAO extends DAO {
      * @param  idTeam
      * @return
      */
-    public abstract ArrayList getAllUserByTeam( String idTeam);
+    public abstract ResultSet selectByTeam(String idTeam);
 
     /**
-     * @param  id
+     * @param  mail
      * @return
      */
-    public abstract void deleteByID( String id);
+    public abstract boolean delete( String mail);
+
+    public abstract ResultSet selectAll();
 
 
 }

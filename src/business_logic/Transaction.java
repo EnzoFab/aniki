@@ -1,56 +1,117 @@
 package business_logic;
 
-import java.util.Date;
+import java.util.*;
 
+/**
+ * 
+ */
 public class Transaction {
 
-    private String label;
-    private int amount;
-    private Date date;
-    private String state;
-    private String type;
-
     private Budget budget;
-    private PaymentMethod paymentMethod;
     private Event event;
 
-    public Transaction (String label, int amount, Date date, String state, String type){
+
+    /**
+     * 
+     */
+    private int id;
+
+    /**
+     * 
+     */
+    private String label;
+
+    /**
+     * 
+     */
+    private int amount;
+
+    /**
+     * 
+     */
+    private String state;
+
+    /**
+     * 
+     */
+    private String type;
+
+    /**
+     * 
+     */
+    private Date transaction;
+
+    /**
+     * 
+     */
+    private String receipt;
+
+    public Transaction(Budget budget,  Event event, int id, String label, int amount,
+                       String state, String type, Date transaction, String receipt) {
+        this.budget = budget;
+        this.event = event;
+        this.id = id;
         this.label = label;
         this.amount = amount;
-        this.date = date;
         this.state = state;
         this.type = type;
+        this.transaction = transaction;
+        this.receipt = receipt;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLabel() {
         return label;
     }
 
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
     public int getAmount() {
         return amount;
     }
 
-    public Date getDate() {
-        return date;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public String getState() {
         return state;
     }
 
+    public void setState(String state) {
+        this.state = state;
+    }
+
     public String getType() {
         return type;
     }
 
-    private Budget getBudget() {
-        return budget;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
+    public Date getTransaction() {
+        return transaction;
     }
 
-    public Event getEvent() {
-        return event;
+    public void setTransaction(Date transaction) {
+        this.transaction = transaction;
+    }
+
+    public String getReceipt() {
+        return receipt;
+    }
+
+    public void setReceipt(String receipt) {
+        this.receipt = receipt;
     }
 }

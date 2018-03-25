@@ -1,36 +1,54 @@
 package business_logic;
 
-import java.util.ArrayList;
 
+import java.util.*;
+
+/**
+ * 
+ */
 public class Budget {
-
-    private int amount;
+    /**
+     *
+     */
+    private int Amount;
 
     private Team team;
 
     private ArrayList transactions;
 
-    public Budget (int amount, Team team){
-        this.amount = amount;
-        transactions = new ArrayList();
-        this.team = team;
+    /**
+     * Default constructor
+     */
+    public Budget() {
+    }
 
+    public Budget(int amount, Team team, ArrayList transactions) {
+        Amount = amount;
+        this.team = team;
+        this.transactions = transactions;
     }
 
     public int getAmount() {
-        return amount;
+        return Amount;
+    }
+
+    public void setAmount(int amount) {
+        Amount = amount;
     }
 
     public Team getTeam() {
         return team;
     }
 
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
     public ArrayList getTransactions() {
         return transactions;
     }
 
-
-    public int balance(){
-        return 0;
+    public void setTransactions(ArrayList transactions) {
+        this.transactions = transactions;
     }
 }

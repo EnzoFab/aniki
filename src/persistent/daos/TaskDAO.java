@@ -1,24 +1,37 @@
 package persistent.daos;
 
+import business_logic.Task;
+
 import java.sql.Connection;
+import java.util.*;
 
 /**
  * 
  */
 public abstract class TaskDAO extends DAO {
 
-    /**
-     * Default constructor
-     */
-    public TaskDAO(Connection c) {
-        super(c);
+
+    public TaskDAO(Connection connection) {
+        super(connection);
     }
 
-
     /**
-     * @param id
+     * @param  task
+     * @param  idToDoList
      * @return
      */
-    public abstract void deleteByID( String id);
+    public abstract boolean insert(Task task, String idToDoList);
+
+    /**
+     * @param  idTask
+     * @return
+     */
+    public abstract boolean delete( String idTask) ;
+
+    /**
+     * @param  task
+     * @return
+     */
+    public  abstract boolean update( Task task);
 
 }

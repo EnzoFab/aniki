@@ -6,11 +6,14 @@ import persistent.daos.UserDAO;
 import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
 
-public class LoginManager {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class LoginFacade {
     private User user;
     private final DaoFactory factory;
 
-    public LoginManager() {
+    public LoginFacade() {
         user = null;
         factory = DaoPostgresFactory.getInstance();
     }
@@ -26,20 +29,30 @@ public class LoginManager {
         String result;
 
         UserDAO dao = factory.createUserDAO();
-        user = dao.getUserById(mail);
-        if(user ==null )
+        ResultSet resultSet = dao.select(mail);
+        if(resultSet == null){
             result="Error";
-        else if(user.getPassword().equals(pwd))
-            result = "Success";
-        else{
-            result= "Failed" ;
+        }else{
+            try {
+                user = new User(mail, resultSet.getString("user_first_name"),
+                        resultSet.getString("user_name"), resultSet.getString("user_password"), resultSet.getString("user_phone"));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if(user.getPassword().equals(pwd))
+                result = "Success";
+            else{
+                result= "Failed" ;
+            }
         }
+
+
         return result;
     }
 
     public boolean exists(String mail){
         UserDAO dao = factory.createUserDAO();
-        return dao.getUserById(mail) != null;
+        return dao.select(mail) != null;
 
     }
 
@@ -56,7 +69,7 @@ public class LoginManager {
     }
 
     /*/**
-     * Reset the user password and send the new one by mail
+     * Reset the user password and send the newClass one by mail
      * @param mail
      * @see Couple
      * @return
@@ -64,7 +77,7 @@ public class LoginManager {
     /*public boolean resetPwd(String mail){
         boolean result = false;
         String newPasswordValue = ""; // change the password
-        if(factory.createUserDao().update(mail, new Couple("password",newPasswordValue)) ){
+        if(factory.createUserDao().update(mail, newClass Couple("password",newPasswordValue)) ){
             // essaie de mettre a jour le mail mot de passe de l'utilisateur si c'est ok on l'envoie par mail
             String content = "<img src='media/img/logo-aniki.png'/><p>" +
                     "Your password has been update to: <i>" + newPasswordValue+"</i></p><b>Don't lose it ;) </b>";
@@ -76,11 +89,21 @@ public class LoginManager {
 
 
     public boolean forgotPwd(String mail){
-        User user = factory.createUserDAO().getUserById(mail);
-        if(user != null){
-            String content = "<img src='media/img/logo-aniki.png'/><p>" +
-                    "Your best friend has found this for you: <i>" + user.getPassword()+"</i></p><b>Use it wisely </b>";
-            return MailSender.sendHtmlMail(mail,"aniki","Password",content);
+        ResultSet resultSet = factory.createUserDAO().select(mail);
+        if(resultSet != null){
+            try {
+                User user = new User(mail, resultSet.getString("user_first_name"),
+                        resultSet.getString("user_name"), resultSet.getString("user_password"),
+                        resultSet.getString("user_phone"));
+                String content = "<img src='media/img/logo-aniki.png'/><p>" +
+                        "Your best friend has found this for you: <i>" + user.getPassword()+"</i></p><b>Use it wisely </b>";
+                return MailSender.sendHtmlMail(mail,"aniki","Password",content);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+
         }else{
             return false;
         }

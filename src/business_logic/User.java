@@ -1,50 +1,88 @@
 package business_logic;
 
-public class User {
+import java.util.*;
+
+/**
+ * 
+ */
+public class User implements LightUser {
+
+
+    /**
+     * 
+     */
     private String mail;
-    private String firstName;
+
+    /**
+     * 
+     */
     private String name;
+
+    /**
+     * 
+     */
+    private String firstName;
+
+    /**
+     * 
+     */
     private String password;
+
+    /**
+     * 
+     */
     private String phone;
 
-    private Team team;
-    private Role role;
 
-    public User(String mail, String firstName, String name, String password,String phone) {
+    public User(String mail, String name, String firstName, String password, String phone) {
         this.mail = mail;
-        this.firstName = firstName;
         this.name = name;
+        this.firstName = firstName;
         this.password = password;
         this.phone = phone;
     }
 
-    //Methods
+    @Override
     public String getMail() {
         return mail;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
-    public String getPassword(){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getPassword() {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
     public String getPhone() {
         return phone;
     }
 
-    public Team getTeam() {
-        return team;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-
-    public Role getRole() {
-        return role;
-    }
-
 }

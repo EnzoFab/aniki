@@ -1,34 +1,31 @@
 package persistent.daos;
 
-import business_logic.Role;
-
 import java.sql.Connection;
+import java.util.*;
 
 /**
  * 
  */
 public abstract class RoleDAO extends DAO {
 
-    /**
-     * Default constructor
-     */
-    public RoleDAO(Connection c) {
-        super(c);
+
+    public RoleDAO(Connection connection) {
+        super(connection);
     }
 
-
-
     /**
-     * @param  userMail
-     * @param  teamId
+     * @param mail 
+     * @param team 
+     * @param role 
      * @return
      */
-    public abstract Role getUserRole(String userMail, String teamId);
+    public abstract boolean insert(String mail, String team, String role);
 
     /**
-     * @param  id
+     * @param user 
+     * @param team 
      * @return
      */
-    public abstract void deleteByID( String id);
+    public abstract boolean delete(String user, String team);
 
 }

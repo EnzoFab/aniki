@@ -1,27 +1,42 @@
 package business_logic;
 
-import java.util.ArrayList;
+import java.util.*;
 
+/**
+ * 
+ */
 public class ToDoList {
 
+
+
+    /**
+     * 
+     */
+    public int idTD;
+
+    /**
+     * 
+     */
     private String label;
 
-    private Event event;
-    private ArrayList<Task> tasks;
-
-    public ToDoList (String label){
+    public ToDoList(int idTD, String label) {
+        this.idTD = idTD;
         this.label = label;
+    }
+
+    public int getIdTD() {
+        return idTD;
+    }
+
+    public void setIdTD(int idTD) {
+        this.idTD = idTD;
     }
 
     public String getLabel() {
         return label;
     }
 
-    public Event getEvent() {
-        return event;
-    }
-
-    public ArrayList<Task> getTasks() {
-        return tasks;
+    public void setLabel(String label) {
+        this.label = label;
     }
 }
