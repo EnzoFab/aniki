@@ -43,19 +43,13 @@ public class Main extends Application {
 
     /**
      * Changes between to scene and allows to pass parameter
-     * @param loader
+     * @param root
      * @param title
      */
-    public static void changeScene(FXMLLoader loader, String title){
+    public static void changeScene(Parent root, String title){
         //FXMLLoader loader = new FXMLLoader(c.getResource(fxmlFile));
         //loader.getClassLoader(); ajouter une fonction pour recuperer les parametres
-        Parent root ;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
+
         applicationStage.setTitle(title);
         applicationStage.setScene(new Scene(root));
         applicationStage.show();

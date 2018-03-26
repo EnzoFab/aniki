@@ -2,7 +2,9 @@ package ui;
 
 import facade.LoginFacade;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static ui.Main.changeScene;
 import static ui.Main.fadeEffect;
 import static ui.Main.playSound;
 
@@ -83,6 +86,7 @@ public class LoginController implements Initializable {
 
     @FXML private void hyperlinkClick(MouseEvent mouseEvent) throws IOException {
         Main.changeScene(getClass(),"forgotPassword.fxml","Forgot password");
+            // change scene without parameter
 
     }
 
@@ -119,6 +123,8 @@ public class LoginController implements Initializable {
                 case "Success":
                     // connection with success
                     System.out.println("Connection success");
+                    connected();
+
                     break;
                 case "Error":
                     this.showError("An error has occured please contact the administrator");
@@ -199,7 +205,22 @@ public class LoginController implements Initializable {
     ********************************************************************************************************************
      */
 
-
+    /**
+     * Called when the connection is a success
+     */
+    private void connected(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("homePage.fxml"));
+        Parent root ;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        HomePageController home = loader.getController();
+        home.setFacadeManager(loginManager.getFacadeManager());
+        changeScene(root,"Home");
+    }
 
 
 
@@ -231,7 +252,6 @@ public class LoginController implements Initializable {
         mailField.setText("");
         stateImg.setImage( crossImg);
         stateImg.setVisible(false);
-
 
     }
 }

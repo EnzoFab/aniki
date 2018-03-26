@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="645.0" prefWidth="690.0" style="-fx-background-color: #8080ff;&#10;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.HomePageController">
+  <children>
+    <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="47.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #8080ff;&#10;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+      <image>
+        <Image url="@../media/img/logo-aniki.png" />
+      </image>
+    </ImageView>
+    <Label layoutX="257.0" layoutY="23.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="HOME" textFill="#ffcc00">
+      <font>
+        <Font name="System Bold" size="45.0" />
+      </font>
+    </Label>
+    <Label fx:id="userName" layoutX="537.0" layoutY="110.0" text="Name" />
+  </children>
+</AnchorPane>
