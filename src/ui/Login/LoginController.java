@@ -92,7 +92,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML private  void hyperlinkClickQuickAcces(MouseEvent mouseEvent) throws IOException {
-        Main.changeScene(getClass(),"../General/Accueil.fxml","Accueil");
+        Main.changeScene(getClass(),"../General/accueil.fxml","Accueil");
     }
 
     @FXML private void hyperlinkMouseEntered(MouseEvent mouseEvent) {
