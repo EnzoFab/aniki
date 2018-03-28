@@ -32,7 +32,7 @@ public class DaoPostgresFactory extends DaoFactory{
     @Override
     public EventDAO createEventDAO() {
         EventDAOPostgres eventDao = new EventDAOPostgres(this.connect);
-        return null;
+        return eventDao;
     }
 
     @Override

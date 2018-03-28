@@ -6,11 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -18,6 +14,7 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Main extends Application {
 
@@ -83,7 +80,16 @@ public class Main extends Application {
         mediaPlayer.play();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+
+       /* EventFacade eventFacade = new EventFacade();
+
+        Date date_start = new Date();
+        Date date_end = new Date();
+        System.out.println(eventFacade.addEvent("Beach", date_start, date_end, 600));
+        System.out.println(eventFacade.updateEvent(0,"Beach Volley", date_start, date_end, 800));*/
         launch(args);
+
+
     }
 }
