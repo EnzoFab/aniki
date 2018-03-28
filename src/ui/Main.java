@@ -6,7 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -23,7 +27,7 @@ public class Main extends Application {
         applicationStage = primaryStage;
         applicationStage.getIcons().add(new Image("media/img/logo-aniki-icone.png"));
             // set the application logo
-        changeScene(getClass(),"Login/login.fxml","Login");
+        changeScene(getClass(),"users/login.fxml","users");
     }
 
     /**

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="640.0" prefWidth="754.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.users.CreateUserController">
+  <children>
+    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" prefHeight="649.0" prefWidth="754.0" />
+    <Pane fx:id="errorPane" layoutX="88.0" layoutY="114.0" prefHeight="68.0" prefWidth="578.0" style="-fx-background-color:#ff9980;&#10;-fx-border-color:red;&#10;-fx-border-width:3px;">
+      <children>
+        <Label layoutX="48.0" layoutY="7.0" text="Error:" textFill="#cc3100" underline="true">
+          <font>
+            <Font name="System Bold" size="20.0" />
+          </font>
+        </Label>
+        <Label id="errorInformation" fx:id="errorLabel" layoutX="14.0" layoutY="34.0" text="errorText" textFill="RED" />
+        <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../../media/img/errorIcon.png" />
+          </image>
+        </ImageView>
+      </children>
+    </Pane>
+    <Label layoutX="234.0" layoutY="194.0" style="-fx-underline: true;" text="Create a new member">
+      <font>
+        <Font name="System Bold" size="25.0" />
+      </font>
+    </Label>
+    <PasswordField fx:id="pwdTF1" layoutY="458.0" prefWidth="486.0" AnchorPane.leftAnchor="122.5" AnchorPane.rightAnchor="117.5" />
+    <PasswordField fx:id="pwdTF2" layoutY="528.0" prefWidth="486.0" AnchorPane.leftAnchor="123.5" AnchorPane.rightAnchor="116.5" />
+    <TextField fx:id="firstNameTF" layoutY="263.0" prefWidth="200.0" AnchorPane.leftAnchor="122.5" AnchorPane.rightAnchor="117.5" />
+    <TextField fx:id="nameTF" layoutY="320.0" prefWidth="200.0" AnchorPane.leftAnchor="122.5" AnchorPane.rightAnchor="117.5" />
+    <TextField fx:id="phoneTF" layoutY="381.0" prefWidth="200.0" AnchorPane.leftAnchor="122.5" AnchorPane.rightAnchor="117.5" />
+    <Label layoutX="326.0" layoutY="243.0" text="First Name" />
+    <Label layoutX="326.0" layoutY="300.0" text="Name" />
+    <Label layoutX="327.0" layoutY="361.0" text="Phone" />
+    <Label layoutX="326.0" layoutY="438.0" text="Password" />
+    <Label layoutX="327.0" layoutY="508.0" text="Valide Password" />
+    <Button layoutX="330.0" layoutY="589.0" mnemonicParsing="false" onMousePressed="#createUserClick" prefHeight="34.0" prefWidth="98.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="Create" textFill="#ffcc00">
+      <font>
+        <Font name="System Bold" size="15.0" />
+      </font>
+    </Button>
+  </children>
+</AnchorPane>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="457.0" prefWidth="684.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.contact.AddContactController">
+  <fx:include source="../dashboard.fxml"/>
+  <Label layoutX="259.0" layoutY="177.0" text="Add Contact" />
+</AnchorPane>

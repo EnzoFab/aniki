@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS "role" (
 
 
 -- -----------------------------------------------------
--- Table "Event"
+-- Table "events"
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "event" (
   "event_id" SERIAL,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS "event" (
 
 
 -- -----------------------------------------------------
--- Table "Contact"
+-- Table "contact"
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "contact" (
   "contact_id" SERIAL,
