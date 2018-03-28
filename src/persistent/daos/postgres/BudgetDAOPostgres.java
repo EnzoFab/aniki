@@ -16,7 +16,7 @@ public class BudgetDAOPostgres extends BudgetDAO {
     }
 
     @Override
-    public boolean insert(Budget budget, String team) {
+    public boolean insert(Budget budget) {
         return false;
     }
 

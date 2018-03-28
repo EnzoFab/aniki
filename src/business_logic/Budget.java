@@ -18,14 +18,13 @@ public class Budget {
 
     /**
      * Default constructor
+     * @param amount
+     * @param team
      */
-    public Budget() {
-    }
 
-    public Budget(int amount, Team team, ArrayList transactions) {
+    public Budget(int amount, Team team) {
         Amount = amount;
         this.team = team;
-        this.transactions = transactions;
     }
 
     public int getAmount() {

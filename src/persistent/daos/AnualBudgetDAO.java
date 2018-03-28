@@ -3,7 +3,7 @@ package persistent.daos;
 import business_logic.AnualBudget;
 
 import java.sql.Connection;
-import java.util.*;
+import java.sql.ResultSet;
 
 /**
  * 
@@ -15,7 +15,7 @@ public abstract class AnualBudgetDAO extends DAO {
         super(connection);
     }
 
-    public abstract boolean deleteByID(String id);
+    public abstract boolean deleteByID(int id);
 
 
     public abstract boolean insert(int amount, int year, String listName);
@@ -25,5 +25,9 @@ public abstract class AnualBudgetDAO extends DAO {
      * @return
      */
     public abstract boolean insert(AnualBudget anual);
+
+    public abstract  boolean update(String id, int amount);
+
+    public abstract ResultSet getTransaction();
 
 }

@@ -23,11 +23,10 @@ public class AnualBudget {
     private String listname;
     private ArrayList listTranstaction;
 
-    public AnualBudget(int amount, int year, String listname, ArrayList listTranstaction) {
+    public AnualBudget(int amount, int year, String listname) {
         this.amount = amount;
         this.year = year;
         this.listname = listname;
-        this.listTranstaction = listTranstaction;
     }
 
     public int getAmount() {
