@@ -1,4 +1,4 @@
-package ui;
+package ui.Login;
 
 import facade.LoginFacade;
 import javafx.fxml.FXML;

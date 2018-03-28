@@ -1,4 +1,4 @@
-package ui;
+package ui.Login;
 
 import facade.LoginFacade;
 import javafx.fxml.FXML;
@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import persistent.ConnectionDB;
+import ui.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -88,6 +89,10 @@ public class LoginController implements Initializable {
         Main.changeScene(getClass(),"forgotPassword.fxml","Forgot password");
             // change scene without parameter
 
+    }
+
+    @FXML private  void hyperlinkClickQuickAcces(MouseEvent mouseEvent) throws IOException {
+        Main.changeScene(getClass(),"../General/accueil.fxml","Accueil");
     }
 
     @FXML private void hyperlinkMouseEntered(MouseEvent mouseEvent) {
@@ -209,7 +214,7 @@ public class LoginController implements Initializable {
      * Called when the connection is a success
      */
     private void connected(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../homePage.fxml"));
         Parent root ;
         try {
             root = loader.load();
@@ -217,9 +222,9 @@ public class LoginController implements Initializable {
             e.printStackTrace();
             return;
         }
-        HomePageController home = loader.getController();
+        /*HomePageController home = loader.getController();
         home.setFacadeManager(loginManager.getFacadeManager());
-        changeScene(root,"Home");
+        changeScene(root,"Home");*/
     }
 
 
