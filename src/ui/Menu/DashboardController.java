@@ -81,4 +81,9 @@ public class DashboardController implements Initializable {
         Main.changeScene(getClass(),"../Inventory/addArticle.fxml","AddArticle");
 
     }
+
+    @FXML private void LinkAccueilVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../General/accueil.fxml","Accueil");
+
+    }
 }

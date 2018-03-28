@@ -4,6 +4,7 @@
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -11,8 +12,9 @@
   <children>
     <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="36.0" prefWidth="684.0" style="-fx-background-color: #8080ff;">
       <menus>
-        <Menu mnemonicParsing="false" text="Parametre">
+        <Menu mnemonicParsing="false" text="Général">
           <items>
+            <MenuItem mnemonicParsing="false" onAction="#LinkAccueilVueGlobal" text="Accueil" fx:id="accueilButton" />
             <MenuItem mnemonicParsing="false" text="Fermer application" />
           </items>
         </Menu>
@@ -49,5 +51,10 @@
         </Menu>
       </menus>
     </MenuBar>
+    <ImageView fitHeight="27.75" fitWidth="37.0" layoutX="633.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@../../media/img/logo-aniki-icone.png" />
+      </image>
+    </ImageView>
   </children>
 </AnchorPane>
