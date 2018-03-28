@@ -15,6 +15,8 @@ public class AnualBudgetFacade {
     private AnualBudgetDAO anualBudgetDAO;
     private AnualBudget anualBudget;
     private ResultSet allTransaction;
+    private ArrayList<AnualBudget> allAnualBudget;
+
     /**
      * Default constructor
      */
@@ -35,8 +37,10 @@ public class AnualBudgetFacade {
     public boolean create(String listName, int year, int amount) {
         // TODO implement here
         AnualBudget anualB = new AnualBudget(amount, year, listName);
-        if(this.anualBudgetDAO.insert(anualBudget)) {
+        boolean value = this.anualBudgetDAO.insert(anualB);
+        if(value) {
             this.anualBudget = anualB;
+            System.out.println("hey");
             return true;
         }
         return false;
@@ -44,8 +48,7 @@ public class AnualBudgetFacade {
 
     /**
      * @param listName 
-     * @param year 
-     * @param amount 
+     * @param amount
      * @return
      */
     public boolean update(String listName, int amount) {
