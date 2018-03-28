@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="484.0" prefWidth="683.999977929685" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.Menu.DashboardController">
+  <children>
+    <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="36.0" prefWidth="684.0" style="-fx-background-color: #8080ff;">
+      <menus>
+        <Menu mnemonicParsing="false" text="Parametre">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Fermer application" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Teams">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Vue global" />
+            <MenuItem mnemonicParsing="false" text="Ajouter Team" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Evènements">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Vue global" />
+            <MenuItem mnemonicParsing="false" text="Ajouter évènement" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Trésorerie">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#LinkTransactionVueGlobal" style="-fx-background-color: #8080ff;" text="Vue Global" fx:id="TransactionVueGlobalButton" />
+            <MenuItem mnemonicParsing="false" text="Budget Teams" />
+            <MenuItem mnemonicParsing="false" text="Budget Annuel" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Inventaire">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Vue Global" />
+            <MenuItem mnemonicParsing="false" text="Ajouter Article" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Contacts">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Rechercher" />
+            <MenuItem mnemonicParsing="false" text="Ajouter Contact" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </children>
+</AnchorPane>

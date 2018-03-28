@@ -1,4 +1,4 @@
-package ui;
+package ui.Login;
 
 import facade.LoginFacade;
 import javafx.fxml.FXML;
@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import persistent.ConnectionDB;
+import ui.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -84,6 +85,10 @@ public class LoginController implements Initializable {
     @FXML private void hyperlinkClick(MouseEvent mouseEvent) throws IOException {
         Main.changeScene(getClass(),"forgotPassword.fxml","Forgot password");
 
+    }
+
+    @FXML private  void hyperlinkClickQuickAcces(MouseEvent mouseEvent) throws IOException {
+        Main.changeScene(getClass(),"../General/Accueil.fxml","Accueil");
     }
 
     @FXML private void hyperlinkMouseEntered(MouseEvent mouseEvent) {

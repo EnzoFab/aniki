@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane focusTraversable="false" minHeight="320.0" mouseTransparent="false" prefHeight="350.0" prefWidth="623.0" style="-fx-background-color: #8080ff;&#10;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.LoginController">
+<AnchorPane focusTraversable="false" minHeight="320.0" mouseTransparent="false" prefHeight="350.0" prefWidth="623.0" style="-fx-background-color: #8080ff;&#10;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.Login.LoginController">
   <children>
     <Button fx:id="loginButton" layoutX="473.0" layoutY="306.0" mnemonicParsing="false" onMouseClicked="#buttonLoginClick" onMouseEntered="#buttonLoginMouseEntered" onMouseExited="#buttonLoginMouseExited" opacity="1.0" prefHeight="28.0" prefWidth="139.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="Login" textOverrun="ELLIPSIS">
       <font>
@@ -28,7 +28,11 @@
         <Font name="System Bold" size="45.0" />
       </font>
     </Label>
-    <Hyperlink fx:id="forgotPwd" font="$x1" layoutX="77.0" layoutY="268.0" onMouseClicked="#hyperlinkClick" onMouseEntered="#hyperlinkMouseEntered" onMouseExited="#hyperlinkMouseExited" opacity="0.64" text="I forgot my password" textFill="#000099" textOverrun="ELLIPSIS" underline="true" />
+    <Hyperlink fx:id="forgotPwd" font="$x1" layoutX="77.0" layoutY="268.0" onMouseClicked="#hyperlinkClick" onMouseEntered="#hyperlinkMouseEntered" onMouseExited="#hyperlinkMouseExited" opacity="0.64" text="I forgot my password" textOverrun="ELLIPSIS" underline="true">
+      <textFill>
+        <Color blue="0.600" green="0.000" red="0.000" fx:id="x3" />
+      </textFill>
+    </Hyperlink>
     <Pane fx:id="errorPane" layoutX="34.0" layoutY="69.0" prefHeight="68.0" prefWidth="578.0" style="-fx-background-color:#ff9980;&#10;-fx-border-color:red;&#10;-fx-border-width:3px;">
       <children>
         <Label layoutX="48.0" layoutY="7.0" text="Error:" textFill="#cc3100" underline="true">
@@ -39,20 +43,21 @@
         <Label fx:id="errorInformation" layoutX="14.0" layoutY="34.0" text="errorText" textFill="RED" />
         <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
           <image>
-            <Image url="@../media/img/errorIcon.png" />
+            <Image url="@../../media/img/errorIcon.png" />
           </image>
         </ImageView>
       </children>
     </Pane>
     <ImageView fitHeight="50.25" fitWidth="67.0" layoutX="187.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@../media/img/logo-aniki.png" />
+        <Image url="@../../media/img/logo-aniki.png" />
       </image>
     </ImageView>
     <ImageView fx:id="stateImg" fitHeight="30.0" fitWidth="30.0" layoutX="504.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@../media/img/red_cross.png" />
+        <Image url="@../../media/img/red_cross.png" />
       </image>
     </ImageView>
+    <Hyperlink id="forgotPwd" fx:id="HyperlinkQuickAcces" alignment="CENTER" font="$x1" layoutX="194.0" layoutY="306.0" onMouseClicked="#hyperlinkClickQuickAcces" opacity="0.64" prefWidth="167.0" text="Accès Dashboard" textAlignment="CENTER" textFill="$x3" textOverrun="ELLIPSIS" underline="true" />
   </children>
 </AnchorPane>
