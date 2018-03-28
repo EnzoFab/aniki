@@ -32,6 +32,8 @@ public abstract class ContactDAO extends  DAO {
      */
     public abstract boolean deleteLink(int idE, int idC);
 
+    public abstract boolean delete(int idC);
+
     /**
      * @param contactId 
      * @return
@@ -45,7 +47,8 @@ public abstract class ContactDAO extends  DAO {
     /**
      * 
      */
-    public abstract ResultSet selectAll(String team);
+
+    public abstract ResultSet selectAll(int idE);
     /**
      * 
      */
@@ -54,5 +57,5 @@ public abstract class ContactDAO extends  DAO {
     /**
      * 
      */
-    public abstract boolean update(String name, String place,  String phone, String mail);
+    public abstract boolean update(int idC, String name, String place,  String phone, String mail);
 }

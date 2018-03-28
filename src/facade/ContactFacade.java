@@ -31,7 +31,11 @@ public class ContactFacade {
      * @return
      */
     public boolean addContact(String name, String phone, String place, String mail) {
+        Contact contact = new Contact(name, phone, place, mail);
         boolean state = this.contactDao.insert(name, phone, place, mail);
+        if (state){
+            this.contactList.add(contact);
+        }
         return state;
     }
 
@@ -44,7 +48,7 @@ public class ContactFacade {
      * @return
      */
     public boolean updateContact(int idC, String name, String phone, String place, String mail) {
-        // TODO implement here
+        boolean state = this.contactDao.update(idC, name, place, phone, mail);
         return false;
     }
 
@@ -53,8 +57,8 @@ public class ContactFacade {
      * @return
      */
     public boolean deleteContact(int idC) {
-        // TODO implement here
-        return false;
+        boolean state = this.contactDao.delete(idC);
+        return state;
     }
 
     /**

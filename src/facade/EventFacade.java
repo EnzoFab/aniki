@@ -41,8 +41,11 @@ public class EventFacade {
      */
     public boolean addEvent(String label, Date date_start,Date date_end, int number_entrant) {
         Event event = new Event(label, date_start, date_end, number_entrant);
-        this.eventDao.insert(event);
-        return false;
+        boolean state = this.eventDao.insert(event);
+        if (state) {
+            this.eventList.add(event);
+        }
+        return state;
     }
 
     /**
@@ -50,7 +53,7 @@ public class EventFacade {
      */
     public boolean getAllEvent() {
         ResultSet result = this.eventDao.selectAll();
-        // Traitement du result a faire
+        // TODO Traitement du result a faire
         return false;
     }
 
@@ -72,8 +75,8 @@ public class EventFacade {
      * @return
      */
     public boolean updateEvent(int idE, String label, Date date_start, Date date_end, int number_entrant) {
-        this.eventDao.update(idE, label, date_start, date_end, number_entrant);
-        return false;
+        boolean state = this.eventDao.update(idE, label, date_start, date_end, number_entrant);
+        return state;
     }
 
     /**

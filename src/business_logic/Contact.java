@@ -32,8 +32,8 @@ public class Contact {
      */
     private String mail;
 
-    public Contact(int idC, String name, String place, String phoneNumber, String mail) {
-        this.idC = idC;
+    public Contact(String name, String place, String phoneNumber, String mail) {
+        //this.idC = idC;
         this.name = name;
         this.place = place;
         this.phoneNumber = phoneNumber;

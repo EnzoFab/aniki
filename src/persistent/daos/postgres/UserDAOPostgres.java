@@ -25,7 +25,6 @@ public class UserDAOPostgres extends UserDAO {
     }
 
 
-
     @Override
     public ResultSet select(String mail) {
         Connection connect = getConnection();
