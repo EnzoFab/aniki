@@ -42,6 +42,20 @@ public class Main extends Application {
     }
 
     /**
+     * Changes between to scene and allows to pass parameter
+     * @param root
+     * @param title
+     */
+    public static void changeScene(Parent root, String title){
+        //FXMLLoader loader = new FXMLLoader(c.getResource(fxmlFile));
+        //loader.getClassLoader(); ajouter une fonction pour recuperer les parametres
+
+        applicationStage.setTitle(title);
+        applicationStage.setScene(new Scene(root));
+        applicationStage.show();
+    }
+
+    /**
      * Fade in or out a Region
      * all component extends of Region
      * a and b determine the type of fade

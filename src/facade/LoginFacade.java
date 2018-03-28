@@ -12,10 +12,12 @@ import java.sql.SQLException;
 public class LoginFacade {
     private User user;
     private final DaoFactory factory;
+    private FacadeManager facadeManager;
 
     public LoginFacade() {
         user = null;
         factory = DaoPostgresFactory.getInstance();
+        facadeManager = null;
     }
 
     /**
@@ -31,13 +33,15 @@ public class LoginFacade {
         UserDAO dao = factory.createUserDAO();
         ResultSet resultSet = dao.select(mail);
         if(resultSet == null){
-            result="Error";
+            result="Failed";
         }else{
             try {
                 user = new User(mail, resultSet.getString("user_first_name"),
                         resultSet.getString("user_name"), resultSet.getString("user_password"), resultSet.getString("user_phone"));
+                facadeManager = new FacadeManager(user); // create facade manager
             } catch (SQLException e) {
                 e.printStackTrace();
+                result ="Error";
             }
             if(user.getPassword().equals(pwd))
                 result = "Success";
@@ -56,16 +60,9 @@ public class LoginFacade {
 
     }
 
-    public String getUserName(){
-        if(user != null)
-            return user.getName();
-        return "";
-    }
 
-    public String getUserFirstName(){
-        if(user !=null)
-            return user.getFirstName();
-        return "";
+    public FacadeManager getFacadeManager() {
+        return facadeManager;
     }
 
     /*/**

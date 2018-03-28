@@ -1,5 +1,6 @@
 package facade;
 
+import business_logic.LightUser;
 import business_logic.User;
 
 import java.util.*;
@@ -9,71 +10,76 @@ import java.util.*;
  */
 public class FacadeManager {
 
-    /**
-     * Default constructor
-     */
-    public FacadeManager() {
-    }
 
     /**
-     * 
+     *
      */
-    private User connectUser;
+    private User connectedUser;
 
     /**
-     * 
+     *
      */
     private AllTeamFacade allTeamFacade;
 
     /**
-     * 
+     *
      */
     private ToDoListFacade toDoListFacade;
 
     /**
-     * 
+     *
      */
     private InventoryFacade inventoryFacade;
 
     /**
-     * 
+     *
      */
     private StoryMadeFacade storyMadeFacade;
 
     /**
-     * 
+     *
      */
     private AnualBudgetFacade anualBudgetFacade;
 
     /**
-     * 
+     *
      */
     private BudgetFacade budgetFacade;
 
     /**
-     * 
+     *
      */
     private ExpenseFacade expenseFacade;
 
     /**
-     * 
+     *
      */
     private EventFacade eventFacade;
 
     /**
-     * 
+     *
      */
     private TeamFacade teamFacade;
 
     /**
-     * 
+     *
      */
     private ContactFacade contactFacade;
 
     /**
-     * 
+     *
      */
     private UserFacade userFacade;
+
+
+
+    /**
+     * Default constructor
+     */
+    public FacadeManager(User user) {
+        this.connectedUser = user;
+    }
+
 
     /**
      * @return
@@ -253,6 +259,11 @@ public class FacadeManager {
      */
     public void setUserFacade(UserFacade userFacade) {
         // TODO implement here
+    }
+
+
+    public LightUser getLightUser(){
+        return this.connectedUser;
     }
 
 }
