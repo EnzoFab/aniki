@@ -19,7 +19,7 @@ public abstract class ContactDAO extends  DAO {
     /**
      * @return
      */
-    public abstract boolean insert();
+    public abstract boolean insert(String name, String place, String phoneNumber, String mail);
 
     /**
      * @return

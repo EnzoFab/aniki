@@ -1,7 +1,11 @@
 package facade;
 
+import business_logic.Contact;
 import business_logic.LightContact;
+import persistent.daos.ContactDAO;
+import persistent.factories.DaoPostgresFactory;
 
+import java.sql.ResultSet;
 import java.util.*;
 
 /**
@@ -9,16 +13,15 @@ import java.util.*;
  */
 public class ContactFacade {
 
+    private ContactDAO contactDao;
+    private ArrayList<Contact> contactList;
+
     /**
      * Default constructor
      */
     public ContactFacade() {
+        this.contactDao = DaoPostgresFactory.getInstance().createContactDAO();
     }
-
-
-
-
-
 
     /**
      * @param name 
@@ -28,8 +31,8 @@ public class ContactFacade {
      * @return
      */
     public boolean addContact(String name, String phone, String place, String mail) {
-        // TODO implement here
-        return false;
+        boolean state = this.contactDao.insert(name, phone, place, mail);
+        return state;
     }
 
     /**
@@ -58,7 +61,7 @@ public class ContactFacade {
      * @return
      */
     public ArrayList<LightContact> getAllContact() {
-        // TODO implement here
+        ResultSet result = this.contactDao.selectAll();
         return null;
     }
 

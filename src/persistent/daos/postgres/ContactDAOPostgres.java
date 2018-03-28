@@ -15,7 +15,7 @@ public class ContactDAOPostgres extends ContactDAO {
         super(connection);
     }
 
-    public boolean insert(){
+    public boolean insert(String name, String place, String phoneNumber, String mail){
         return false;
     }
 

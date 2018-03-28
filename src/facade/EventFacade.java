@@ -92,7 +92,7 @@ public class EventFacade {
      * @return
      */
     public boolean deleteLink(int idE, int idC) {
-        // TODO implement here
+        this.contactDao.deleteLink(idE, idC);
         return false;
     }
 
@@ -101,7 +101,7 @@ public class EventFacade {
      * @return
      */
     public ArrayList getAllContactForEvent(int idE) {
-        // TODO implement here
+        ResultSet result = this.contactDao.selectAll();
         return null;
     }
 
