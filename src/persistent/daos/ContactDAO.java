@@ -17,31 +17,26 @@ public abstract class ContactDAO extends  DAO {
     }
 
     /**
-     * @param contact 
      * @return
      */
-    public boolean insert(Contact contact) {
-        // TODO implement here
-        return false;
-    }
+    public abstract boolean insert();
 
     /**
-     * @param contact 
      * @return
      */
-    public boolean delete(Contact contact) {
-        // TODO implement here
-        return false;
-    }
+    public abstract boolean insertLink(int idE, int idC);
+
+    /**
+     * @param
+     * @return
+     */
+    public abstract boolean deleteLink(int idE, int idC);
 
     /**
      * @param contactId 
      * @return
      */
-    public ResultSet select(String contactId) {
-        // TODO implement here
-        return null;
-    }
+    public abstract ResultSet select(int contactId);
 
     /**
      * @return

@@ -16,24 +16,26 @@ public class Event {
     /**
      *
      */
-    private String name;
+    private String label;
 
     /**
      *
      */
-    private Date date;
+    private Date date_start;
+    private Date date_end;
 
     /**
      *
      */
-    private int capacity;
+    private int number_entrant;
 
 
-    public Event(int idE, String name, Date date, int capacity) {
-        this.idE = idE;
-        this.name = name;
-        this.date = date;
-        this.capacity = capacity;
+    public Event(String label, Date date_start,Date date_end, int number_entrant) {
+        //this.idE = idE;
+        this.label = label;
+        this.date_start = date_start;
+        this.date_end = date_end;
+        this.number_entrant = number_entrant;
     }
 
     public int getIdE() {
@@ -44,27 +46,35 @@ public class Event {
         this.idE = idE;
     }
 
-    public String getName() {
-        return name;
+    public String getLabel() {
+        return label;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLabel(String name) {
+        this.label = name;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateStart() {
+        return date_start;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateStart(Date date_start) {
+        this.date_start = date_start;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public Date getDateEnd() {
+        return date_end;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setDateEnd(Date date_end) {
+        this.date_end = date_end;
+    }
+
+    public int getNumberEntrant() {
+        return number_entrant;
+    }
+
+    public void setNumberEntrant(int number_entrant) {
+        this.number_entrant = number_entrant;
     }
 }

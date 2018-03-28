@@ -19,7 +19,7 @@ public abstract class EventDAO  extends DAO{
     /**
      * @param event
      */
-    public abstract void insert(Event event) ;
+    public abstract boolean insert(Event event) ;
     /**
      * @param event 
      * @return
@@ -32,9 +32,11 @@ public abstract class EventDAO  extends DAO{
     public abstract ResultSet selectAll() ;
 
     /**
-     * @param  String
+     * @param  idE
      * @return
      */
-    public abstract boolean delete( Event String);
+    public abstract boolean delete(int idE);
 
+    public abstract boolean update(int idE, String label, Date date_start,Date date_end, int number_entrant);
 }
+

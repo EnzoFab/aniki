@@ -15,6 +15,14 @@ public class ContactDAOPostgres extends ContactDAO {
         super(connection);
     }
 
+    public boolean insert(){
+        return false;
+    }
+
+    public boolean insertLink(int idE, int idC){
+        return false;
+    }
+
     @Override
     public ResultSet selectAll() {
         return null;
@@ -23,6 +31,15 @@ public class ContactDAOPostgres extends ContactDAO {
     @Override
     public ResultSet selectAll(String team) {
         return null;
+    }
+
+    public ResultSet select(int contactId) {
+        // TODO implement here
+        return null;
+    }
+
+    public boolean deleteLink(int idE, int idC){
+        return false;
     }
 
     @Override

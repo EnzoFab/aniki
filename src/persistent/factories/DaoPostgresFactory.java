@@ -1,6 +1,7 @@
 package persistent.factories;
 
 import persistent.daos.*;
+import persistent.daos.postgres.EventDAOPostgres;
 import persistent.daos.postgres.UserDAOPostgres;
 
 
@@ -30,6 +31,7 @@ public class DaoPostgresFactory extends DaoFactory{
 
     @Override
     public EventDAO createEventDAO() {
+        EventDAOPostgres eventDao = new EventDAOPostgres(this.connect);
         return null;
     }
 

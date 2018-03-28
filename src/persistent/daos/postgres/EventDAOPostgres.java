@@ -5,6 +5,7 @@ import persistent.daos.EventDAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.Date;
 
 /**
  * 
@@ -17,8 +18,8 @@ public class EventDAOPostgres extends EventDAO {
     }
 
     @Override
-    public void insert(Event event) {
-
+    public boolean insert(Event event) {
+        return true;
     }
 
     @Override
@@ -32,7 +33,11 @@ public class EventDAOPostgres extends EventDAO {
     }
 
     @Override
-    public boolean delete(Event String) {
+    public boolean delete(int idE) {
+        return false;
+    }
+
+    public boolean update(int idE, String label, Date date_start, Date date_end, int number_entrant){
         return false;
     }
 }
