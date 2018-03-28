@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="596.0" prefWidth="732.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.users.MyAccountController">
+  <children>
+    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" prefHeight="596.0" prefWidth="732.0" />
+    <Label layoutX="14.0" layoutY="312.0" text="Change password" />
+    <Pane fx:id="changePwdPane" layoutX="14.0" layoutY="342.0" prefHeight="240.0" prefWidth="665.0" style="-fx-border-color:blue;&#10;-fx-border-width:3px;">
+      <children>
+        <Button layoutX="572.0" layoutY="191.0" mnemonicParsing="false" onMouseMoved="#updatePwdButtonClick" text="Button" />
+        <PasswordField fx:id="oldPwdTextField" layoutX="14.0" layoutY="46.0" prefHeight="19.9998779296875" prefWidth="445.0" />
+        <PasswordField fx:id="newPwdTextField1" layoutX="8.0" layoutY="137.0" prefHeight="20.0" prefWidth="445.0" />
+        <PasswordField fx:id="newPwdTextField2" layoutX="8.0" layoutY="198.0" prefHeight="19.999900000002526" prefWidth="445.0" />
+        <Label labelFor="$changePwdPane" layoutX="14.0" layoutY="22.0" text="old password" />
+        <Label layoutX="8.0" layoutY="117.0" text="new password" />
+        <Label layoutX="8.0" layoutY="178.0" text="retype it:" />
+        <Separator layoutX="0.0" layoutY="85.0" prefHeight="6.0" prefWidth="665.0" />
+      </children>
+    </Pane>
+    <Separator layoutY="298.0" prefWidth="200.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+    <TextField layoutX="14.0" layoutY="146.0" prefHeight="26.951171875" prefWidth="385.0" />
+    <Button layoutX="567.0" layoutY="261.0" mnemonicParsing="false" onMouseMoved="#updatePersonnalInfoButtonClick" text="Button" />
+    <TextField layoutX="14.0" layoutY="204.0" prefHeight="26.951171875" prefWidth="385.0" />
+    <TextField layoutX="14.0" layoutY="261.0" prefHeight="26.951171875" prefWidth="385.0" />
+    <Label layoutX="189.0" layoutY="105.0" text="Label" />
+    <Label layoutX="399.0" layoutY="105.0" text="Label" />
+    <Label layoutX="13.0" layoutY="184.0" text="Name" />
+    <Label layoutX="14.0" layoutY="125.0" text="firstName" />
+    <Label layoutX="13.0" layoutY="241.0" text="Phone" />
+  </children>
+</AnchorPane>

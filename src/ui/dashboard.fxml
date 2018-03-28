@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="561.0" prefWidth="717.999977929685" style="-fx-background-color: #8080ff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.DashboardController">
+  <children>
+    <MenuBar layoutY="61.0" prefHeight="36.0" prefWidth="684.0" style="-fx-background-color: #6666ff;&#10;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="User">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#linkToUserManagement" text="My account" fx:id="accountGestureMenu" />
+            <MenuItem mnemonicParsing="false" text="Logoff" />
+            <MenuItem mnemonicParsing="false" onAction="#linkToCreateUser" text="create member" fx:id="createUserMenu" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Teams">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#LinkTeamsVueGlobal" text="add new team" fx:id="TeamsVueGlobalButton" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Events">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#LinkEventsVueGlobal" text="Vue global" fx:id="EventsVueGlobalButton" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkAddEventVueGlobal" text="Ajouter évènement" fx:id="addEventButton" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Treasury">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#LinkTransactionVueGlobal" style="-fx-background-color: #8080ff;" text="Vue Global" fx:id="TransactionVueGlobalButton" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkBudgetVueGlobal" text="Budget Teams" fx:id="BudgetVueGlobalButton" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkAnnualBudgetVueGlobal" text="Budget Annuel" fx:id="AnnualBudgetVueGlobalButton" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Inventory">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#LinkInventoryVueGlobal" text="Vue Global" fx:id="InventoryVueGlobalButton" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkAddArticleVueGlobal" text="Ajouter Article" fx:id="addArticleButton" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Contacts">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#LinkAddContactVueGlobal" text="Add new contact" fx:id="addContactButton" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <ImageView fitHeight="55.84688481122656" fitWidth="57.641963958740234" layoutX="41.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@../media/img/logo-aniki-icone.png" />
+      </image>
+    </ImageView>
+    <Label layoutX="297.0" layoutY="0.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="ANIKI" textFill="#ffcc00">
+      <font>
+        <Font name="System Bold" size="45.0" />
+      </font>
+    </Label>
+  </children>
+</AnchorPane>
