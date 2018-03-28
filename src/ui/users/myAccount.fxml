@@ -5,32 +5,41 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="596.0" prefWidth="732.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.users.MyAccountController">
+<AnchorPane prefHeight="655.9998779296875" prefWidth="761.9998558593725" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.users.MyAccountController" >
   <children>
-    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" prefHeight="596.0" prefWidth="732.0" />
-    <Label layoutX="14.0" layoutY="312.0" text="Change password" />
-    <Pane fx:id="changePwdPane" layoutX="14.0" layoutY="342.0" prefHeight="240.0" prefWidth="665.0" style="-fx-border-color:blue;&#10;-fx-border-width:3px;">
+    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0"  prefHeight="656.0" prefWidth="761.0001220703125" />
+    <Button layoutX="522.0" layoutY="293.0" mnemonicParsing="false" onMousePressed="#updatePersonnalInfoButtonClick" prefWidth="118.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="Save update">
+      <font>
+        <Font name="System Bold" size="15.0" fx:id="x1" />
+      </font>
+      <textFill>
+        <Color blue="0.000" green="0.800" red="1.000" fx:id="x2" />
+      </textFill>
+    </Button>
+    <TextField fx:id="firstNameTF" layoutX="21.0" layoutY="159.0" opacity="0.9" prefHeight="26.951171875" prefWidth="385.0" style="-fx-text-fill: grey;" />
+    <TextField fx:id="nameTF" layoutX="20.0" layoutY="217.0" opacity="0.9" prefHeight="26.951171875" prefWidth="385.0" style="-fx-text-fill: grey;" />
+    <TextField fx:id="phoneTF" layoutX="20.0" layoutY="274.0" opacity="0.9" prefHeight="26.951171875" prefWidth="385.0" style="-fx-text-fill: grey" />
+    <Label layoutX="20.0" layoutY="197.0" text="Name" />
+    <Label layoutX="21.0" layoutY="139.0" text="firstName" />
+    <Label layoutX="19.0" layoutY="254.0" text="Phone" />
+    <Label fx:id="mailLabel" font="$x1" layoutX="58.0" layoutY="106.0" text="mail" />
+    <Label layoutX="14.0" layoutY="355.0" text="Change password" />
+    <Separator layoutY="344.0" prefWidth="701.0000999999975" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="47.0" />
+    <Label fx:id="roleLabel" font="$x1" layoutX="505.0" layoutY="106.0" text="name" />
+    <Pane fx:id="changePwdPane" layoutX="14.0" layoutY="375.0" prefHeight="249.0" prefWidth="713.0" style="-fx-border-color:blue;&#10;-fx-border-width:3px;">
       <children>
-        <Button layoutX="572.0" layoutY="191.0" mnemonicParsing="false" onMouseMoved="#updatePwdButtonClick" text="Button" />
-        <PasswordField fx:id="oldPwdTextField" layoutX="14.0" layoutY="46.0" prefHeight="19.9998779296875" prefWidth="445.0" />
-        <PasswordField fx:id="newPwdTextField1" layoutX="8.0" layoutY="137.0" prefHeight="20.0" prefWidth="445.0" />
-        <PasswordField fx:id="newPwdTextField2" layoutX="8.0" layoutY="198.0" prefHeight="19.999900000002526" prefWidth="445.0" />
+        <Button font="$x1" layoutX="512.0" layoutY="201.0" mnemonicParsing="false" onMousePressed="#updatePwdButtonClick" prefWidth="118.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="Save update" textFill="$x2" />
+        <PasswordField fx:id="oldPwdTextField" layoutX="14.0" layoutY="42.0" prefHeight="26.951171875" prefWidth="445.0" />
+        <PasswordField fx:id="newPwdTextField1" layoutX="14.0" layoutY="137.0" prefHeight="26.951171875" prefWidth="445.0" />
+        <PasswordField fx:id="newPwdTextField2" layoutX="14.0" layoutY="201.0" prefHeight="27.000022070315026" prefWidth="445.0" />
         <Label labelFor="$changePwdPane" layoutX="14.0" layoutY="22.0" text="old password" />
-        <Label layoutX="8.0" layoutY="117.0" text="new password" />
-        <Label layoutX="8.0" layoutY="178.0" text="retype it:" />
-        <Separator layoutX="0.0" layoutY="85.0" prefHeight="6.0" prefWidth="665.0" />
+        <Label layoutX="14.0" layoutY="110.0" text="new password" />
+        <Label layoutX="14.0" layoutY="174.0" text="retype it:" />
+        <Separator layoutX="0.0" layoutY="103.0" prefHeight="6.0" prefWidth="637.0" />
       </children>
     </Pane>
-    <Separator layoutY="298.0" prefWidth="200.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
-    <TextField layoutX="14.0" layoutY="146.0" prefHeight="26.951171875" prefWidth="385.0" />
-    <Button layoutX="567.0" layoutY="261.0" mnemonicParsing="false" onMouseMoved="#updatePersonnalInfoButtonClick" text="Button" />
-    <TextField layoutX="14.0" layoutY="204.0" prefHeight="26.951171875" prefWidth="385.0" />
-    <TextField layoutX="14.0" layoutY="261.0" prefHeight="26.951171875" prefWidth="385.0" />
-    <Label layoutX="189.0" layoutY="105.0" text="Label" />
-    <Label layoutX="399.0" layoutY="105.0" text="Label" />
-    <Label layoutX="13.0" layoutY="184.0" text="Name" />
-    <Label layoutX="14.0" layoutY="125.0" text="firstName" />
-    <Label layoutX="13.0" layoutY="241.0" text="Phone" />
   </children>
 </AnchorPane>

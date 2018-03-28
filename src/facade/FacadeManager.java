@@ -77,190 +77,107 @@ public class FacadeManager {
      * Default constructor
      */
     public FacadeManager(User user) {
+        System.out.println("Construction");
         this.connectedUser = user;
     }
 
-
-    /**
-     * @return
-     */
-    public User getConnectUser() {
-        // TODO implement here
-        return null;
+    public void createUserFacade(){
+        if(userFacade == null)
+            userFacade = new UserFacade(connectedUser);
     }
 
-    /**
-     * @param user
-     */
-    public void setConnectUser(User user) {
-        // TODO implement here
+
+    public void setConnectedUser(User connectedUser) {
+        this.connectedUser = connectedUser;
     }
 
-    /**
-     * @return
-     */
     public AllTeamFacade getAllTeamFacade() {
-        // TODO implement here
-        return null;
+        return allTeamFacade;
     }
 
-    /**
-     * @param allTeamFacade
-     */
     public void setAllTeamFacade(AllTeamFacade allTeamFacade) {
-        // TODO implement here
+        this.allTeamFacade = allTeamFacade;
     }
 
-    /**
-     * @return
-     */
-    public ToDoListFacade getToDoList() {
-        // TODO implement here
-        return null;
+    public ToDoListFacade getToDoListFacade() {
+        return toDoListFacade;
     }
 
-    /**
-     * @param toDoListFacade
-     */
-    public void setToDoList(ToDoListFacade toDoListFacade) {
-        // TODO implement here
+    public void setToDoListFacade(ToDoListFacade toDoListFacade) {
+        this.toDoListFacade = toDoListFacade;
     }
 
-    /**
-     * @return
-     */
     public InventoryFacade getInventoryFacade() {
-        // TODO implement here
-        return null;
+        return inventoryFacade;
     }
 
-    /**
-     * @param inventoryFacade
-     */
     public void setInventoryFacade(InventoryFacade inventoryFacade) {
-        // TODO implement here
+        this.inventoryFacade = inventoryFacade;
     }
 
-    /**
-     * @return
-     */
     public StoryMadeFacade getStoryMadeFacade() {
-        // TODO implement here
-        return null;
+        return storyMadeFacade;
     }
 
-    /**
-     * @param storyMadeFacade
-     */
     public void setStoryMadeFacade(StoryMadeFacade storyMadeFacade) {
-        // TODO implement here
+        this.storyMadeFacade = storyMadeFacade;
     }
 
-    /**
-     * @return
-     */
     public AnualBudgetFacade getAnualBudgetFacade() {
-        // TODO implement here
-        return null;
+        return anualBudgetFacade;
     }
 
-    /**
-     * @param anualBudgetFacade
-     */
     public void setAnualBudgetFacade(AnualBudgetFacade anualBudgetFacade) {
-        // TODO implement here
+        this.anualBudgetFacade = anualBudgetFacade;
     }
 
-    /**
-     * @return
-     */
     public BudgetFacade getBudgetFacade() {
-        // TODO implement here
-        return null;
+        return budgetFacade;
     }
 
-    /**
-     * @param budgetFacade
-     */
     public void setBudgetFacade(BudgetFacade budgetFacade) {
-        // TODO implement here
+        this.budgetFacade = budgetFacade;
     }
 
-    /**
-     * @return
-     */
     public ExpenseFacade getExpenseFacade() {
-        // TODO implement here
-        return null;
+        return expenseFacade;
     }
 
-    /**
-     * @param expenseFacade
-     */
     public void setExpenseFacade(ExpenseFacade expenseFacade) {
-        // TODO implement here
+        this.expenseFacade = expenseFacade;
     }
 
-    /**
-     * @return
-     */
     public EventFacade getEventFacade() {
-        // TODO implement here
-        return null;
+        return eventFacade;
     }
 
-    /**
-     * @param eventFacade
-     */
     public void setEventFacade(EventFacade eventFacade) {
-        // TODO implement here
+        this.eventFacade = eventFacade;
     }
 
-    /**
-     * @return
-     */
     public TeamFacade getTeamFacade() {
-        // TODO implement here
-        return null;
+        return teamFacade;
     }
 
-    /**
-     * @param teamFacade
-     */
     public void setTeamFacade(TeamFacade teamFacade) {
-        // TODO implement here
+        this.teamFacade = teamFacade;
     }
 
-    /**
-     * @return
-     */
     public ContactFacade getContactFacade() {
-        // TODO implement here
-        return null;
+        return contactFacade;
     }
 
-    /**
-     * @param contactFacade
-     */
     public void setContactFacade(ContactFacade contactFacade) {
-        // TODO implement here
+        this.contactFacade = contactFacade;
     }
 
-    /**
-     * @return
-     */
     public UserFacade getUserFacade() {
-        // TODO implement here
-        return null;
+        return userFacade;
     }
 
-    /**
-     * @param userFacade
-     */
     public void setUserFacade(UserFacade userFacade) {
-        // TODO implement here
+        this.userFacade = userFacade;
     }
-
 
     public LightUser getLightUser(){
         return this.connectedUser;

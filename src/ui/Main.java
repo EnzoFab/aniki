@@ -83,6 +83,18 @@ public class Main extends Application {
         mediaPlayer.play();
     }
 
+    public static void showAlert(String title, String content, Alert.AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        //alert.setHeaderText("Look, an Error Dialog");
+        alert.setContentText(content);
+
+        alert.showAndWait();
+    }
+
+
+
+
     public static void main(String[] args) {
         launch(args);
     }
