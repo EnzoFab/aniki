@@ -6,11 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="484.0" prefWidth="684.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.Inventory.InventoryManagementController">
+<AnchorPane prefHeight="452.0" prefWidth="684.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.Event.EventsManagementController">
   <children>
     <fx:include source="../Menu/dashboard.fxml" layoutX="0.0" layoutY="0.0">
       <children>
-        <Label layoutX="325.0" layoutY="232.0" text="inventory management" />
+        <Label layoutX="325.0" layoutY="232.0" text="event management" />
       </children>
     </fx:include>
   </children>

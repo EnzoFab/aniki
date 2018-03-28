@@ -6,9 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.Contact.AddContact"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="457.0" prefWidth="684.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.Contact.AddContactController">
+  <children>
+    <fx:include source="../Menu/dashboard.fxml" layoutX="0.0" layoutY="0.0">
+      <children>
+        <Label layoutX="259.0" layoutY="177.0" text="Add Contact" />
+      </children>
+    </fx:include>
+  </children>
 </AnchorPane>

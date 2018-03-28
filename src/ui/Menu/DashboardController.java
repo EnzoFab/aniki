@@ -33,8 +33,52 @@ public class DashboardController implements Initializable {
 
     }
 
+    @FXML private void LinkTeamsVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Teams/teamsManagement.fxml","Teams");
+
+    }
+    @FXML private void LinkAddTeamVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Teams/addTeam.fxml","AddTeam");
+
+    }
+    @FXML private void LinkContactVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Contact/contactManagement.fxml","Contacts");
+
+    }
+    @FXML private void LinkAddContactVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Contact/addContact.fxml","AddContact");
+
+    }
+
+    @FXML private void LinkEventsVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Event/eventsManagement.fxml","Events");
+
+    }
+    @FXML private void LinkAddEventVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Event/addEvent.fxml","AddEventController");
+
+    }
+
     @FXML private void LinkTransactionVueGlobal(ActionEvent actionEvent) throws IOException {
         Main.changeScene(getClass(),"../Tresorerie/transactionManagement.fxml","Transactions");
+
+    }
+    @FXML private void LinkBudgetVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Tresorerie/budgetManagement.fxml","Budget");
+
+    }
+
+    @FXML private void LinkAnnualBudgetVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Tresorerie/annualBudgetManagement.fxml","AnnualBudget");
+
+    }
+
+    @FXML private void LinkInventoryVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Inventory/inventoryManagement.fxml","Inventory");
+
+    }
+    @FXML private void LinkAddArticleVueGlobal(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"../Inventory/addArticle.fxml","AddArticle");
 
     }
 }

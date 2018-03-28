@@ -214,7 +214,7 @@ public class LoginController implements Initializable {
      * Called when the connection is a success
      */
     private void connected(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("homePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../homePage.fxml"));
         Parent root ;
         try {
             root = loader.load();
@@ -222,9 +222,9 @@ public class LoginController implements Initializable {
             e.printStackTrace();
             return;
         }
-        HomePageController home = loader.getController();
+        /*HomePageController home = loader.getController();
         home.setFacadeManager(loginManager.getFacadeManager());
-        changeScene(root,"Home");
+        changeScene(root,"Home");*/
     }
 
 

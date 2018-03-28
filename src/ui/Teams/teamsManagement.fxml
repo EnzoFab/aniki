@@ -6,9 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.Teams.TeamsManagement"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="484.0" prefWidth="684.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.Teams.TeamsManagementController">
+  <children>
+    <fx:include source="../Menu/dashboard.fxml" layoutX="0.0" layoutY="0.0">
+      <children>
+        <Label layoutX="342.0" layoutY="284.0" text="Teams Vue global" />
+      </children>
+    </fx:include>
+  </children>
 </AnchorPane>
