@@ -2,13 +2,14 @@ package facade;
 
 import business_logic.AnualBudget;
 import business_logic.Budget;
-import business_logic.Team;
-import business_logic.Transaction;
 import persistent.daos.AnualBudgetDAO;
 import persistent.daos.BudgetDAO;
+import persistent.daos.EventDAO;
 import persistent.daos.TransactionDAO;
 import persistent.factories.DaoPostgresFactory;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +21,7 @@ public class BudgetFacade {
     private AnualBudgetDAO anualBudgetDAO;
     private TransactionDAO transactionDAO;
     private ArrayList<Budget> listBudget;
-    private Team team;
+    private EventDAO eventDAO;
     /**
      * Default constructor
      */
@@ -28,6 +29,7 @@ public class BudgetFacade {
         this.budgetDAO = DaoPostgresFactory.getInstance().createBudgetDAO();
         this.anualBudgetDAO = DaoPostgresFactory.getInstance().createAnualBudgetDAO();
         this.transactionDAO = DaoPostgresFactory.getInstance().createTransactionDAO();
+        this.eventDAO = DaoPostgresFactory.getInstance().createEventDAO();
     }
 
     /**
@@ -36,13 +38,13 @@ public class BudgetFacade {
     public AnualBudget anual;
 
     /**
-     * @param team 
-     * @param amount 
+     * @param amount
      * @return
      */
-    public boolean allocateNewBudget(int amount) {
+    public boolean allocateNewBudget(int amount, String event) {
         // TODO implement here
-        Budget b = new Budget(amount, this.team);
+
+        Budget b = null;
         boolean state = this.budgetDAO.insert(b);
         if (state) {
             this.listBudget.add(b);
@@ -85,4 +87,12 @@ public class BudgetFacade {
         return false;
     }
 
+    public ArrayList<String> getEventLeft() throws SQLException {
+        ResultSet event = eventDAO.getEventWithoutBudget();
+        ArrayList<String> eventName = new ArrayList<>();
+        while(event.next()){
+            eventName.add(event.getString("event_label"));
+        }
+        return eventName;
+    }
 }

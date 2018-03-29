@@ -113,4 +113,18 @@ public class EventDAOPostgres extends EventDAO {
             return false;
         }
     }
+
+    @Override
+    public ResultSet getEventWithoutBudget() {
+        Connection connect = getConnection();
+        try {
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            ResultSet set =  state.executeQuery("SELECT * FROM event WHERE budget_id IS NULL");
+            return set;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

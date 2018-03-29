@@ -14,6 +14,8 @@ public class Budget {
 
     private Team team;
 
+    private Event event;
+
     private ArrayList transactions;
 
     /**
@@ -22,8 +24,9 @@ public class Budget {
      * @param team
      */
 
-    public Budget(int amount, Team team) {
+    public Budget(int amount, Team team, Event event) {
         Amount = amount;
+        this.event = event;
         this.team = team;
     }
 

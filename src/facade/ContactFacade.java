@@ -3,10 +3,12 @@ package facade;
 import business_logic.Contact;
 import business_logic.LightContact;
 import persistent.daos.ContactDAO;
+import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
 
 import java.sql.ResultSet;
-import java.util.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * 
@@ -16,11 +18,16 @@ public class ContactFacade {
     private ContactDAO contactDao;
     private ArrayList<Contact> contactList;
 
+    private final DaoFactory factory;
+    private FacadeManager facadeManager;
+
     /**
      * Default constructor
      */
     public ContactFacade() {
-        this.contactDao = DaoPostgresFactory.getInstance().createContactDAO();
+        factory = DaoPostgresFactory.getInstance();
+        this.contactDao = factory.createContactDAO();
+        this.contactList = new ArrayList<>();
     }
 
     /**
@@ -30,10 +37,14 @@ public class ContactFacade {
      * @param mail 
      * @return
      */
-    public boolean addContact(String name, String phone, String place, String mail) {
-        Contact contact = new Contact(name, phone, place, mail);
-        boolean state = this.contactDao.insert(name, phone, place, mail);
-        if (state){
+    public boolean addContact(String name, String first_name, String place, String mail, String phone) throws SQLException {
+        Contact contact = new Contact(name, first_name, place, mail, phone);
+        boolean state = this.contactDao.insert(name, first_name, place, mail, phone);
+
+        if (state) {
+            // If the insert is ok, we get the id given by the database and add it to the java object before inserted it in the arrayList
+            int idC = (int) this.contactDao.selectLast().getObject("contact_id");
+            contact.setIdC(idC);
             this.contactList.add(contact);
         }
         return state;
@@ -47,17 +58,31 @@ public class ContactFacade {
      * @param mail 
      * @return
      */
-    public boolean updateContact(int idC, String name, String phone, String place, String mail) {
-        boolean state = this.contactDao.update(idC, name, place, phone, mail);
-        return false;
+    public boolean updateContact(int idC, String name, String first_name, String phone, String place, String mail) {
+        //idC is the index of the event in the arrayList, not his real id in the database
+        boolean state = this.contactDao.update(idC, name, first_name, phone, place, mail);
+        if (state){
+            this.contactList.get(idC).setFirstName(first_name);
+            this.contactList.get(idC).setName(name);
+            this.contactList.get(idC).setMail(mail);
+            this.contactList.get(idC).setPhoneNumber(phone);
+            this.contactList.get(idC).setPlace(place);
+        }
+        return state;
     }
+
 
     /**
      * @param idC 
      * @return
      */
     public boolean deleteContact(int idC) {
-        boolean state = this.contactDao.delete(idC);
+        // idC is the index of the event in the arrayList
+        boolean state = this.contactDao.delete(this.contactList.get(idC).getIdC());
+        if (state){
+            this.contactList.remove(idC);
+            System.out.println("Taille liste : "+this.contactList.size());
+        }
         return state;
     }
 

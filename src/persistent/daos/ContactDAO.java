@@ -1,10 +1,7 @@
 package persistent.daos;
 
-import business_logic.Contact;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.*;
 
 /**
  * 
@@ -19,7 +16,7 @@ public abstract class ContactDAO extends  DAO {
     /**
      * @return
      */
-    public abstract boolean insert(String name, String place, String phoneNumber, String mail);
+    public abstract boolean insert(String name, String first_name, String place, String mail, String phoneNumber);
 
     /**
      * @return
@@ -33,6 +30,8 @@ public abstract class ContactDAO extends  DAO {
     public abstract boolean deleteLink(int idE, int idC);
 
     public abstract boolean delete(int idC);
+
+    public abstract ResultSet selectLast() ;
 
     /**
      * @param contactId 
@@ -57,5 +56,5 @@ public abstract class ContactDAO extends  DAO {
     /**
      * 
      */
-    public abstract boolean update(int idC, String name, String place,  String phone, String mail);
+    public abstract boolean update(int idC, String name, String first_name, String place,  String phone, String mail);
 }

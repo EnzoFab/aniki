@@ -5,7 +5,8 @@ import persistent.daos.TeamDAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.*;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * 
@@ -19,7 +20,16 @@ public class TeamDAOPostgres extends TeamDAO {
 
     @Override
     public ResultSet selectAll() {
-        return null;
+        Connection connect = getConnection();
+        try {
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            ResultSet set =  state.executeQuery("SELECT * FROM team");
+            return set;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

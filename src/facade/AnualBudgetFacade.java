@@ -85,13 +85,20 @@ public class AnualBudgetFacade {
         return false;
     }
 
-    public int getAnulaBudgetFromYear(int year) throws SQLException {
+    public int getAnulaBudgetFromYear(int year){
         ResultSet set = anualBudgetDAO.getAnualBudgetFromYear(year);
         int amount = 0;
-        if(set.first()) {
-            amount = Integer.parseInt(set.getString("anualbudget_amount"));
-            this.anualBudget = new AnualBudget(amount, year, set.getString("anualbudget_listname"));
+        try{
+            if (!set.first()) {
+                amount = Integer.parseInt(set.getString("anualbudget_amount"));
+                this.anualBudget = new AnualBudget(amount, year, set.getString("anualbudget_listname"));
+            }
         }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+
         return amount;
     }
 

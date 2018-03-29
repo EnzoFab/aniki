@@ -1,18 +1,24 @@
 package facade;
 
 import business_logic.Team;
+import persistent.daos.TeamDAO;
+import persistent.factories.DaoPostgresFactory;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
  * 
  */
 public class TeamFacade {
+    TeamDAO teamDAO;
 
     /**
      * Default constructor
      */
     public TeamFacade() {
+        teamDAO = DaoPostgresFactory.getInstance().createTeamDAO();
     }
 
     /**
@@ -67,4 +73,12 @@ public class TeamFacade {
         // TODO implement here
     }
 
+    public ArrayList<String> getAllTeam() throws SQLException {
+        ResultSet team = teamDAO.selectAll();
+        ArrayList<String> teamName = new ArrayList<>();
+        while(team.next()){
+            teamName.add(team.getString("team_name"));
+        }
+        return teamName;
+    }
 }
