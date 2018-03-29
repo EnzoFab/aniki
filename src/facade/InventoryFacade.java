@@ -1,5 +1,9 @@
 package facade;
 
+import persistent.daos.TransactionDAO;
+import persistent.factories.DaoFactory;
+import persistent.factories.DaoPostgresFactory;
+
 import java.util.*;
 
 /**
@@ -7,10 +11,17 @@ import java.util.*;
  */
 public class InventoryFacade {
 
+    private TransactionDAO transactionDao;
+
+    private final DaoFactory factory;
+    private FacadeManager facadeManager;
+
     /**
      * Default constructor
      */
     public InventoryFacade() {
+        factory = DaoPostgresFactory.getInstance();
+        this.transactionDao = factory.createTransactionDAO();
     }
 
 

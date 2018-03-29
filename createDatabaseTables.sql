@@ -144,9 +144,8 @@ CREATE TABLE IF NOT EXISTS "note" (
 -- Table "Type"
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "type" (
-  "type_id" SERIAL,
   "type_name" VARCHAR(255) NULL,
-  PRIMARY KEY ("type_id"))
+  PRIMARY KEY ("type_name"))
 ;
 
 
@@ -158,19 +157,18 @@ CREATE TABLE IF NOT EXISTS "article" (
   "article_name" VARCHAR(255) NULL,
   "article_description" TEXT NULL,
   "article_number" INT NULL,
-  "Type_type_id" INT NOT NULL,
-  PRIMARY KEY ("article_id", "Type_type_id"))
-
-;
+  "type_name" VARCHAR(255) NOT NULL,
+  PRIMARY KEY ("article_id"),
+  FOREIGN KEY ("type_name") REFERENCES type(type_name)
+);
 
 
 -- -----------------------------------------------------
 -- Table "Paymentmethode"
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "paymentmethod" (
-  "paymentmethod_id" SERIAL,
-  "paymentmethod_label" VARCHAR(255) NULL,
-  PRIMARY KEY ("paymentmethod_id"))
+  "paymentmethod_name" VARCHAR(255),
+  PRIMARY KEY ("paymentmethod_name"))
 ;
 
 
@@ -199,14 +197,15 @@ CREATE TABLE IF NOT EXISTS "transaction" (
   "transaction_state" INT NULL,
   "transaction_type" VARCHAR(45) NULL,
   "event_id" INT NULL,
-  "paymentmethod_id" INT NULL,
+  "paymentmethod_name" VARCHAR(255) NULL,
   "anualbudget_year" VARCHAR(10) NULL REFERENCES anualbudget,
   PRIMARY KEY ("transaction_id"),
   FOREIGN KEY ("event_id") REFERENCES event(event_id),
-  FOREIGN KEY ("paymentmethod_id") REFERENCES paymentmethod(paymentmethod_id),
+  FOREIGN KEY ("paymentmethod_name") REFERENCES paymentmethod(paymentmethod_name),
   FOREIGN KEY ("anualbudget_year") REFERENCES anualbudget(anualbudget_year)
 );
 
+INSERT INTO paymentmethod VALUES ('CB');
 
 
 INSERT INTO paymentmethod (paymentmethode_label) VALUES ('Virement')
