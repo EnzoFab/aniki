@@ -5,7 +5,7 @@ public class ConnectionLog {
     private final static String user= "postgres";
     private final static String pwd ="postgres";
     private final static String userNameGoogle = "yourbestfriend.aniki@gmail.com";
-    private final static String passwordGoogle = "";
+    private final static String passwordGoogle = "DjeumsDjeums"; //
 
     public static String getUserNameGoogle() {
         return userNameGoogle;
@@ -26,5 +26,4 @@ public class ConnectionLog {
     public static String getPwd(){
         return pwd;
     }
-
 }

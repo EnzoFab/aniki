@@ -1,12 +1,12 @@
 package ui;
 
-import facade.ContactFacade;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -15,7 +15,6 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class Main extends Application {
 
@@ -81,16 +80,17 @@ public class Main extends Application {
         mediaPlayer.play();
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void showAlert(String title, String content, Alert.AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        //alert.setHeaderText("Look, an Error Dialog");
+        alert.setContentText(content);
 
-        ContactFacade contactFacade = new ContactFacade();
-        System.out.println(contactFacade.addContact("CE", "Sacha", "PZ", "s@gmail.com", "0622151403"));
-        System.out.println(contactFacade.addContact("CE", "Sacha", "PZ", "s@gmail.com", "0622151403"));
-        System.out.println(contactFacade.addContact("CE", "Sacha", "PZ", "s@gmail.com", "0622151403"));
-        System.out.println(contactFacade.deleteContact(2));
-
-        //launch(args);
+        alert.showAndWait();
+    }
 
 
+    public static void main(String[] args) {
+        launch(args);
     }
 }
