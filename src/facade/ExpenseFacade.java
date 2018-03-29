@@ -2,6 +2,7 @@ package facade;
 
 import business_logic.Budget;
 import business_logic.Transaction;
+import persistent.daos.PaymentMethodDAO;
 import persistent.daos.TransactionDAO;
 import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
@@ -18,6 +19,7 @@ public class ExpenseFacade {
 
 
     private TransactionDAO transactionDao;
+    private PaymentMethodDAO paymentmethodDao;
     private ArrayList<Transaction> transactionsList;
     private ArrayList<String> paymentMethodsList;
 
@@ -29,10 +31,13 @@ public class ExpenseFacade {
     public ExpenseFacade() {
         factory = DaoPostgresFactory.getInstance();
         this.transactionDao = factory.createTransactionDAO();
+        this.paymentmethodDao = factory.createPaymentMethodDAO();
+
         this.transactionsList = new ArrayList<>();
         this.paymentMethodsList = new ArrayList<>();
         try {
             this.getAllTransaction();
+            this.getAllPaymentmethods();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -118,6 +123,19 @@ public class ExpenseFacade {
         return false;
     }
 
+    public void getAllPaymentmethods() throws SQLException {
+        ResultSet result = this.paymentmethodDao.getAll();
+        String payment;
+        if (result.first()) {
+            payment = result.getString("paymentmethod_name");
+            this.paymentMethodsList.add(payment);
+            while(result.next()){
+                payment = result.getString("paymentmethod_name");
+                this.paymentMethodsList.add(payment);
+            }
+        }
+    }
+
     /**
      * @return
      */
@@ -142,6 +160,10 @@ public class ExpenseFacade {
 
     public ArrayList<Transaction> getTransactionsList() {
         return transactionsList;
+    }
+
+    public ArrayList<String> getPaymentMethodsList() {
+        return paymentMethodsList;
     }
 
     /**

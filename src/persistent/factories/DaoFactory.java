@@ -63,6 +63,8 @@ public abstract class DaoFactory {
      */
     public abstract TaskDAO createTaskDAO();
 
+    public abstract PaymentMethodDAO createPaymentMethodDAO();
+
     /**
      * @return
      */

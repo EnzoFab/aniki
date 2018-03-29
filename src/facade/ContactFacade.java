@@ -140,4 +140,5 @@ public class ContactFacade {
     public ArrayList<Contact> getContactList() {
         return contactList;
     }
+
 }

@@ -1,6 +1,6 @@
 package ui;
 
-import facade.ContactFacade;
+import facade.ExpenseFacade;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -95,8 +95,10 @@ public class Main extends Application {
 
 
     public static void main(String[] args) throws SQLException {
-        ContactFacade c = new ContactFacade();
-        c.deleteLink(0, "Beach");
+        ExpenseFacade c = new ExpenseFacade();
+        System.out.println(c.getPaymentMethodsList().get(2));
+
+        //c.deleteLink(0, "Beach");
         //launch(args);
     }
 }

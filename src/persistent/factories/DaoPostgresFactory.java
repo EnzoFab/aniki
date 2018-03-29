@@ -23,6 +23,11 @@ public class DaoPostgresFactory extends DaoFactory{
         return null;
     }
 
+    public PaymentMethodDAO createPaymentMethodDAO() {
+        PaymentMethodDAOPostgres paymentMethodDAO = new PaymentMethodDAOPostgres(this.connect);
+        return paymentMethodDAO;    }
+
+
     @Override
     public ToDoListDAO createTodoListDAO() {
         return null;
