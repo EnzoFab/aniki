@@ -1,11 +1,7 @@
 package persistent.factories;
 
 import persistent.daos.*;
-import persistent.daos.postgres.AnualBudgetDAOPostgres;
-import persistent.daos.postgres.ContactDAOPostgres;
-import persistent.daos.postgres.EventDAOPostgres;
-import persistent.daos.postgres.UserDAOPostgres;
-import persistent.daos.postgres.TransactionDAOPostgres;
+import persistent.daos.postgres.*;
 
 
 public class DaoPostgresFactory extends DaoFactory{
@@ -51,7 +47,8 @@ public class DaoPostgresFactory extends DaoFactory{
 
     @Override
     public ArticleDAO createArticleDAO() {
-        return null;
+        ArticleDAO articleDao = new ArticleDAOPostgres(this.connect);
+        return articleDao;
     }
 
     @Override

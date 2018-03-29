@@ -1,12 +1,11 @@
 package business_logic;
 
-import java.util.*;
-
 /**
  * 
  */
 public class Article {
 
+    private int idA;
     /**
      *
      */
@@ -65,5 +64,13 @@ public class Article {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getIdA() {
+        return idA;
+    }
+
+    public void setIdA(int idA) {
+        this.idA = idA;
     }
 }
