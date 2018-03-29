@@ -54,4 +54,6 @@ public abstract class TransactionDAO extends DAO{
 
     public abstract ResultSet selectLast();
 
+    public abstract boolean insertPaymentMethod(int idT, String paymentmethod_name);
+
 }

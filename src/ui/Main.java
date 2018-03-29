@@ -1,6 +1,6 @@
 package ui;
 
-import facade.EventFacade;
+import facade.ExpenseFacade;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

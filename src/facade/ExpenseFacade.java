@@ -19,6 +19,7 @@ public class ExpenseFacade {
 
     private TransactionDAO transactionDao;
     private ArrayList<Transaction> transactionsList;
+    private ArrayList<String> paymentMethodsList;
 
     private final DaoFactory factory;
     private FacadeManager facadeManager;
@@ -29,6 +30,7 @@ public class ExpenseFacade {
         factory = DaoPostgresFactory.getInstance();
         this.transactionDao = factory.createTransactionDAO();
         this.transactionsList = new ArrayList<>();
+        this.paymentMethodsList = new ArrayList<>();
         try {
             this.getAllTransaction();
         } catch (SQLException e) {
@@ -87,6 +89,16 @@ public class ExpenseFacade {
         return state;
     }
 
+    public boolean addPaymentMethod(int idT, String paymentmethod_name) {
+        //idT is the index of the event in the arrayList
+        System.out.println("Hey");
+        boolean state = this.transactionDao.insertPaymentMethod(this.transactionsList.get(idT).getIdT(), paymentmethod_name);
+        if (state){
+            this.transactionsList.get(idT).setPaymentmethod(paymentmethod_name);
+        }
+        return state;
+    }
+
     /**
      * @param receipt 
      * @param idT 
@@ -115,10 +127,14 @@ public class ExpenseFacade {
         if (result.first()) {
             transaction = new Transaction(result.getString("transaction_label"), result.getInt("transaction_amount"), result.getDate("transaction_date"), result.getInt("transaction_state"), result.getString("transaction_type"));
             transaction.setIdT(result.getInt("transaction_id"));
+            transaction.setPaymentmethod(result.getString("paymentmethod_name"));
+
             this.transactionsList.add(transaction);
             while(result.next()){
                 transaction = new Transaction(result.getString("transaction_label"), result.getInt("transaction_amount"), result.getDate("transaction_date"), result.getInt("transaction_state"), result.getString("transaction_type"));
                 transaction.setIdT(result.getInt("transaction_id"));
+                transaction.setPaymentmethod(result.getString("paymentmethod_name"));
+
                 this.transactionsList.add(transaction);
             }
         }
