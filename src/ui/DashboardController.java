@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 
 import static ui.Main.changeScene;
 
-public class DashboardController implements Initializable {
+public class DashboardController implements Initializable, ViewBridge{
 
     @FXML private AnchorPane anchorPane;
     @FXML private MenuItem TransactionVueGlobalButton;
@@ -87,34 +87,44 @@ public class DashboardController implements Initializable {
     }
 
     @FXML private void LinkInventoryVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"inventory/inventoryManagement.fxml","inventory");
+        preformBridge("/ui/inventory/inventoryManagement.fxml","Inventory");
 
     }
-    @FXML private void LinkAddArticleVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"inventory/addArticle.fxml","AddArticle");
 
-    }
 
 
     @FXML private void linkToUserManagement(ActionEvent actionEvent) {
         //System.out.println("manager null ? " +(facadeManager == null));
-        moveMyAccountManagement();
-        /*try {
-            loadMyAccount();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+        preformBridge("/ui/users/myAccount.fxml","My Account");
+
     }
 
     @FXML private void linkToCreateUser(ActionEvent actionEvent) {
-        //System.out.println("manager null ? " +(facadeManager == null));
-        moveToCreateUser();
-        /*try {
-            loadCreateUser();
+        preformBridge("/ui/users/createUser.fxml","Create member");
+
+    }
+
+
+
+    /**
+     * Move to the destination
+     * @param destination
+     * @param title
+     */
+    private void preformBridge(String destination, String title){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(destination));
+        Parent root ;
+        try {
+            root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+            return;
+        }
+        ViewBridge bridge = loader.getController();
+        bridge.setData(facadeManager);
+        changeScene(root,title);
     }
+
 
     /**
      * get Data from previous stage
@@ -126,39 +136,6 @@ public class DashboardController implements Initializable {
     }
 
 
-    /**
-     * Move to MyAccount Managemement
-     */
-    private void moveMyAccountManagement(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/users/myAccount.fxml"));
-        Parent root ;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        MyAccountController myAccountController = loader.getController();
-        myAccountController.setData(facadeManager);
-        changeScene(root,"My Account");
-    }
 
-    /**
-     * Move to MyAccount Managemement
-     */
-    private void moveToCreateUser(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/users/createUser.fxml"));
-        Parent root ;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        CreateUserController createUserController = loader.getController();
-        //System.out.println("manager null ? " +(facadeManager == null));
-        createUserController.setData(facadeManager);
-        changeScene(root,"Create member");
-    }
 
 }

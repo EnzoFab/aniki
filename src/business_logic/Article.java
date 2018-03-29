@@ -1,5 +1,9 @@
 package business_logic;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * 
  */
@@ -14,7 +18,7 @@ public class Article {
     /**
      *
      */
-    private String description;
+    private String  description;
 
     /**
      *
@@ -72,5 +76,9 @@ public class Article {
 
     public void setIdA(int idA) {
         this.idA = idA;
+    }
+
+    public ArticleForTableView createArticleForTableView(){
+        return new ArticleForTableView(name,description,quantity,type);
     }
 }

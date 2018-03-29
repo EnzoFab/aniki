@@ -72,6 +72,21 @@ public class ArticleDAOPostgres extends ArticleDAO {
         return false;
     }
 
+    @Override
+    public ResultSet selectAllType() {
+        Connection connect = getConnection();
+        try {
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            ResultSet set =  state.executeQuery("SELECT * FROM type");
+            System.out.print("Return somethong =======");
+            return set;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public ResultSet selectLast() {
         Connection connect = getConnection();
         try {

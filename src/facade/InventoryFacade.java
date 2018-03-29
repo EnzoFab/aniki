@@ -1,6 +1,7 @@
 package facade;
 
 import business_logic.Article;
+import business_logic.User;
 import persistent.daos.ArticleDAO;
 import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
@@ -16,19 +17,22 @@ public class InventoryFacade {
 
     private ArticleDAO articleDAO;
     private ArrayList<Article> articlesList;
+    private ArrayList<String> typeList;
 
-    private final DaoFactory factory;
-    private FacadeManager facadeManager;
+
+    private User connectedUser;
 
     /**
-     * Default constructor
+     *
+     * @param usr
      */
-    public InventoryFacade() {
-        factory = DaoPostgresFactory.getInstance();
-        this.articleDAO = factory.createArticleDAO();
-        this.articlesList = new ArrayList<>();
+    public InventoryFacade(User usr) {
+        this.connectedUser = usr;
+        this.articleDAO = DaoPostgresFactory.getInstance().createArticleDAO();
+        this.articlesList = new ArrayList();
         try {
             this.getArticles();
+            this.loadTypes();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -45,7 +49,7 @@ public class InventoryFacade {
      * @param type 
      * @return
      */
-    public boolean addArticle(String name, String description, int quantity, String type) throws SQLException {
+    public Article addArticle(String name, String description, int quantity, String type) throws SQLException {
         Article article = new Article(name, description, quantity, type);
         boolean state = this.articleDAO.insert(article);
 
@@ -54,8 +58,9 @@ public class InventoryFacade {
             int idA = (int) this.articleDAO.selectLast().getObject("article_id");
             article.setIdA(idA);
             this.articlesList.add(article);
+            return article;
         }
-        return state;
+        return null;
     }
 
     /**
@@ -79,11 +84,13 @@ public class InventoryFacade {
         // TODO implement here
     }
 
+
+
     /**
      * @param
      * @return
      */
-    public void getArticles() throws SQLException {
+    private void getArticles() throws SQLException {
         ResultSet result = this.articleDAO.selectAll();
         Article article;
         if (result.first()) {
@@ -98,12 +105,28 @@ public class InventoryFacade {
         }
     }
 
+
+    private void loadTypes(){
+        ResultSet result = this.articleDAO.selectAllType();
+        typeList = new ArrayList();
+        try {
+            if(result.first()){
+                this.typeList.add(result.getString("type_name"));
+                while (result.next()){
+                    this.typeList.add(result.getString("type_name"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @return
      */
     public ArrayList<String> getTypes() {
         // TODO implement here
-        return null;
+        return typeList;
     }
 
     public ArrayList<Article> getArticlesList() {

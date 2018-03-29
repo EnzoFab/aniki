@@ -48,4 +48,6 @@ public abstract class ArticleDAO extends DAO {
      */
     public abstract boolean update(String articleId, String descprtion, int quantity) ;
 
+    public abstract ResultSet selectAllType();
+
 }

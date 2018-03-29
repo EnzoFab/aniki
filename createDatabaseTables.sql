@@ -220,5 +220,11 @@ INSERT INTO anualbudget ("annualBudget_listname", anualbudget_amount, anualbudge
 INSERT INTO budget (budget_id, budget_amount, "Anualbudget_anualbudget_id", "Team_team_id") VALUES (2,1500,1,2);
 INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,transaction_state,transaction_type) VALUES ('Campo',200,'2018-05-11',1,'debit');
 INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,transaction_state,transaction_type) VALUES ('Beach',200,'2018-05-18',1,'credit');
+INSERT INTO anikiuser ("user_mail","user_name","user_first_name","user_password","user_phone") VALUES('enzo.fabre@etu.umontpellier.fr','FABRE','Enzo','Djeums','0658145639');
 
+INSERT INTO type("type_name") VALUES('Alcool');
+
+INSERT INTO article
+ ("article_name","article_description" ,"article_number","type_name")
+ VALUES ('Vodka','vodka de 0,70L ',45,'Alcool')
 

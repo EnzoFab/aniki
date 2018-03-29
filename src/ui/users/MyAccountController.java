@@ -12,13 +12,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import ui.ViewBridge;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import static ui.Main.showAlert;
 
-public class MyAccountController implements Initializable {
+public class MyAccountController implements Initializable, ViewBridge {
 
     private FacadeManager facadeManager;
     private LightUser user;
@@ -96,18 +97,16 @@ public class MyAccountController implements Initializable {
     public void setData(FacadeManager facadeManager){
         this.facadeManager = facadeManager;
         this.user =facadeManager.getLightUser();
-        this.facadeManager.createUserFacade();
-        this.userFacade = this.facadeManager.getUserFacade();
+        this.userFacade = this.facadeManager.createUserFacade();
+
         this.init();
     }
 
 
     /**
-     * initializate all component of the frame
+     * initializate all components of the frame
      */
     private void init(){
-
-
         this.firstNameTF.setText(user.getFirstName());
         this.nameTF.setText(user.getName());
         this.phoneTF.setText(user.getPhone());

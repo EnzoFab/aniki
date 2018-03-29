@@ -95,10 +95,9 @@ public class Main extends Application {
 
 
     public static void main(String[] args) throws SQLException {
-        ExpenseFacade c = new ExpenseFacade();
-        System.out.println(c.getPaymentMethodsList().get(2));
+        launch(args);
 
         //c.deleteLink(0, "Beach");
-        //launch(args);
+
     }
 }
