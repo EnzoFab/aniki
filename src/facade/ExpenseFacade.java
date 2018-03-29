@@ -1,57 +1,45 @@
 package facade;
 
-import business_logic.*;
-import persistent.daos.AnualBudgetDAO;
-import persistent.daos.BudgetDAO;
-import persistent.daos.ContactDAO;
-import persistent.daos.EventDAO;
+import business_logic.Budget;
+import business_logic.Transaction;
 import persistent.daos.TransactionDAO;
 import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 
  */
 public class ExpenseFacade {
-    private BudgetDAO budgetDAO;
-    private AnualBudgetDAO anualBudgetDAO;
-    private Transaction transaction;
-    private TransactionDAO transactionDAO;
-    private ResultSet allTransaction;
+
+
+    private TransactionDAO transactionDao;
     private ArrayList<Transaction> transactionsList;
+
+    private final DaoFactory factory;
+    private FacadeManager facadeManager;
     /**
      * Default constructor
      */
     public ExpenseFacade() {
-        this.transactionDAO = DaoPostgresFactory.getInstance().createTransactionDAO();
-        this.anualBudgetDAO = DaoPostgresFactory.getInstance().createAnualBudgetDAO();
-        this.budgetDAO = DaoPostgresFactory.getInstance().createBudgetDAO();
-
+        factory = DaoPostgresFactory.getInstance();
+        this.transactionDao = factory.createTransactionDAO();
+        this.transactionsList = new ArrayList<>();
+        try {
+            this.getAllTransaction();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
-    /**
-     * @return
-     */
-
-
 
     /**
      * 
      */
     private Budget budget;
-
-
-
-
-
-
-
-
-
 
     /**
      * @param amount  
@@ -60,17 +48,17 @@ public class ExpenseFacade {
      * @param date 
      * @return
      */
-    public boolean addTransaction(int amount , String label, String type, Date date) {
-        /*Transaction transaction = new Transaction(Budget budget,  Event event, int id, String label, int amount,
-        String state, String type, Date transaction, String receipt)
-        boolean value = this.transaction.insert();
+    public boolean addTransaction(String label , int amount, Date date, int state, String type) throws SQLException {
+        Transaction transaction = new Transaction(label, amount, date, state, type);
+        boolean stateResult = this.transactionDao.insert(transaction);
 
-        if(value) {
-            this.transaction = transaction;
-            System.out.println("OKAYY");
-            return true;
-        }*/
-        return false;
+        if (stateResult) {
+            // If the insert is ok, we get the id given by the database and add it to the java object before inserted it in the arrayList
+            int idT = (int) this.transactionDao.selectLast().getObject("transaction_id");
+            transaction.setIdT(idT);
+            this.transactionsList.add(transaction);
+        }
+        return stateResult;
     }
 
     /**
@@ -78,17 +66,25 @@ public class ExpenseFacade {
      * @return
      */
     public boolean deleteTransaction(int idT) {
-        // TODO implement here
-        return false;
+        // idT is the index of the event in the arrayList
+        boolean state = this.transactionDao.delete(this.transactionsList.get(idT).getIdT());
+        if (state){
+            this.transactionsList.remove(idT);
+        }
+        return state;
     }
 
     /**
      * @param idT  
      * @return
      */
-    public boolean validate(int idT ) {
-        // TODO implement here
-        return false;
+    public boolean validate(int idT) {
+        //idT is the index of the event in the arrayList
+        boolean state = this.transactionDao.update(this.transactionsList.get(idT).getIdT());
+        if (state){
+            this.transactionsList.get(idT).setState(1);
+        }
+        return state;
     }
 
     /**
@@ -113,29 +109,23 @@ public class ExpenseFacade {
     /**
      * @return
      */
-    public ArrayList<Transaction> getAllTransaction() throws SQLException {
-        ResultSet allTransaction = this.transactionDAO.selectAll();
-        ArrayList<Transaction> transactions = new ArrayList<>();
-
-        while(allTransaction.next())
-        {
-            int id = allTransaction.getInt("transaction_id");
-            String label = allTransaction.getString("transaction_label");
-            int amount = allTransaction.getInt("transaction_amount");
-            String state = allTransaction.getString("transaction_state");
-            String type = allTransaction.getString("transaction_type");
-            Date date = allTransaction.getDate("transaction_date");
-            String receipt = "";
-
-            Transaction TR = new Transaction(id,label,amount,state,type,date,receipt);
-
-            transactions.add(TR);
+    public void getAllTransaction() throws SQLException {
+        ResultSet result = this.transactionDao.selectAll();
+        Transaction transaction;
+        if (result.first()) {
+            transaction = new Transaction(result.getString("transaction_label"), result.getInt("transaction_amount"), result.getDate("transaction_date"), result.getInt("transaction_state"), result.getString("transaction_type"));
+            transaction.setIdT(result.getInt("transaction_id"));
+            this.transactionsList.add(transaction);
+            while(result.next()){
+                transaction = new Transaction(result.getString("transaction_label"), result.getInt("transaction_amount"), result.getDate("transaction_date"), result.getInt("transaction_state"), result.getString("transaction_type"));
+                transaction.setIdT(result.getInt("transaction_id"));
+                this.transactionsList.add(transaction);
+            }
         }
-        System.out.println(transactions);
+    }
 
-
-        // TODO implement here
-        return transactions;
+    public ArrayList<Transaction> getTransactionsList() {
+        return transactionsList;
     }
 
     /**

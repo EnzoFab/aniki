@@ -1,5 +1,6 @@
 package ui;
 
+import facade.ExpenseFacade;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,8 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Date;
 
 public class Main extends Application {
 
@@ -92,7 +95,16 @@ public class Main extends Application {
 
 
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args) throws SQLException {
+        ExpenseFacade expenseFacade = new ExpenseFacade();
+        Date date = new Date();
+        //System.out.println(expenseFacade.addTransaction("Apareil photo", 600, date, 0, "CB"));
+        //System.out.println(expenseFacade.addTransaction("Apareil photo", 600, date, 0, "CB"));
+        /*for (int i=0; i<expenseFacade.getTransactionsList().size(); i++){
+            System.out.println(expenseFacade.getTransactionsList().get(i).getIdT());
+        }*/
+        System.out.println(expenseFacade.validate(2));
+        System.out.println("State : " + expenseFacade.getTransactionsList().get(2).getState());
+        //launch(args);*/
     }
 }
