@@ -1,6 +1,5 @@
 package ui;
 
-import facade.EventFacade;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +15,6 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Date;
 
 public class Main extends Application {
 
@@ -93,18 +90,7 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) throws SQLException {
-
-        EventFacade eventFacade = new EventFacade("Team Beach");
-        Date date_start = new Date();
-        Date date_end = new Date();
-
-        //System.out.println(eventFacade.addEvent("Beach", date_start, (Date)date_end, 600));
-        //System.out.println(eventFacade.addEvent("Beach", date_start, (Date)date_end, 600));
-        for (int i=0; i<4; i++) {
-            System.out.println(eventFacade.getAllEvent().get(i).getIdE());
-        }
-
-        //launch(args);
+    public static void main(String[] args) {
+        launch(args);
     }
 }

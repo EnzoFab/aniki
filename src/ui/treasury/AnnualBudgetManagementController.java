@@ -25,12 +25,18 @@ public class AnnualBudgetManagementController implements Initializable {
 
     private AnualBudgetFacade anualBudgetFacade;
 
-    public void onSelectedYear(ActionEvent actionEvent) throws SQLException {
+    public void onSelectedYear(ActionEvent actionEvent){
         int year = (int) this.comboBoxAnualBudget.getValue();
         int amount = anualBudgetFacade.getAnulaBudgetFromYear(year);
-        String listName = anualBudgetFacade.getListName();
-        labelAmount.setText(String.valueOf(amount));
-        labelListName.setText(listName);
+        if(amount != -1){
+            String listName = anualBudgetFacade.getListName();
+            labelAmount.setText(String.valueOf(amount));
+            labelListName.setText(listName);
+        }
+        else{
+            System.out.println("erreur");
+        }
+
     }
 
     @Override
