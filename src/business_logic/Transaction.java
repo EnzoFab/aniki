@@ -46,18 +46,17 @@ public class Transaction {
      */
     private String receipt;
 
-    public Transaction(Budget budget,  Event event, int id, String label, int amount,
+    public Transaction( int id, String label, int amount,
                        String state, String type, Date transaction, String receipt) {
-        this.budget = budget;
-        this.event = event;
+
         this.id = id;
         this.label = label;
         this.amount = amount;
         this.state = state;
         this.type = type;
-        this.transaction = transaction;
         this.receipt = receipt;
     }
+
 
     public int getId() {
         return id;

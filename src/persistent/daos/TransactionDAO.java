@@ -48,4 +48,10 @@ public abstract class TransactionDAO extends DAO{
      */
     public abstract ResultSet selectFromEvent(Event event);
 
+    /**
+     * @return
+     */
+    public abstract ResultSet selectAll();
+
+
 }
