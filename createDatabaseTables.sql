@@ -1,3 +1,20 @@
+DROP TABLE "anikiuser";
+DROP TABLE "team";
+DROP TABLE "role";
+DROP TABLE "event";
+DROP TABLE "contact";
+DROP TABLE "todolist";
+DROP TABLE "task";
+DROP TABLE "contact_event";
+DROP TABLE "contact_team";
+DROP TABLE "note";
+DROP TABLE "type";
+DROP TABLE "article";
+DROP TABLE "paymentmethod";
+DROP TABLE "transaction";
+DROP TABLE "anualbudget";
+DROP TABLE "budget";
+
 CREATE TABLE IF NOT EXISTS "anikiuser" (
   "user_mail" VARCHAR(255) NOT NULL,
   "user_name" VARCHAR(255) NULL,
