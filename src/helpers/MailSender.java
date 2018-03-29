@@ -42,7 +42,6 @@ public final class MailSender {
             e.printStackTrace();
             return false ;
         }
-
     }
 
 

@@ -7,10 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -82,6 +79,18 @@ public class Main extends Application {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
     }
+
+    public static void showAlert(String title, String content, Alert.AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        //alert.setHeaderText("Look, an Error Dialog");
+        alert.setContentText(content);
+
+        alert.showAndWait();
+    }
+
+
+
 
     public static void main(String[] args) {
         launch(args);

@@ -12,9 +12,8 @@ CREATE TABLE IF NOT EXISTS "anikiuser" (
 -- Table "Team"
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "team" (
-  "team_id" SERIAL,
-  "team_name" VARCHAR(255) NULL,
-  PRIMARY KEY ("team_id"))
+  "team_name" VARCHAR(255) NOT NULL,
+  PRIMARY KEY ("team_name"))
 ;
 
 
@@ -38,11 +37,10 @@ CREATE TABLE IF NOT EXISTS "event" (
   "event_date_start" DATE NULL,
   "event_date_end" DATE NULL,
   "event_number_entrant" INT NULL,
-  "Team_team_id" INT NOT NULL,
-  PRIMARY KEY ("event_id", "Team_team_id"))
-
-;
-
+  "team_name" VARCHAR(255) NOT NULL,
+  PRIMARY KEY ("event_id", "team_name"),
+  FOREIGN KEY ("team_name") REFERENCES Team(team_name)
+ );
 
 -- -----------------------------------------------------
 -- Table "contact"

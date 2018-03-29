@@ -3,9 +3,8 @@ package ui;
 import facade.FacadeManager;
 import facade.LoginFacade;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -13,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import persistent.ConnectionDB;
 import ui.Main;
@@ -31,8 +31,15 @@ import static ui.Main.changeScene;
 
 public class DashboardController implements Initializable {
 
-     @FXML private MenuItem TransactionVueGlobalButton;
-     private FacadeManager facadeManager;
+    @FXML private AnchorPane anchorPane;
+    @FXML private MenuItem TransactionVueGlobalButton;
+
+    /**
+     * it recreate the object when we change screen
+     * so we set a static variable
+     */
+    private static FacadeManager facadeManager;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -88,35 +95,34 @@ public class DashboardController implements Initializable {
 
     }
 
-    @FXML private void LinkAccueilVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"general/home.fxml","Home");
-    }
 
     @FXML private void linkToUserManagement(ActionEvent actionEvent) {
+        //System.out.println("manager null ? " +(facadeManager == null));
         moveMyAccountManagement();
+        /*try {
+            loadMyAccount();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
     @FXML private void linkToCreateUser(ActionEvent actionEvent) {
+        //System.out.println("manager null ? " +(facadeManager == null));
         moveToCreateUser();
+        /*try {
+            loadCreateUser();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
     /**
      * get Data from previous stage
-     * @param facadeManager
+     * @param fm
      */
-    public void setData(FacadeManager facadeManager){
-        this.facadeManager = facadeManager;
-    }
-
-    /*
-
-     */
-
-
-    private void createUserDialog(){
-        final Dialog createUserDialog = new TextInputDialog();
-        createUserDialog.setTitle("Create a new member");
-
+    public void setData(FacadeManager fm){
+        if(facadeManager == null)
+            facadeManager = fm;
     }
 
 
@@ -150,8 +156,9 @@ public class DashboardController implements Initializable {
             return;
         }
         CreateUserController createUserController = loader.getController();
+        //System.out.println("manager null ? " +(facadeManager == null));
         createUserController.setData(facadeManager);
-        changeScene(root,"My Account");
+        changeScene(root,"Create member");
     }
 
 }

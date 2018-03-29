@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="561.0" prefWidth="717.999977929685" style="-fx-background-color: #8080ff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.DashboardController">
+<AnchorPane fx:id="anchorPane" prefHeight="561.0" prefWidth="717.999977929685" style="-fx-background-color: #8080ff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.DashboardController">
   <children>
     <MenuBar layoutY="61.0" prefHeight="36.0" prefWidth="684.0" style="-fx-background-color: #6666ff;&#10;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <menus>
