@@ -10,7 +10,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import ui.Main;
+import javafx.event.ActionEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -18,6 +21,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+
+import javafx.scene.control.TextField;
 
 public class TransactionManagementController implements Initializable {
 
@@ -65,6 +70,11 @@ public class TransactionManagementController implements Initializable {
 
 
 
+
+    }
+
+    @FXML private void LinkAddTransaction(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"addTransaction.fxml","AddTransaction");
 
     }
 

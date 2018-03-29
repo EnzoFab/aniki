@@ -20,6 +20,7 @@
         <ListView fx:id="listView" layoutX="36.0" layoutY="143.0" prefHeight="404.0" prefWidth="498.0" />
         <ListView fx:id="listDebitView" layoutX="544.0" layoutY="143.0" prefHeight="404.0" prefWidth="74.0" />
         <ListView fx:id="listCreditView" layoutX="630.0" layoutY="143.0" prefHeight="404.0" prefWidth="74.0" />
+        <Hyperlink layoutX="41.0" layoutY="106.0" onAction="#LinkAddTransaction" text="Add transaction" textFill="WHITE" />
       </children>
     </fx:include>
   </children>
