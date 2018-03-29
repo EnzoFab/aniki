@@ -30,4 +30,7 @@ public abstract class AnualBudgetDAO extends DAO {
 
     public abstract ResultSet getTransaction();
 
+    public abstract  ResultSet getAll();
+
+    public abstract ResultSet getAnualBudgetFromYear(int year);
 }

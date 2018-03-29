@@ -5,6 +5,7 @@ import persistent.daos.AnualBudgetDAO;
 import persistent.factories.DaoPostgresFactory;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -62,11 +63,14 @@ public class AnualBudgetFacade {
     /**
      * @return
      */
-    public ArrayList getAll() {
+    public ArrayList<Integer> getAll() throws SQLException {
         // TODO implement here
-        ResultSet transaction = this.anualBudgetDAO.getTransaction();
-        this.allTransaction = transaction;
-        return (ArrayList) transaction;
+        ResultSet allAnualBudget = this.anualBudgetDAO.getAll();
+        ArrayList<Integer> years = new ArrayList<>();
+        while(allAnualBudget.next()){
+            years.add(allAnualBudget.getInt("anualbudget_year"));
+        }
+        return years;
     }
 
     /**
@@ -79,6 +83,20 @@ public class AnualBudgetFacade {
             return true;
         }
         return false;
+    }
+
+    public int getAnulaBudgetFromYear(int year) throws SQLException {
+        ResultSet set = anualBudgetDAO.getAnualBudgetFromYear(year);
+        int amount = 0;
+        if(set.first()) {
+            amount = Integer.parseInt(set.getString("anualbudget_amount"));
+            this.anualBudget = new AnualBudget(amount, year, set.getString("anualbudget_listname"));
+        }
+        return amount;
+    }
+
+    public String getListName() {
+        return anualBudget.getListname();
     }
 
 }
