@@ -38,6 +38,6 @@ public class BudgetManagementController  implements Initializable{
 
     public void onActionSelectedEventAdd(ActionEvent actionEvent) {
         if(!textFieldAmount.getText().isEmpty() && !comboBoxSelectEventAdd.getValue().toString().isEmpty())
-            budgetFacade.allocateNewBudget(Integer.parseInt(textFieldAmount.getText()), comboBoxSelectEventAdd.getValue());
+            budgetFacade.allocateNewBudget(Integer.parseInt(textFieldAmount.getText()), (String) comboBoxSelectEventAdd.getValue());
     }
 }
