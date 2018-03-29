@@ -125,6 +125,7 @@ public class ExpenseFacade {
             String state = allTransaction.getString("transaction_state");
             String type = allTransaction.getString("transaction_type");
             Date date = allTransaction.getDate("transaction_date");
+            System.out.println(date);
             String receipt = "";
 
             Transaction TR = new Transaction(id,label,amount,state,type,date,receipt);

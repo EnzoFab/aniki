@@ -53,6 +53,7 @@ public class Transaction {
         this.label = label;
         this.amount = amount;
         this.state = state;
+        this.transaction = transaction;
         this.type = type;
         this.receipt = receipt;
     }

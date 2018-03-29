@@ -5,12 +5,26 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="462.0" prefWidth="684.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.events.AddEventController">
   <children>
     <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0">
       <children>
-        <Label layoutX="325.0" layoutY="232.0" text="Add Event" />
+        <Label layoutX="289.0" layoutY="111.0" text="Add new event" textFill="WHITE">
+          <font>
+            <Font name="System Bold" size="20.0" />
+          </font>
+        </Label>
+        <Label layoutX="297.0" layoutY="173.0" text="Name of the event" textFill="WHITE" />
+        <Label layoutX="326.0" layoutY="246.0" text="Start Date" textFill="WHITE" />
+        <Label layoutX="331.0" layoutY="315.0" text="endDate" textFill="WHITE" />
+        <Label layoutX="299.0" layoutY="394.0" text="Number of people" textFill="WHITE" />
+        <TextField fx:id="nomEvent" layoutX="260.0" layoutY="202.0" prefWidth="200.0" />
+        <TextField fx:id="nombreEvent" layoutX="332.0" layoutY="424.0" prefWidth="57.0" />
+        <TextField fx:id="dateDebutEvent" layoutX="292.0" layoutY="281.0" prefWidth="134.00009999999747" promptText="YYYY-MM-DD" />
+        <TextField fx:id="dateFinEvent" layoutX="292.0" layoutY="355.0" prefWidth="134.0" promptText="YYYY-MM-DD" />
+        <Button layoutX="324.0" layoutY="493.0" mnemonicParsing="false" onAction="#addEvent" text="Ajouter" textFill="WHITE" />
       </children>
     </fx:include>
   </children>

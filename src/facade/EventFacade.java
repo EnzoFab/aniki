@@ -36,7 +36,7 @@ public class EventFacade {
         this.eventDao = factory.createEventDAO();
         this.contactDao = factory.createContactDAO();
         this.eventList = new ArrayList<>();
-        this.team = new Team("Team Beach");
+        this.team = new Team("com");
     }
 
     /**

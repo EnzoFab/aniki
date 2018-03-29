@@ -17,7 +17,9 @@
             <Font name="System Bold" size="15.0" />
           </font>
         </Label>
-        <ListView fx:id="listView" layoutX="36.0" layoutY="143.0" prefHeight="404.0" prefWidth="646.0" />
+        <ListView fx:id="listView" layoutX="36.0" layoutY="143.0" prefHeight="404.0" prefWidth="498.0" />
+        <ListView fx:id="listDebitView" layoutX="544.0" layoutY="143.0" prefHeight="404.0" prefWidth="74.0" />
+        <ListView fx:id="listCreditView" layoutX="630.0" layoutY="143.0" prefHeight="404.0" prefWidth="74.0" />
       </children>
     </fx:include>
   </children>
