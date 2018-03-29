@@ -54,10 +54,7 @@ public class ContactDAOPostgres extends ContactDAO {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
             ResultSet set =  state.executeQuery("SELECT * FROM contact");
-            if(set.first())
-                return set;
-            else return  null;
-
+            return set;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

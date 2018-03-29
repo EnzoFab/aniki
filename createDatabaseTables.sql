@@ -1,5 +1,3 @@
-
-
 DROP TABLE "anikiuser" CASCADE;
 DROP TABLE "role" CASCADE;
 DROP TABLE "budget" CASCADE;
@@ -208,12 +206,17 @@ CREATE TABLE IF NOT EXISTS "transaction" (
 );
 
 INSERT INTO paymentmethod VALUES ('CB');
+INSERT INTO paymentmethod VALUES ('Virement');
+INSERT INTO paymentmethod VALUES ('Chèque');
+INSERT INTO paymentmethod VALUES ('Paypal');
 
+INSERT INTO team VALUES ('Beach');
+INSERT INTO team VALUES ('Gala');
+INSERT INTO team VALUES ('Ski');
 
-INSERT INTO paymentmethod (paymentmethod_name) VALUES ('Virement');
 INSERT INTO anualbudget ("annualBudget_listname", anualbudget_amount, anualbudget_year) VALUES ('taber',10000, 2017);
 INSERT INTO budget (budget_id, budget_amount, "Anualbudget_anualbudget_id", "Team_team_id") VALUES (2,1500,1,2);
-INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,transaction_state,transaction_type)
-VALUES ('campo',200,'2018-05-11',1,'debit');
+INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,transaction_state,transaction_type) VALUES ('Campo',200,'2018-05-11',1,'debit');
+INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,transaction_state,transaction_type) VALUES ('Beach',200,'2018-05-18',1,'credit');
 
 
