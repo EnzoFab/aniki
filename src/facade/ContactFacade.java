@@ -28,6 +28,11 @@ public class ContactFacade {
         factory = DaoPostgresFactory.getInstance();
         this.contactDao = factory.createContactDAO();
         this.contactList = new ArrayList<>();
+        try {
+            this.getAllContacts();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -71,7 +76,6 @@ public class ContactFacade {
         return state;
     }
 
-
     /**
      * @param idC 
      * @return
@@ -86,6 +90,22 @@ public class ContactFacade {
         return state;
     }
 
+    public void getAllContacts() throws SQLException {
+        ResultSet result = this.contactDao.selectAll();
+        Contact contact;
+        if (result.first()) {
+            contact = new Contact(result.getString("contact_name"), result.getString("contact_first_name"), result.getString("contact_adress"), result.getString("contact_mail"), result.getString("contact_phone"));
+            contact.setIdC(result.getInt("contact_id"));
+            this.contactList.add(contact);
+            while(result.next()){
+                contact = new Contact(result.getString("contact_name"), result.getString("contact_first_name"), result.getString("contact_adress"), result.getString("contact_mail"), result.getString("contact_phone"));
+                contact.setIdC(result.getInt("contact_id"));
+                this.contactList.add(contact);
+            }
+        }
+        //return result.isAfterLast();
+    }
+
     /**
      * @return
      */
@@ -94,4 +114,7 @@ public class ContactFacade {
         return null;
     }
 
+    public ArrayList<Contact> getContactList() {
+        return contactList;
+    }
 }

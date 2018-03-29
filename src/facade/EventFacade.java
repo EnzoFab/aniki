@@ -31,12 +31,17 @@ public class EventFacade {
     /**
      * Default constructor
      */
-    public EventFacade() {
+    public EventFacade(String team_name) {
         factory = DaoPostgresFactory.getInstance();
         this.eventDao = factory.createEventDAO();
         this.contactDao = factory.createContactDAO();
         this.eventList = new ArrayList<>();
-        this.team = new Team("Team Beach");
+        this.team = new Team(team_name);
+        try {
+            this.getAllEvents();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -128,4 +133,23 @@ public class EventFacade {
         return null;
     }
 
+    public void getAllEvents() throws SQLException {
+        ResultSet result = this.eventDao.selectAll();
+        Event event;
+        if (result.first()) {
+            event = new Event(result.getString("event_label"), result.getDate("event_date_start"), result.getDate("event_date_end"), result.getInt("event_number_entrant"));
+            event.setIdE(result.getInt("event_id"));
+            this.eventList.add(event);
+            while(result.next()){
+                event = new Event(result.getString("event_label"), result.getDate("event_date_start"), result.getDate("event_date_end"), result.getInt("event_number_entrant"));
+                event.setIdE(result.getInt("event_id"));
+                this.eventList.add(event);
+            }
+        }
+        //return result.isAfterLast();
+    }
+
+    public ArrayList<Event> getEventList() {
+        return eventList;
+    }
 }

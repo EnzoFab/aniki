@@ -143,10 +143,9 @@ public class ContactDAOPostgres extends ContactDAO {
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
-            ResultSet set =  state.executeQuery("UPDATE contact SET contact_name = '"+name+"', contact_place = '"+place+"', content_phone = '"+phone+"', contact_mail = '"+mail+"' WHERE contact_id == '"+idC+"'");
-            if(set.first())
-                return true;
-            else return  false;
+            int numberRowModified =  state.executeUpdate("UPDATE contact SET contact_name = '"+name+"', contact_first_name ='"+first_name+"', contact_adress = '"+place+"', contact_phone = '"+phone+"', contact_mail = '"+mail+"' WHERE contact_id = '"+idC+"'");
+
+            return numberRowModified == 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -154,3 +153,4 @@ public class ContactDAOPostgres extends ContactDAO {
         }
     }
 }
+
