@@ -155,9 +155,9 @@ CREATE TABLE IF NOT EXISTS "type" (
 CREATE TABLE IF NOT EXISTS "article" (
   "article_id" SERIAL,
   "article_name" VARCHAR(255) NULL,
-  "article_description" TEXT NULL,
+  "article_description" VARCHAR(255) NULL,
   "article_number" INT NULL,
-  "type_name" VARCHAR(255) NOT NULL,
+  "type_name" VARCHAR(255) NULL,
   PRIMARY KEY ("article_id"),
   FOREIGN KEY ("type_name") REFERENCES type(type_name)
 );
@@ -213,6 +213,8 @@ INSERT INTO paymentmethod VALUES ('Paypal');
 INSERT INTO team VALUES ('Beach');
 INSERT INTO team VALUES ('Gala');
 INSERT INTO team VALUES ('Ski');
+
+INSERT INTO contact (contact_name, contact_first_name, contact_adress, contact_mail, contact_phone) VALUES ('James', 'TERRIEN', '18 rue Saint-Firmin', 'james@gmail.com', '0622151403');
 
 INSERT INTO anualbudget ("annualBudget_listname", anualbudget_amount, anualbudget_year) VALUES ('taber',10000, 2017);
 INSERT INTO budget (budget_id, budget_amount, "Anualbudget_anualbudget_id", "Team_team_id") VALUES (2,1500,1,2);
