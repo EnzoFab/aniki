@@ -36,8 +36,9 @@ public class Contact {
         this.name = name;
         this.first_name = first_name;
         this.place = place;
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = phone;
         this.mail = mail;
+
     }
 
     public int getIdC() {

@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import ui.Main;
 import javafx.event.ActionEvent;
@@ -31,11 +32,20 @@ public class TransactionManagementController implements Initializable {
     @FXML private ListView<String> listView;
     @FXML private ListView<String> listDebitView;
     @FXML private ListView<String> listCreditView;
-
+    @FXML private Label valueCredit;
+    @FXML private Label valueDebit;
+    @FXML private Label valueTotal;
+    public int totalDebit;
+    public int totalCredit;
+    public int total;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
+        this.total=0;
+        this.totalCredit=0;
+        this.totalDebit=0;
         expenseFacade = new ExpenseFacade();
         ArrayList<Transaction> transactions = null;
         transactions = expenseFacade.getTransactionsList();
@@ -58,12 +68,19 @@ public class TransactionManagementController implements Initializable {
             {
                 dataCredit.add("");
                 dataDebit.add(""+tr.getAmount());
+                this.totalDebit+=tr.getAmount();
             }else{
                 dataDebit.add("");
                 dataCredit.add(""+tr.getAmount());
+                this.totalCredit+=tr.getAmount();
             }
         }
 
+        this.total = this.totalCredit-this.totalDebit;
+
+        valueCredit.setText(""+this.totalCredit);
+        valueDebit.setText(""+this.totalDebit);
+        valueTotal.setText(""+this.total);
         listView.setItems(data);
         listCreditView.setItems(dataCredit);
         listDebitView.setItems(dataDebit);
