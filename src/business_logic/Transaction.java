@@ -29,7 +29,7 @@ public class Transaction {
     /**
      * 
      */
-    private String state;
+    private int state;
 
     /**
      * 
@@ -39,31 +39,30 @@ public class Transaction {
     /**
      * 
      */
-    private Date transaction;
+    private Date date;
 
     /**
      * 
      */
     private String receipt;
 
-    public Transaction( int id, String label, int amount,
-                       String state, String type, Date transaction, String receipt) {
+    public Transaction(String label, int amount, Date date, int state, String type) {
 
-        this.id = id;
         this.label = label;
         this.amount = amount;
         this.state = state;
         this.transaction = transaction;
         this.type = type;
-        this.receipt = receipt;
+        this.date = date;
+
     }
 
 
-    public int getId() {
+    public int getIdT() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setIdT(int id) {
         this.id = id;
     }
 
@@ -83,11 +82,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(int state) {
         this.state = state;
     }
 
@@ -99,12 +98,12 @@ public class Transaction {
         this.type = type;
     }
 
-    public Date getTransaction() {
-        return transaction;
+    public Date getDate() {
+        return date;
     }
 
-    public void setTransaction(Date transaction) {
-        this.transaction = transaction;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getReceipt() {

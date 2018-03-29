@@ -56,7 +56,7 @@ public class EventDAOPostgres extends EventDAO {
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
-            ResultSet set =  state.executeQuery("SELECT * FROM event E");
+            ResultSet set =  state.executeQuery("SELECT * FROM event");
             if(set.last())
 
                 return set;

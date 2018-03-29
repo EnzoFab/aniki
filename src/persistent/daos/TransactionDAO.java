@@ -6,7 +6,6 @@ import business_logic.Transaction;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.*;
 
 /**
  * 
@@ -27,14 +26,14 @@ public abstract class TransactionDAO extends DAO{
      * @param idT 
      * @return
      */
-    public  abstract boolean delete(String idT) ;
+    public  abstract boolean delete(int idT) ;
 
 
     /**
-     * @param transaction 
+     * @param idT
      * @return
      */
-    public abstract boolean update(Transaction transaction) ;
+    public abstract boolean update(int idT) ;
 
     /**
      * @param team 
@@ -53,5 +52,6 @@ public abstract class TransactionDAO extends DAO{
      */
     public abstract ResultSet selectAll();
 
+    public abstract ResultSet selectLast();
 
 }

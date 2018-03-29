@@ -168,9 +168,9 @@ CREATE TABLE IF NOT EXISTS "article" (
 -- Table "Paymentmethode"
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "paymentmethod" (
-  "paymentmethode" SERIAL,
-  "paymentmethode_label" VARCHAR(255) NULL,
-  PRIMARY KEY ("paymentmethode"))
+  "paymentmethod_id" SERIAL,
+  "paymentmethod_label" VARCHAR(255) NULL,
+  PRIMARY KEY ("paymentmethod_id"))
 ;
 
 
@@ -194,17 +194,18 @@ CREATE TABLE IF NOT EXISTS "anualbudget" (
 CREATE TABLE IF NOT EXISTS "transaction" (
   "transaction_id" SERIAL,
   "transaction_label" VARCHAR(255) NULL,
-  "transaction_amount" numeric NULL,
+  "transaction_amount" INT NULL,
   "transaction_date" DATE NULL,
   "transaction_state" INT NULL,
   "transaction_type" VARCHAR(45) NULL,
-  "Event_event_id" INT NOT NULL,
-  "Paymentmethode_paymentmethode" INT NOT NULL,
-  "Anualbudget_anualbudget_id" INT NOT NULL,
-  "Budget_budget_id" INT NOT NULL,
-  PRIMARY KEY ("transaction_id", "Event_event_id", "Paymentmethode_paymentmethode", "Anualbudget_anualbudget_id", "Budget_budget_id"))
-
-;
+  "event_id" INT NULL,
+  "paymentmethod_id" INT NULL,
+  "anualbudget_year" VARCHAR(10) NULL REFERENCES anualbudget,
+  PRIMARY KEY ("transaction_id"),
+  FOREIGN KEY ("event_id") REFERENCES event(event_id),
+  FOREIGN KEY ("paymentmethod_id") REFERENCES paymentmethod(paymentmethod_id),
+  FOREIGN KEY ("anualbudget_year") REFERENCES anualbudget(anualbudget_year)
+);
 
 
 
