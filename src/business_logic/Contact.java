@@ -1,5 +1,7 @@
 package business_logic;
 
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -31,13 +33,20 @@ public class Contact {
      */
     private String mail;
 
+    private ArrayList<String> teamList;
+
+    public Contact(){
+
+    }
+
     public Contact(String name, String first_name, String place, String mail, String phone) {
         //this.idC = idC;
         this.name = name;
         this.first_name = first_name;
         this.place = place;
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = phone;
         this.mail = mail;
+        this.teamList = new ArrayList<>();
     }
 
     public int getIdC() {
@@ -86,5 +95,13 @@ public class Contact {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public ArrayList<String> getTeamList() {
+        return teamList;
+    }
+
+    public void setTeamList(ArrayList<String> teamList) {
+        this.teamList = teamList;
     }
 }

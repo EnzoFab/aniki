@@ -31,15 +31,13 @@ public class ContactDAOPostgres extends ContactDAO {
         }
     }
 
-    public boolean insertLink(int idE, int idC){
+    public boolean insertLink(int idC, String team_name){
         Connection connect = getConnection();
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
-            ResultSet set =  state.executeQuery("UPDATE contact SET event_id = '"+idE+"' WHERE contact_id == '"+idC+"'");
-            if(set.first())
-                return true;
-            else return  false;
+            int numberRowModified =  state.executeUpdate("INSERT INTO contact_team VALUES ('"+idC+"', '"+team_name+"')");
+            return numberRowModified == 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,11 +65,8 @@ public class ContactDAOPostgres extends ContactDAO {
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
-            ResultSet set =  state.executeQuery("SELECT * FROM contact WHERE event_id == '"+idE+"'");
-            if(set.first())
-                return set;
-            else return  null;
-
+            ResultSet set =  state.executeQuery("SELECT * FROM contact WHERE event_id = '"+idE+"'");
+            return set;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -99,15 +94,13 @@ public class ContactDAOPostgres extends ContactDAO {
         return null;
     }
 
-    public boolean deleteLink(int idE, int idC){
+    public boolean deleteLink(int idC, String team_name){
         Connection connect = getConnection();
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
-            ResultSet set =  state.executeQuery("UPDATE contact SET event_id = 'null' WHERE contact_id == '"+idC+"' AND event_id =='"+idE+"'");
-            if(set.first())
-                return true;
-            else return  false;
+            int numberRowModified =  state.executeUpdate("DELETE FROM contact_team WHERE contact_id = '"+idC+"' AND team_name = '"+team_name+"'");
+            return numberRowModified == 1;
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -90,6 +90,29 @@ public class ContactFacade {
         return state;
     }
 
+    public boolean deleteLink(int idC, String team_name) {
+        Contact contact = this.contactList.get(idC);
+        boolean state = this.contactDao.deleteLink(contact.getIdC(), team_name);
+        if (state) {
+            for (int i = 0; i < contact.getTeamList().size(); i++) {
+                if (contact.getTeamList().get(i) == team_name) {
+                    contact.getTeamList().remove(i);
+                }
+            }
+        }
+        return state;
+    }
+
+    public boolean addLink(int idC, String team_name){
+        Contact contact = this.contactList.get(idC);
+        boolean state = this.contactDao.insertLink(contact.getIdC(), team_name);
+
+        if (state) {
+            // If the insert is ok, we get the id given by the database and add it to the java object before inserted it in the arrayList
+            contact.getTeamList().add(team_name);
+        }
+        return state;    }
+
     public void getAllContacts() throws SQLException {
         ResultSet result = this.contactDao.selectAll();
         Contact contact;
