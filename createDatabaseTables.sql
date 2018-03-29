@@ -155,9 +155,9 @@ CREATE TABLE IF NOT EXISTS "type" (
 CREATE TABLE IF NOT EXISTS "article" (
   "article_id" SERIAL,
   "article_name" VARCHAR(255) NULL,
-  "article_description" TEXT NULL,
+  "article_description" VARCHAR(255) NULL,
   "article_number" INT NULL,
-  "type_name" VARCHAR(255) NOT NULL,
+  "type_name" VARCHAR(255) NULL,
   PRIMARY KEY ("article_id"),
   FOREIGN KEY ("type_name") REFERENCES type(type_name)
 );
@@ -204,6 +204,8 @@ CREATE TABLE IF NOT EXISTS "transaction" (
   FOREIGN KEY ("paymentmethod_name") REFERENCES paymentmethod(paymentmethod_name),
   FOREIGN KEY ("anualbudget_year") REFERENCES anualbudget(anualbudget_year)
 );
+
+INSERT INTO paymentmethod VALUES ('CB');
 
 INSERT INTO paymentmethod VALUES ('CB');
 
