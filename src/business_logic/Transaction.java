@@ -36,6 +36,10 @@ public class Transaction {
      */
     private String type;
 
+
+
+    private String paymentmethod;
+
     /**
      * 
      */
@@ -111,5 +115,13 @@ public class Transaction {
 
     public void setReceipt(String receipt) {
         this.receipt = receipt;
+    }
+
+    public String getPaymentmethod() {
+        return paymentmethod;
+    }
+
+    public void setPaymentmethod(String paymentmethod) {
+        this.paymentmethod = paymentmethod;
     }
 }

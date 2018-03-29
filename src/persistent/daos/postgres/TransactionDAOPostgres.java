@@ -54,6 +54,7 @@ public class TransactionDAOPostgres extends TransactionDAO {
     public boolean update(int idT) {
         Connection connect = getConnection();
         try {
+            System.out.println(idT);
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
             int numberRowModified =  state.executeUpdate("UPDATE transaction SET transaction_state = '1' WHERE transaction_id = "+idT);
@@ -103,6 +104,20 @@ public class TransactionDAOPostgres extends TransactionDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public boolean insertPaymentMethod(int idT, String paymentmethod_name){
+        Connection connect = getConnection();
+        try {
+            System.out.println(idT);
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            int numberRowModified =  state.executeUpdate("UPDATE transaction SET paymentmethod_name = '"+"CB"+"' WHERE transaction_id = "+idT);
+            return numberRowModified == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

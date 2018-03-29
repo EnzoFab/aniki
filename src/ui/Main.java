@@ -98,13 +98,16 @@ public class Main extends Application {
     public static void main(String[] args) throws SQLException {
         ExpenseFacade expenseFacade = new ExpenseFacade();
         Date date = new Date();
-        //System.out.println(expenseFacade.addTransaction("Apareil photo", 600, date, 0, "CB"));
-        //System.out.println(expenseFacade.addTransaction("Apareil photo", 600, date, 0, "CB"));
-        /*for (int i=0; i<expenseFacade.getTransactionsList().size(); i++){
-            System.out.println(expenseFacade.getTransactionsList().get(i).getIdT());
-        }*/
-        System.out.println(expenseFacade.validate(2));
-        System.out.println("State : " + expenseFacade.getTransactionsList().get(2).getState());
+        //System.out.println(expenseFacade.addTransaction("Apareil photc", 600, date, 0, "Chèque"));
+        //System.out.println(expenseFacade.addTransaction("Apareil photd", 600, date, 0, "Chèque"));
+       for (int i=0; i<expenseFacade.getTransactionsList().size(); i++){
+            System.out.println("id : "+expenseFacade.getTransactionsList().get(i).getIdT()+ " | payment : "+expenseFacade.getTransactionsList().get(i).getPaymentmethod());
+        }
+        //System.out.println("Id main : "+expenseFacade.getTransactionsList().get(0).getIdT());
+        //System.out.println(expenseFacade.addPaymentMethod(1, "CB"));
+
+
+        //System.out.println("State : " + expenseFacade.getTransactionsList().get(2).getState());
         //launch(args);*/
     }
 }
