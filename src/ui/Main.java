@@ -1,5 +1,6 @@
 package ui;
 
+import facade.EventFacade;
 import facade.ExpenseFacade;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
@@ -96,6 +97,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) throws SQLException {
+
         launch(args);
     }
 }
