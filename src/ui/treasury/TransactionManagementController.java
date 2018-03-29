@@ -11,17 +11,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
-
-import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TransactionManagementController implements Initializable {
@@ -46,9 +41,9 @@ public class TransactionManagementController implements Initializable {
         for (Transaction tr : transactions) {
             String dateString = null;
             SimpleDateFormat sdfr = new SimpleDateFormat("dd/MM/yyyy");
-            System.out.println(tr.getTransaction());
+            System.out.println(tr.getDate());
             try{
-                dateString = sdfr.format( tr.getTransaction() );
+                dateString = sdfr.format( tr.getDate() );
             }catch (Exception ex ){
                 System.out.println(ex);
             }

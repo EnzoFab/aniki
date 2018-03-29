@@ -51,7 +51,7 @@ public class Transaction {
         this.label = label;
         this.amount = amount;
         this.state = state;
-        this.transaction = transaction;
+        this.date = date;
         this.type = type;
         this.date = date;
 

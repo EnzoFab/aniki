@@ -5,12 +5,18 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="452.0" prefWidth="684.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.events.EventsManagementController">
   <children>
     <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0">
       <children>
-        <Label layoutX="325.0" layoutY="232.0" text="event management" />
+        <ListView fx:id="listEvents" layoutX="14.0" layoutY="138.0" prefHeight="409.0" prefWidth="690.0" />
+        <Label layoutX="275.0" layoutY="107.0" text="Liste des évènements" textFill="WHITE">
+          <font>
+            <Font name="System Bold" size="17.0" />
+          </font>
+        </Label>
       </children>
     </fx:include>
   </children>

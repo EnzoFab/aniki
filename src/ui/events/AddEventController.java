@@ -28,12 +28,12 @@ public class AddEventController {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.eventFacade = new EventFacade();
+        this.eventFacade = new EventFacade("com");
 
     }
 
     public void addEvent(ActionEvent actionEvent) throws SQLException, ParseException {
-        this.eventFacade = new EventFacade();
+        this.eventFacade = new EventFacade("com");
         if(!nomEvent.getText().isEmpty() && !dateDebutEvent.getText().isEmpty() && !dateFinEvent.getText().isEmpty() && !nombreEvent.getText().isEmpty()){
 
             DateFormat formatterPG = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSX");
