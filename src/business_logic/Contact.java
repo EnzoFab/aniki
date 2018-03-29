@@ -1,7 +1,5 @@
 package business_logic;
 
-import java.util.*;
-
 /**
  * 
  */
@@ -16,6 +14,7 @@ public class Contact {
      * 
      */
     private String name;
+    private String first_name;
 
     /**
      * 
@@ -32,9 +31,10 @@ public class Contact {
      */
     private String mail;
 
-    public Contact(String name, String place, String phoneNumber, String mail) {
+    public Contact(String name, String first_name, String place, String mail, String phone) {
         //this.idC = idC;
         this.name = name;
+        this.first_name = first_name;
         this.place = place;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
@@ -54,6 +54,14 @@ public class Contact {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFirstName() {
+        return first_name;
+    }
+
+    public void setFirstName(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getPlace() {

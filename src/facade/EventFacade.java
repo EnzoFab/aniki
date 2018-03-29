@@ -34,7 +34,7 @@ public class EventFacade {
     public EventFacade() {
         factory = DaoPostgresFactory.getInstance();
         this.eventDao = factory.createEventDAO();
-        this.contactDao = DaoPostgresFactory.getInstance().createContactDAO();
+        this.contactDao = factory.createContactDAO();
         this.eventList = new ArrayList<>();
         this.team = new Team("Team Beach");
     }
@@ -96,11 +96,6 @@ public class EventFacade {
             this.eventList.get(idE).setDateEnd(date_end);
             this.eventList.get(idE).setNumberEntrant(number_entrant);
         }
-        System.out.println(this.eventList.get(idE).getLabel());
-        System.out.println(this.eventList.get(idE).getDateStart());
-        System.out.println(this.eventList.get(idE).getDateEnd());
-        System.out.println(this.eventList.get(idE).getNumberEntrant());
-
         return state;
     }
 

@@ -1,5 +1,6 @@
 package ui;
 
+import facade.ContactFacade;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -82,13 +83,13 @@ public class Main extends Application {
 
     public static void main(String[] args) throws SQLException {
 
-       /* EventFacade eventFacade = new EventFacade();
+        ContactFacade contactFacade = new ContactFacade();
+        System.out.println(contactFacade.addContact("CE", "Sacha", "PZ", "s@gmail.com", "0622151403"));
+        System.out.println(contactFacade.addContact("CE", "Sacha", "PZ", "s@gmail.com", "0622151403"));
+        System.out.println(contactFacade.addContact("CE", "Sacha", "PZ", "s@gmail.com", "0622151403"));
+        System.out.println(contactFacade.deleteContact(2));
 
-        Date date_start = new Date();
-        Date date_end = new Date();
-        System.out.println(eventFacade.addEvent("Beach", date_start, date_end, 600));
-        System.out.println(eventFacade.updateEvent(0,"Beach Volley", date_start, date_end, 800));*/
-        launch(args);
+        //launch(args);
 
 
     }

@@ -17,15 +17,13 @@ public class ContactDAOPostgres extends ContactDAO {
         super(connection);
     }
 
-    public boolean insert(String name, String place, String phoneNumber, String mail){
+    public boolean insert(String name, String first_name, String place, String mail, String phoneNumber){
         Connection connect = getConnection();
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
-            ResultSet set =  state.executeQuery("INSERT INTO contact ('contact_name', 'contact_adress', 'contact_phone', 'contact_mail') VALUES ('"+name+"', '"+place+"', '"+phoneNumber+"', '"+mail+"', '");
-            if(set.first())
-                return true;
-            else return false;
+            int numberRowModified =  state.executeUpdate("INSERT INTO contact (contact_name, contact_first_name, contact_adress, contact_mail, contact_phone) VALUES ('"+name+"', '"+first_name+"', '"+place+"', '"+mail+"', '"+phoneNumber+"')");
+            return numberRowModified == 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,6 +81,22 @@ public class ContactDAOPostgres extends ContactDAO {
         }
     }
 
+    public ResultSet selectLast() {
+        Connection connect = getConnection();
+        try {
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            ResultSet set =  state.executeQuery("SELECT * FROM contact");
+            if(set.last())
+                return set;
+            else return  null;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public ResultSet select(int contactId) {
         // TODO implement here
         return null;
@@ -109,10 +123,8 @@ public class ContactDAOPostgres extends ContactDAO {
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
-            ResultSet set =  state.executeQuery("DELETE FROM contact WHERE contact_id == '"+idC+"'");
-            if(set.first())
-                return true;
-            else return false;
+            int numberRowModified =  state.executeUpdate("DELETE FROM contact WHERE contact_id = '"+idC+"'");
+            return numberRowModified == 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -126,7 +138,7 @@ public class ContactDAOPostgres extends ContactDAO {
     }
 
     @Override
-    public boolean update(int idC, String name, String place, String phone, String mail) {
+    public boolean update(int idC, String name, String first_name, String place, String phone, String mail) {
         Connection connect = getConnection();
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

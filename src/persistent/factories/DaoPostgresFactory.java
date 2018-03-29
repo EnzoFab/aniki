@@ -2,6 +2,7 @@ package persistent.factories;
 
 import persistent.daos.*;
 import persistent.daos.postgres.AnualBudgetDAOPostgres;
+import persistent.daos.postgres.ContactDAOPostgres;
 import persistent.daos.postgres.EventDAOPostgres;
 import persistent.daos.postgres.UserDAOPostgres;
 
@@ -63,7 +64,8 @@ public class DaoPostgresFactory extends DaoFactory{
 
     @Override
     public ContactDAO createContactDAO() {
-        return null;
+        ContactDAOPostgres contactDao = new ContactDAOPostgres(this.connect);
+        return contactDao;
     }
 
     @Override
