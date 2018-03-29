@@ -8,7 +8,7 @@ import java.sql.Connection;
 /**
  * 
  */
-public class BudgetDAOPostgres extends BudgetDAO {
+public abstract class BudgetDAOPostgres extends BudgetDAO {
 
 
     public BudgetDAOPostgres(Connection connection) {

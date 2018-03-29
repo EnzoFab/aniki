@@ -1,5 +1,7 @@
 package ui;
 
+import business_logic.Transaction;
+import facade.ExpenseFacade;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,7 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Main extends Application {
 
@@ -92,7 +95,13 @@ public class Main extends Application {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         launch(args);
+/*
+        ExpenseFacade expenseFacade = new ExpenseFacade();
+        System.out.println(expenseFacade.getAllTransaction());
+        ;*/
     }
+
+
 }

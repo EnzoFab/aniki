@@ -4,6 +4,7 @@ import persistent.daos.*;
 import persistent.daos.postgres.AnualBudgetDAOPostgres;
 import persistent.daos.postgres.EventDAOPostgres;
 import persistent.daos.postgres.UserDAOPostgres;
+import persistent.daos.postgres.TransactionDAOPostgres;
 
 
 public class DaoPostgresFactory extends DaoFactory{
@@ -43,7 +44,8 @@ public class DaoPostgresFactory extends DaoFactory{
 
     @Override
     public TransactionDAO createTransactionDAO() {
-        return null;
+        TransactionDAOPostgres transactionDao = new TransactionDAOPostgres(this.connect);
+        return transactionDao;
     }
 
     @Override
