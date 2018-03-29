@@ -91,6 +91,13 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        /*EventFacade eventFacade = new EventFacade();
+        Date date = new Date();
+        try {
+            eventFacade.addEvent("beach", date, date, 234);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
         launch(args);
     }
 }

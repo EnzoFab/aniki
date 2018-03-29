@@ -2,8 +2,6 @@ package facade;
 
 import business_logic.AnualBudget;
 import business_logic.Budget;
-import business_logic.Team;
-import business_logic.Transaction;
 import persistent.daos.AnualBudgetDAO;
 import persistent.daos.BudgetDAO;
 import persistent.daos.EventDAO;
@@ -24,7 +22,6 @@ public class BudgetFacade {
     private TransactionDAO transactionDAO;
     private ArrayList<Budget> listBudget;
     private EventDAO eventDAO;
-    private Team team;
     /**
      * Default constructor
      */
@@ -41,13 +38,13 @@ public class BudgetFacade {
     public AnualBudget anual;
 
     /**
-     * @param team 
-     * @param amount 
+     * @param amount
      * @return
      */
-    public boolean allocateNewBudget(int amount) {
+    public boolean allocateNewBudget(int amount, String event) {
         // TODO implement here
-        Budget b = new Budget(amount, this.team);
+
+        Budget b = null;
         boolean state = this.budgetDAO.insert(b);
         if (state) {
             this.listBudget.add(b);
