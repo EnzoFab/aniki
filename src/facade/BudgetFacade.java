@@ -2,10 +2,7 @@ package facade;
 
 import business_logic.AnualBudget;
 import business_logic.Budget;
-import persistent.daos.AnualBudgetDAO;
-import persistent.daos.BudgetDAO;
-import persistent.daos.EventDAO;
-import persistent.daos.TransactionDAO;
+import persistent.daos.*;
 import persistent.factories.DaoPostgresFactory;
 
 import java.sql.ResultSet;
@@ -22,6 +19,7 @@ public class BudgetFacade {
     private TransactionDAO transactionDAO;
     private ArrayList<Budget> listBudget;
     private EventDAO eventDAO;
+    private TeamDAO teamDAO;
     /**
      * Default constructor
      */
@@ -30,6 +28,7 @@ public class BudgetFacade {
         this.anualBudgetDAO = DaoPostgresFactory.getInstance().createAnualBudgetDAO();
         this.transactionDAO = DaoPostgresFactory.getInstance().createTransactionDAO();
         this.eventDAO = DaoPostgresFactory.getInstance().createEventDAO();
+        this.teamDAO = DaoPostgresFactory.getInstance().createTeamDAO();
     }
 
     /**
@@ -100,6 +99,15 @@ public class BudgetFacade {
         ArrayList<String> eventName = new ArrayList<>();
         while(event.next()){
             eventName.add(event.getString("event_label"));
+        }
+        return eventName;
+    }
+
+    public ArrayList<String> getTeam() throws SQLException {
+        ResultSet team = teamDAO.selectAll();
+        ArrayList<String> eventName = new ArrayList<>();
+        while(team.next()){
+            eventName.add(team.getString("team_name"));
         }
         return eventName;
     }

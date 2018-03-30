@@ -43,13 +43,13 @@ public class AnnualBudgetManagementController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        comboBoxAnualBudget.getItems().clear();
         anualBudgetFacade = new AnualBudgetFacade();
         try {
             listNameSet = anualBudgetFacade.getAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        comboBoxAnualBudget.getItems().clear();
         comboBoxAnualBudget.getItems().addAll(listNameSet);
     }
 
@@ -62,8 +62,8 @@ public class AnnualBudgetManagementController implements Initializable {
 
     public void deleteAction(ActionEvent actionEvent) {
         int value = (int) comboBoxAnualBudget.getValue();
+        comboBoxAnualBudget.getItems().clear();
         if(anualBudgetFacade.delete(value)){
-            comboBoxAnualBudget.getItems().clear();
             listNameSet.remove(new Integer(value));
             comboBoxAnualBudget.getItems().addAll(listNameSet);
             labelListName.setText("");

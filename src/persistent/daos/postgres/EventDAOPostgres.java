@@ -113,7 +113,7 @@ public class EventDAOPostgres extends EventDAO {
 
     @Override
     public ResultSet getEventsWithoutBudget() {
-        Connection connect = getConnection();
+        /*Connection connect = getConnection();
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
@@ -122,7 +122,8 @@ public class EventDAOPostgres extends EventDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }
+        }*/
+        return null;
     }
 
     @Override
