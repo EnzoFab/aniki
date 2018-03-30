@@ -19,8 +19,8 @@ public class DaoPostgresFactory extends DaoFactory{
 
 
     @Override
-    public TeamDAO createTeamDAO() {
-        return null;
+    public TeamDAO createTeamDAO(){
+        return new TeamDAOPostgres((this.connect));
     }
 
     public PaymentMethodDAO createPaymentMethodDAO() {
@@ -31,6 +31,11 @@ public class DaoPostgresFactory extends DaoFactory{
     @Override
     public ToDoListDAO createTodoListDAO() {
         return null;
+    }
+
+    @Override
+    public BudgetDAO createBudgetDAO() {
+        return new BudgetDAOPostgres(this.connect);
     }
 
     @Override

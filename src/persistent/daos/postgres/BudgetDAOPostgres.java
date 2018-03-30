@@ -4,6 +4,7 @@ import business_logic.Budget;
 import persistent.daos.BudgetDAO;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
@@ -11,7 +12,7 @@ import java.util.Calendar;
 /**
  * 
  */
-public abstract class BudgetDAOPostgres extends BudgetDAO {
+public class BudgetDAOPostgres extends BudgetDAO {
 
 
     public BudgetDAOPostgres(Connection connection) {
@@ -44,5 +45,24 @@ public abstract class BudgetDAOPostgres extends BudgetDAO {
     @Override
     public boolean delete(Budget budget) {
         return false;
+    }
+
+    @Override
+    public ResultSet select(int budgetId) {
+        return null;
+    }
+
+    @Override
+    public ResultSet selectAll(){
+        Connection connect = getConnection();
+        try {
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            ResultSet set =  state.executeQuery("SELECT * FROM budget WHERE event_id IS NOT NULL");
+            return set;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

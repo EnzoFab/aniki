@@ -42,21 +42,7 @@ public class BudgetFacade {
      */
     public boolean allocateNewBudget(int amount, String event){
         // TODO implement here
-        ResultSet set = eventDAO.selectEventWithNameWithoutBudget(event);
-        String eid = "";
-        try {
-            if(set.first()){
-                eid = set.getString("event_id");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        Budget b = new Budget(amount, eid);
-        boolean state = this.budgetDAO.insert(b);
-        if (state) {
-            this.listBudget.add(b);
-        }
-        return state;
+        return false;
     }
 
     /**
@@ -95,12 +81,31 @@ public class BudgetFacade {
     }
 
     public ArrayList<String> getEventLeft() throws SQLException {
-        ResultSet event = eventDAO.getEventsWithoutBudget();
-        ArrayList<String> eventName = new ArrayList<>();
-        while(event.next()){
-            eventName.add(event.getString("event_label"));
+        System.out.println("heu");
+        ResultSet setBudget = budgetDAO.selectAll();
+        ResultSet setEvent = eventDAO.selectAll();
+        ArrayList<String> listIdEvent = new ArrayList<>();
+        ArrayList<String> listIdEventFromBudget = new ArrayList<>();
+
+        if(setBudget != null && setBudget.first()){
+            while(setBudget.next()){
+                listIdEventFromBudget.add(setBudget.getString("event_id"));
+            }
+            if(!listIdEventFromBudget.isEmpty()){
+                while (setEvent.next()){
+                    if(listIdEventFromBudget.contains(new String(setEvent.getString("event_id")))){
+                        listIdEvent.add(setEvent.getString("event_label"));
+                    }
+                }
+            }
         }
-        return eventName;
+        else{
+            while(setEvent.next()){
+                listIdEvent.add(setEvent.getString("event_label"));
+            }
+        }
+
+        return listIdEvent;
     }
 
     public ArrayList<String> getTeam() throws SQLException {

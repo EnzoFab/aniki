@@ -30,4 +30,6 @@ public abstract class BudgetDAO extends DAO {
     public abstract boolean delete(Budget budget);
 
     public abstract ResultSet select(int budgetId) ;
+
+    public abstract ResultSet selectAll();
 }

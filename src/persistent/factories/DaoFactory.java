@@ -48,10 +48,7 @@ public abstract class DaoFactory {
     /**
      * @return
      */
-    public BudgetDAO createBudgetDAO() {
-        // TODO implement here
-        return null;
-    }
+    public abstract BudgetDAO createBudgetDAO();
 
     /**
      * @return

@@ -13,7 +13,6 @@ import javafx.util.Pair;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class BudgetManagementController  implements Initializable{
@@ -26,20 +25,11 @@ public class BudgetManagementController  implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         budgetFacade = new BudgetFacade();
-        ArrayList<String> listEventname = null;
-        try {
-            listEventname = budgetFacade.getEventLeft();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        comboBoxSelectEventAdd.getItems().clear();
-        comboBoxSelectEventAdd.getItems().addAll(listEventname);
     }
 
     public void onActionAdd(ActionEvent actionEvent) {
-        if(!textFieldAmount.getText().isEmpty() && !comboBoxSelectEventAdd.getValue().toString().isEmpty()){
-            budgetFacade.allocateNewBudget(Integer.parseInt(textFieldAmount.getText()), (String) comboBoxSelectEventAdd.getValue());
-        }
+        showDialogAddBuget();
+
     }
 
 
@@ -49,7 +39,7 @@ public class BudgetManagementController  implements Initializable{
     public void onSelectedEvent(ActionEvent actionEvent) {
     }
 
-    private void showDialogAddArticle(){
+    private void showDialogAddBuget(){
         Dialog<Pair<String, String>> dialog = new Dialog<>();
         dialog.setTitle("Add new budget");
         dialog.setHeaderText("Care to enter an integer in the quantity field");
