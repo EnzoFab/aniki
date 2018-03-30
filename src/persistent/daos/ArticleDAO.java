@@ -50,4 +50,6 @@ public abstract class ArticleDAO extends DAO {
 
     public abstract ResultSet selectAllType();
 
+    public abstract boolean insertType(String type);
+
 }

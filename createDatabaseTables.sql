@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS "article" (
   "article_name" VARCHAR(255) NULL,
   "article_description" VARCHAR(255) NULL,
   "article_number" INT NULL,
-  "type_name" VARCHAR(255) NULL,
+  "type_name" VARCHAR(255) NOT NULL,
   PRIMARY KEY ("article_id"),
   FOREIGN KEY ("type_name") REFERENCES type(type_name)
 );
@@ -222,9 +222,10 @@ INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,t
 INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,transaction_state,transaction_type) VALUES ('Beach',200,'2018-05-18',1,'credit');
 INSERT INTO anikiuser ("user_mail","user_name","user_first_name","user_password","user_phone") VALUES('enzo.fabre@etu.umontpellier.fr','FABRE','Enzo','Djeums','0658145639');
 
-INSERT INTO type("type_name") VALUES('Alcool');
+INSERT INTO type("type_name") VALUES('alcool');
 
 INSERT INTO article
  ("article_name","article_description" ,"article_number","type_name")
- VALUES ('Vodka','vodka de 0,70L ',45,'Alcool')
+ VALUES ('vodka','vodka de 0,70L ',45,'alcool')
+
 

@@ -7,18 +7,22 @@
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="599.0" prefWidth="737.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.inventory.InventoryManagementController">
   <children>
     <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" prefHeight="599.0" prefWidth="737.0" visible="true"/>
 
-        <Button layoutX="291.0" layoutY="558.0" mnemonicParsing="false" onMousePressed="#addNewArticleAction" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="addNewArticle" textFill="#ffcc00">
+        <Button layoutX="167.0" layoutY="550.0" mnemonicParsing="false" onMousePressed="#addNewType" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="Add new article type">
           <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="15.0" fx:id="x1" />
           </font>
+          <textFill>
+            <Color blue="0.000" green="0.800" red="1.000" fx:id="x2" />
+          </textFill>
         </Button>
-
+        <Button font="$x1" layoutX="406.0" layoutY="550.0" mnemonicParsing="false" onMousePressed="#addNewArticleAction" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="add new article" textFill="$x2" />
 
     <TableView fx:id="articleTableView" blendMode="SOFT_LIGHT" cache="true" cacheHint="DEFAULT" disable="false" editable="true" layoutY="109.0" mouseTransparent="true" pickOnBounds="false" prefHeight="429.9999000000025" prefWidth="540.0" style="&#10;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1110.8), 10, 0, 0, 0);&#10;&#10; " tableMenuButtonVisible="false" visible="true" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
       <columns>

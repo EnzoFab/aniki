@@ -9,20 +9,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 import ui.ViewBridge;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Observable;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -39,7 +34,7 @@ public class InventoryManagementController implements Initializable, ViewBridge 
     @FXML private TableColumn descriptionArticleColumn;
 
     @FXML private void addNewArticleAction(MouseEvent mouseEvent) {
-        showDialog();
+        showDialogAddArticle();
     }
 
     @Override
@@ -72,7 +67,7 @@ public class InventoryManagementController implements Initializable, ViewBridge 
 
 
 
-    private void showDialog(){
+    private void showDialogAddArticle(){
         Dialog<Pair<String, String>> dialog = new Dialog<>();
         dialog.setTitle("Add new article");
         dialog.setHeaderText("Care to enter an integer in the quantity field");
@@ -91,7 +86,7 @@ public class InventoryManagementController implements Initializable, ViewBridge 
         TextField quantityTF = new TextField();
         quantityTF.setPromptText("Quantity");
 
-
+        System.out.println(facade.getTypes());
         ObservableList options =
                 FXCollections.observableArrayList(facade.getTypes());
             // load from the database
@@ -124,8 +119,9 @@ public class InventoryManagementController implements Initializable, ViewBridge 
             if (dialogButton == buttonInsertArticle) {
                 int quantity = Integer.parseInt(quantityTF.getText());
                 String type =  typeCB.getValue();
+                System.out.print(type);
                 try {
-                    Article a = facade.addArticle(nameTF.getText(),descriptionTF.getText(),quantity,type );
+                    Article a = facade.addArticle(nameTF.getText(),descriptionTF.getText(),quantity,typeCB.getValue() );
                     if(a != null){
                         addArticle(a);
                     }else{
@@ -138,10 +134,30 @@ public class InventoryManagementController implements Initializable, ViewBridge 
             return null;
         });
 
-        Optional<Pair<String, String>> result = dialog.showAndWait();
+       dialog.showAndWait();
+
+
+    }
+
+    private void showAddTypeDialog(){
+        TextInputDialog dialog = new TextInputDialog("Type");
+        dialog.setTitle("Create Type");
+        dialog.setHeaderText("Please fill the field");
+        dialog.setContentText("Add your new Type");
+
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            facade.createType(result.get());
+        }
+
 
 
     }
 
 
+
+    @FXML private void addNewType(MouseEvent mouseEvent) {
+        showAddTypeDialog();
+    }
 }

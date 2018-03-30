@@ -24,7 +24,9 @@ public class ArticleDAOPostgres extends ArticleDAO {
         try {
             Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.TYPE_FORWARD_ONLY);
-            int numberRowModified =  state.executeUpdate("INSERT INTO article (article_name, article_description, article_number) VALUES ('"+article.getName()+"', '"+article.getDescription()+"', "+article.getQuantity()+")");
+            int numberRowModified =  state.executeUpdate("INSERT INTO article (article_name, article_description, article_number, type_name) VALUES ('"+article.getName()+"', '"+article.getDescription()+"', "+
+                    article.getQuantity()+",'"+article.getType() +"')"
+            );
             return numberRowModified == 1;
 
         } catch (SQLException e) {
@@ -84,6 +86,21 @@ public class ArticleDAOPostgres extends ArticleDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    public boolean insertType(String type) {
+        Connection connect = getConnection();
+        try {
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            int numberRowModified =  state.executeUpdate("INSERT INTO type (type_name) VALUES ('"+type+"')" );
+            return numberRowModified == 1;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 

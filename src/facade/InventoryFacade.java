@@ -112,6 +112,7 @@ public class InventoryFacade {
         try {
             if(result.first()){
                 this.typeList.add(result.getString("type_name"));
+                System.out.print(result.getString("type_name"));
                 while (result.next()){
                     this.typeList.add(result.getString("type_name"));
                 }
@@ -119,6 +120,15 @@ public class InventoryFacade {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean createType(String type){
+        if(DaoPostgresFactory.getInstance().createArticleDAO().insertType(type)){
+            typeList.add(type);
+            return true;
+        }
+
+        return false ;
     }
 
     /**
