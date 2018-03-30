@@ -59,7 +59,10 @@ public class AnnualBudgetManagementController implements Initializable {
         int anneeEnCours = calendrier.get(Calendar.YEAR);
         if(!textFieldListName.getText().isEmpty() && !textFieldAmount.getText().isEmpty()){
             anualBudgetFacade.create(textFieldListName.getText(), anneeEnCours, Integer.parseInt(textFieldAmount.getText()));
+            comboBoxAnualBudget.getItems().add(anneeEnCours);
         }
+        textFieldAmount.setText("");
+        textFieldListName.setText("");
     }
 
 }

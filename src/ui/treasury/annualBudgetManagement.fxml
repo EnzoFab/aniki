@@ -11,16 +11,21 @@
 
 <AnchorPane prefHeight="618.0" prefWidth="744.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.treasury.AnnualBudgetManagementController">
   <children>
-    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" prefHeight="618.0" prefWidth="744.0"/>
-        <ComboBox fx:id="comboBoxAnualBudget" layoutX="246.0" layoutY="127.0" onAction="#onSelectedYear" prefWidth="221.0">
-          <items>
-            <FXCollections fx:factory="observableArrayList">
-              <String fx:value="Item 1" />
-              <String fx:value="Item 2" />
-              <String fx:value="Item 3" />
-            </FXCollections>
-          </items>
-        </ComboBox>
+    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" prefHeight="618.0" prefWidth="744.0">
+      <children>
+        <Label layoutX="255.0" layoutY="489.0" text="Listname" />
+        <Label layoutX="431.0" layoutY="489.0" text="Montant" />
+      </children>
+    </fx:include>
+    <ComboBox fx:id="comboBoxAnualBudget" layoutX="246.0" layoutY="127.0" onAction="#onSelectedYear" prefWidth="221.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ComboBox>
     <TextField fx:id="textFieldAmount" layoutX="430.0" layoutY="507.0" onAction="#addActionAnualBudget" prefWidth="142.0" />
     <TextField id="labelListName" fx:id="textFieldListName" layoutX="250.0" layoutY="507.0" onAction="#addActionAnualBudget" prefWidth="142.0" />
     <Pane layoutX="71.0" layoutY="179.0" prefHeight="310.0" prefWidth="535.0">

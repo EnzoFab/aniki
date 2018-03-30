@@ -89,9 +89,9 @@ public class AnualBudgetFacade {
         ResultSet set = anualBudgetDAO.getAnualBudgetFromYear(year);
         int amount = 0;
         try{
-            if (!set.first()) {
+            if (set.first()) {
                 amount = Integer.parseInt(set.getString("anualbudget_amount"));
-                this.anualBudget = new AnualBudget(amount, year, set.getString("anualbudget_listname"));
+                this.anualBudget = new AnualBudget(amount, year, set.getString("annualbudget_listname"));
             }
         }
         catch (SQLException e) {

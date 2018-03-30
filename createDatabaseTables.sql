@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS "paymentmethod" (
 -- Table "Anualbudget"
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "anualbudget" (
-  "annualBudget_listname" VARCHAR (10),
+  "annualbudget_listname" VARCHAR (10),
   "anualbudget_amount" numeric NULL,
   "anualbudget_year" VARCHAR(10) NULL,
   PRIMARY KEY ("anualbudget_year"))

@@ -27,7 +27,7 @@ public class AnualBudgetDAOPostgres extends AnualBudgetDAO {
         try {
             connect.setAutoCommit(false);
             Statement state = connect.createStatement();
-            String sql = "insert into anualbudget(anualbudget_listname, anualbudget_amount, anualbudget_year)"
+            String sql = "insert into anualbudget(annualbudget_listname, anualbudget_amount, anualbudget_year)"
                     +"values ("+listName+", "+amount+", "+year+");";
             state.executeUpdate(sql);
             state.close();
@@ -47,7 +47,7 @@ public class AnualBudgetDAOPostgres extends AnualBudgetDAO {
         Connection connect = getConnection();
         try {
             connect.setAutoCommit(false);
-            String sql = "INSERT INTO anualbudget (anualbudget_listname,anualbudget_amount,anualbudget_year) "
+            String sql = "INSERT INTO anualbudget (annualbudget_listname,anualbudget_amount,anualbudget_year) "
                     + "VALUES (?, ?, ?)";
             PreparedStatement state = connect.prepareStatement(sql);
             state.setString(1, anual.getListname());
