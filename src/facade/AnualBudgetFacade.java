@@ -54,7 +54,10 @@ public class AnualBudgetFacade {
      */
     public boolean update(String listName, int amount) {
         // TODO implement here
-        if(this.anualBudgetDAO.update(listName, amount)){
+        Calendar calendrier;
+        calendrier = Calendar.getInstance();
+        int anneeEnCours = calendrier.get(Calendar.YEAR);
+        if(this.anualBudgetDAO.update(listName, amount, String.valueOf(anneeEnCours))){
             return true;
         }
         return false;
@@ -91,7 +94,7 @@ public class AnualBudgetFacade {
         try{
             if (set.first()) {
                 amount = Integer.parseInt(set.getString("anualbudget_amount"));
-                this.anualBudget = new AnualBudget(amount, year, set.getString("annualbudget_listname"));
+                this.anualBudget = new AnualBudget(amount, year, set.getString("anualbudget_listname"));
             }
         }
         catch (SQLException e) {

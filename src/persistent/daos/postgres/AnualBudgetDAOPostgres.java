@@ -17,17 +17,27 @@ public class AnualBudgetDAOPostgres extends AnualBudgetDAO {
 
     @Override
     public boolean deleteByID(int id) {
-        return false;
+        String year = String.valueOf(id);
+        Connection connect = getConnection();
+        try {
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            int numberRowModified =  state.executeUpdate("DELETE FROM anualbudget WHERE anualbudget_year = '"+year+"'");
+            return numberRowModified == 1;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean insert(int amount, int year, String listName) {
         Connection connect = getConnection();
-        System.out.println("heoooo");
         try {
             connect.setAutoCommit(false);
             Statement state = connect.createStatement();
-            String sql = "insert into anualbudget(annualbudget_listname, anualbudget_amount, anualbudget_year)"
+            String sql = "insert into anualbudget(anualbudget_listname, anualbudget_amount, anualbudget_year)"
                     +"values ("+listName+", "+amount+", "+year+");";
             state.executeUpdate(sql);
             state.close();
@@ -46,27 +56,33 @@ public class AnualBudgetDAOPostgres extends AnualBudgetDAO {
 
         Connection connect = getConnection();
         try {
-            connect.setAutoCommit(false);
-            String sql = "INSERT INTO anualbudget (annualbudget_listname,anualbudget_amount,anualbudget_year) "
+            String sql = "INSERT INTO anualbudget (anualbudget_listname,anualbudget_amount,anualbudget_year) "
                     + "VALUES (?, ?, ?)";
             PreparedStatement state = connect.prepareStatement(sql);
             state.setString(1, anual.getListname());
             state.setInt(2, anual.getAmount());
             state.setInt(3, anual.getYear());
             state.executeUpdate();
-            connect.commit();
-            connect.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("hello");
             return false;
         }
         return true;
     }
 
     @Override
-    public boolean update(String id, int amount){
-        return false;
+    public boolean update(String id, int amount, String year){
+        Connection connect = getConnection();
+        try {
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            int numberRowModified =  state.executeUpdate("UPDATE anualbudget SET anualbudget_listname = '"+ id +"', anualbudget_amount = '"+amount +"' WHERE anualbudget_year = '"+ year +"' ");
+            return numberRowModified == 1;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

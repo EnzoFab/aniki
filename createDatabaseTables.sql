@@ -45,18 +45,6 @@ CREATE TABLE IF NOT EXISTS "role" (
 ;
 
 -- -----------------------------------------------------
--- Table "Budget"
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "budget" (
-  "budget_id" SERIAL UNIQUE,
-  "budget_amount" INT NULL,
-  "Anualbudget_anualbudget_id" INT NOT NULL,
-  "Team_team_id" INT NOT NULL,
-  PRIMARY KEY ("budget_id", "Anualbudget_anualbudget_id", "Team_team_id")
-  )
-;
-
--- -----------------------------------------------------
 -- Table "events"
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "event" (
@@ -66,11 +54,36 @@ CREATE TABLE IF NOT EXISTS "event" (
   "event_date_end" DATE NULL,
   "event_number_entrant" INT NULL,
   "team_name" VARCHAR(255) NOT NULL,
-  "budget_id" INT NULL,
   PRIMARY KEY ("event_id"),
-  FOREIGN KEY ("team_name") REFERENCES Team(team_name),
-  FOREIGN KEY ("budget_id") REFERENCES budget(budget_id)
+  FOREIGN KEY ("team_name") REFERENCES Team(team_name)
  );
+
+-- -----------------------------------------------------
+-- Table "Anualbudget"
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS "anualbudget" (
+  "anualbudget_listname" VARCHAR (10),
+  "anualbudget_amount" numeric NULL,
+  "anualbudget_year" VARCHAR(10) NULL,
+  PRIMARY KEY ("anualbudget_year"))
+;
+
+-- -----------------------------------------------------
+-- Table "Budget"
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS "budget" (
+  "budget_id" SERIAL,
+  "budget_amount" INT NULL,
+  "anualbudget_id" VARCHAR(10) NOT NULL,
+  "event_id" INT NULL,
+  "team_id" VARCHAR(255) NULL,
+  PRIMARY KEY ("budget_id"),
+  FOREIGN KEY ("anualbudget_id") REFERENCES anualbudget(anualbudget_year),
+  FOREIGN KEY ("event_id") REFERENCES event(event_id),
+  FOREIGN KEY ("team_id") REFERENCES team(team_name)
+  );
+
+
 
 -- -----------------------------------------------------
 -- Table "contact"
@@ -173,20 +186,6 @@ CREATE TABLE IF NOT EXISTS "paymentmethod" (
 
 
 -- -----------------------------------------------------
--- Table "Anualbudget"
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS "anualbudget" (
-  "annualbudget_listname" VARCHAR (10),
-  "anualbudget_amount" numeric NULL,
-  "anualbudget_year" VARCHAR(10) NULL,
-  PRIMARY KEY ("anualbudget_year"))
-;
-
-
-
-
-
--- -----------------------------------------------------
 -- Table "Transaction"
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS "transaction" (
@@ -216,8 +215,7 @@ INSERT INTO team VALUES ('Ski');
 
 INSERT INTO contact (contact_name, contact_first_name, contact_adress, contact_mail, contact_phone) VALUES ('James', 'TERRIEN', '18 rue Saint-Firmin', 'james@gmail.com', '0622151403');
 
-INSERT INTO anualbudget ("annualbudget_listname", anualbudget_amount, anualbudget_year) VALUES ('taber',10000, 2017);
-INSERT INTO budget (budget_id, budget_amount, "Anualbudget_anualbudget_id", "Team_team_id") VALUES (2,1500,1,2);
+INSERT INTO anualbudget ("anualbudget_listname", anualbudget_amount, anualbudget_year) VALUES ('taber',10000, 2017);
 INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,transaction_state,transaction_type) VALUES ('Campo',200,'2018-05-11',1,'debit');
 INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,transaction_state,transaction_type) VALUES ('Beach',200,'2018-05-18',1,'credit');
 INSERT INTO anikiuser ("user_mail","user_name","user_first_name","user_password","user_phone") VALUES('enzo.fabre@etu.umontpellier.fr','FABRE','Enzo','Djeums','0658145639');

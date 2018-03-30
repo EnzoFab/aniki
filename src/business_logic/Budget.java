@@ -12,22 +12,18 @@ public class Budget {
      */
     private int Amount;
 
-    private Team team;
-
-    private Event event;
+    private String event;
 
     private ArrayList transactions;
 
     /**
      * Default constructor
      * @param amount
-     * @param team
      */
 
-    public Budget(int amount, Team team, Event event) {
+    public Budget(int amount, String event) {
         Amount = amount;
         this.event = event;
-        this.team = team;
     }
 
     public int getAmount() {
@@ -38,12 +34,8 @@ public class Budget {
         Amount = amount;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
+    public String getEvent(){
+        return this.event;
     }
 
     public ArrayList getTransactions() {

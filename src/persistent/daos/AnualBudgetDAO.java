@@ -26,7 +26,7 @@ public abstract class AnualBudgetDAO extends DAO {
      */
     public abstract boolean insert(AnualBudget anual);
 
-    public abstract  boolean update(String id, int amount);
+    public abstract  boolean update(String id, int amount, String year);
 
     public abstract ResultSet getTransaction();
 

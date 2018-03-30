@@ -41,10 +41,18 @@ public class BudgetFacade {
      * @param amount
      * @return
      */
-    public boolean allocateNewBudget(int amount, String event) {
+    public boolean allocateNewBudget(int amount, String event){
         // TODO implement here
-
-        Budget b = null;
+        ResultSet set = eventDAO.selectEventWithNameWithoutBudget(event);
+        String eid = "";
+        try {
+            if(set.first()){
+                eid = set.getString("event_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Budget b = new Budget(amount, eid);
         boolean state = this.budgetDAO.insert(b);
         if (state) {
             this.listBudget.add(b);
@@ -88,7 +96,7 @@ public class BudgetFacade {
     }
 
     public ArrayList<String> getEventLeft() throws SQLException {
-        ResultSet event = eventDAO.getEventWithoutBudget();
+        ResultSet event = eventDAO.getEventsWithoutBudget();
         ArrayList<String> eventName = new ArrayList<>();
         while(event.next()){
             eventName.add(event.getString("event_label"));
