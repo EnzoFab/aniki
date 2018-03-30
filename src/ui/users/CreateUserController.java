@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import ui.Main;
+import ui.ViewBridge;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 import static ui.Main.fadeEffect;
 import static ui.Main.showAlert;
 
-public class CreateUserController implements Initializable{
+public class CreateUserController implements Initializable, ViewBridge {
 
 
 
@@ -77,8 +78,7 @@ public class CreateUserController implements Initializable{
 
     public void setData(FacadeManager facadeManager){
         this.facadeManager = facadeManager;
-        this.facadeManager.createUserFacade();
-        userFacade = this.facadeManager.getUserFacade();
+        userFacade =this.facadeManager.createUserFacade();
     }
 
     /**

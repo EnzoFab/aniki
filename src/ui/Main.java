@@ -1,6 +1,5 @@
 package ui;
 
-import facade.EventFacade;
 import facade.ExpenseFacade;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
@@ -18,7 +17,6 @@ import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Date;
 
 public class Main extends Application {
 
@@ -97,7 +95,9 @@ public class Main extends Application {
 
 
     public static void main(String[] args) throws SQLException {
-
         launch(args);
+
+        //c.deleteLink(0, "Beach");
+
     }
 }

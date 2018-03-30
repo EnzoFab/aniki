@@ -81,9 +81,16 @@ public class FacadeManager {
         this.connectedUser = user;
     }
 
-    public void createUserFacade(){
+    public UserFacade createUserFacade(){
         if(userFacade == null)
             userFacade = new UserFacade(connectedUser);
+        return userFacade;
+    }
+
+    public InventoryFacade createInventoryFacade(){
+        if(inventoryFacade == null)
+            inventoryFacade = new InventoryFacade(connectedUser);
+        return inventoryFacade;
     }
 
 
@@ -107,13 +114,6 @@ public class FacadeManager {
         this.toDoListFacade = toDoListFacade;
     }
 
-    public InventoryFacade getInventoryFacade() {
-        return inventoryFacade;
-    }
-
-    public void setInventoryFacade(InventoryFacade inventoryFacade) {
-        this.inventoryFacade = inventoryFacade;
-    }
 
     public StoryMadeFacade getStoryMadeFacade() {
         return storyMadeFacade;
@@ -171,13 +171,7 @@ public class FacadeManager {
         this.contactFacade = contactFacade;
     }
 
-    public UserFacade getUserFacade() {
-        return userFacade;
-    }
 
-    public void setUserFacade(UserFacade userFacade) {
-        this.userFacade = userFacade;
-    }
 
     public LightUser getLightUser(){
         return this.connectedUser;

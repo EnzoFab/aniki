@@ -41,8 +41,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Inventory">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#LinkInventoryVueGlobal" text="Vue Global" fx:id="InventoryVueGlobalButton" />
-            <MenuItem mnemonicParsing="false" onAction="#LinkAddArticleVueGlobal" text="Ajouter Article" fx:id="addArticleButton" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkInventoryVueGlobal" text="Show articles" fx:id="InventoryVueGlobalButton" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Contacts">

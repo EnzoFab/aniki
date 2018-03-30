@@ -21,13 +21,13 @@ public abstract class ContactDAO extends  DAO {
     /**
      * @return
      */
-    public abstract boolean insertLink(int idE, int idC);
+    public abstract boolean insertLink(int idC, String team_name);
 
     /**
      * @param
      * @return
      */
-    public abstract boolean deleteLink(int idE, int idC);
+    public abstract boolean deleteLink(int idC, String team_name);
 
     public abstract boolean delete(int idC);
 

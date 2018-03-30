@@ -110,8 +110,7 @@ public class EventFacade {
      * @return
      */
     public boolean addLink(int idE, int idC) {
-        boolean state = this.contactDao.insertLink(idE, idC);
-        return state;
+        return false;
     }
 
     /**
@@ -119,7 +118,7 @@ public class EventFacade {
      * @param idC 
      * @return
      */
-    public boolean deleteLink(int idE, int idC) {
+    public boolean deleteLink(int idE, String idC) {
         this.contactDao.deleteLink(idE, idC);
         return false;
     }
