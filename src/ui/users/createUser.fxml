@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane  prefHeight="743.0" prefWidth="762.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.users.CreateUserController">
+<AnchorPane prefHeight="743.0" prefWidth="762.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.users.CreateUserController">
   <children>
     <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" prefHeight="743.0" prefWidth="762.0" />
     <Button layoutX="324.0" layoutY="676.0" mnemonicParsing="false" onMousePressed="#createUserClick" prefHeight="34.0" prefWidth="98.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="Create" textFill="#ffcc00">
@@ -17,7 +17,7 @@
       </font>
     </Button>
     <TextField id="" fx:id="mailTF" layoutX="109.0" layoutY="289.0" prefWidth="522.0" />
-    <Label layoutX="309.0" layoutY="260.0" text="Mail" />
+    <Label layoutX="309.0" layoutY="260.0" text="Mail" textFill="WHITE" />
     <Pane fx:id="errorPane" layoutX="88.0" layoutY="114.0" prefHeight="68.0" prefWidth="578.0" style="-fx-background-color:#ff9980;&#10;-fx-border-color:red;&#10;-fx-border-width:3px;">
       <children>
         <Label layoutX="48.0" layoutY="7.0" text="Error:" textFill="#cc3100" underline="true">
@@ -33,7 +33,7 @@
         </ImageView>
       </children>
     </Pane>
-    <Label layoutX="234.0" layoutY="194.0" style="-fx-underline: true;" text="Create a new member">
+    <Label layoutX="234.0" layoutY="194.0" style="-fx-underline: true;" text="Create a new member" textFill="WHITE">
       <font>
         <Font name="System Bold" size="25.0" />
       </font>
@@ -43,10 +43,10 @@
     <TextField fx:id="firstNameTF" layoutY="353.0" prefWidth="200.0" AnchorPane.leftAnchor="109.5" AnchorPane.rightAnchor="130.5" />
     <TextField fx:id="nameTF" layoutY="410.0" prefWidth="200.0" AnchorPane.leftAnchor="109.5" AnchorPane.rightAnchor="130.5" />
     <TextField fx:id="phoneTF" layoutY="471.0" prefWidth="200.0" AnchorPane.leftAnchor="109.5" AnchorPane.rightAnchor="130.5" />
-    <Label layoutX="314.0" layoutY="333.0" text="First Name" />
-    <Label layoutX="313.0" layoutY="390.0" text="Name" />
-    <Label layoutX="314.0" layoutY="451.0" text="Phone" />
-    <Label layoutX="313.0" layoutY="528.0" text="Password" />
-    <Label layoutX="314.0" layoutY="598.0" text="Valide Password" />
+    <Label layoutX="314.0" layoutY="333.0" text="First Name" textFill="WHITE" />
+    <Label layoutX="313.0" layoutY="390.0" text="Name" textFill="WHITE" />
+    <Label layoutX="314.0" layoutY="451.0" text="Phone" textFill="WHITE" />
+    <Label layoutX="313.0" layoutY="528.0" text="Password" textFill="WHITE" />
+    <Label layoutX="314.0" layoutY="598.0" text="Valide Password" textFill="WHITE" />
   </children>
 </AnchorPane>

@@ -2,6 +2,7 @@ package ui.users;
 
 import facade.FacadeManager;
 import facade.UserFacade;
+import helpers.MailSender;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import logs.ConnectionLog;
 import ui.Main;
 import ui.ViewBridge;
 
@@ -50,9 +52,21 @@ public class CreateUserController implements Initializable, ViewBridge {
         if(!emptyField()){
             if(pwdTF1.getText().equals(pwdTF2.getText())){
                 if(userFacade.create(mailTF.getText(), firstNameTF.getText(), nameTF.getText(),
-                        pwdTF1.getText(), phoneTF.getText()))
+                        pwdTF1.getText(), phoneTF.getText())){
                     showAlert("User Create", firstNameTF.getText()+ " had successfully created",
                             Alert.AlertType.INFORMATION);
+                    String creatorName = facadeManager.getLightUser().getName();
+                    String creatorFirstName = facadeManager.getLightUser().getFirstName();
+                    if(MailSender.sendHtmlMail(mailTF.getText(), ConnectionLog.getUserNameGoogle(),"New Account",
+                            "Hey <b>"+ firstNameTF.getText()+
+                                    "</b> welcome to Aniki the student union's best friends </br> " +
+                                    "your account was created by "+creatorFirstName + " "+creatorName+" </br>" +
+                                    "Look forward to see you soon on the app"))
+                        clearField();
+                    else{
+                        displayError("Coud'nt send your confirmation mail but don't worry you account is created");
+                    }
+                }
                 else
                     displayError("An error has occured");
             }else{
@@ -93,5 +107,15 @@ public class CreateUserController implements Initializable, ViewBridge {
         this.facadeManager = fm;
         userFacade =this.facadeManager.createUserFacade();
 
+    }
+
+
+    private void clearField(){
+        mailTF.setText("");
+        firstNameTF.setText("");
+        nameTF.setText("");
+        phoneTF.setText("");
+        pwdTF1.setText("");
+        pwdTF2.setText("");
     }
 }

@@ -13,36 +13,55 @@
 
 <AnchorPane prefHeight="618.0" prefWidth="744.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.treasury.AnnualBudgetManagementController">
   <children>
-    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" prefHeight="618.0" prefWidth="744.0" />
-    <Button fx:id="addButtonAnualBudget" layoutX="591.0" layoutY="550.0" mnemonicParsing="false" onAction="#addActionAnualBudget" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;" text="Ajouter">
-      <font>
-        <Font name="System Bold" size="15.0" fx:id="x1" />
-      </font>
-      <textFill>
-        <Color blue="0.000" green="0.800" red="1.000" fx:id="x2" />
-      </textFill>
-    </Button>
-    <Button fx:id="deleteButton" font="$x1" layoutX="99.0" layoutY="557.0" mnemonicParsing="false" onAction="#deleteAction" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;" text="Supprimer" textFill="$x2" />
-    <ComboBox fx:id="comboBoxAnualBudget" layoutX="246.0" layoutY="127.0" onAction="#onSelectedYear" prefWidth="221.0" style="">
-      <items>
-        <FXCollections fx:factory="observableArrayList">
-          <String fx:value="Item 1" />
-          <String fx:value="Item 2" />
-          <String fx:value="Item 3" />
-        </FXCollections>
-      </items>
-    </ComboBox>
+    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" prefHeight="618.0" prefWidth="744.0">
+      <children>
+        <Label layoutX="189.0" layoutY="157.0" text="Year:" textFill="WHITE">
+          <font>
+            <Font name="System Bold" size="18.0" />
+          </font>
+        </Label>
+        <ComboBox fx:id="comboBoxAnualBudget" blendMode="SOFT_LIGHT" layoutX="249.0" layoutY="154.0" minHeight="24.0" onAction="#onSelectedYear" prefHeight="27.0" prefWidth="276.0" promptText="selected the year" style="">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <Label layoutX="297.0" layoutY="106.0" text="Budgets" textFill="WHITE">
+          <font>
+            <Font name="System Bold" size="25.0" />
+          </font>
+        </Label>
+        <Button fx:id="deleteButton" layoutX="168.0" layoutY="551.0" mnemonicParsing="false" onAction="#deleteAction" prefWidth="154.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;" text="Supprimer">
+          <font>
+            <Font name="System Bold" size="15.0" fx:id="x1" />
+          </font>
+          <textFill>
+            <Color blue="0.000" green="0.800" red="1.000" fx:id="x2" />
+          </textFill>
+          <tooltip>
+            <Tooltip text="Select a year and delete it" />
+          </tooltip>
+        </Button>
+        <Button fx:id="addButtonAnualBudget" font="$x1" layoutX="394.0" layoutY="551.0" mnemonicParsing="false" onAction="#addActionAnualBudget" prefWidth="162.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;" text="Ajouter" textFill="$x2" />
+      </children>
+    </fx:include>
     <Pane layoutX="71.0" layoutY="179.0" prefHeight="356.0" prefWidth="618.0">
       <children>
-        <Label fx:id="labelAmount" layoutX="106.0" layoutY="50.0" text="Label" />
-        <Label layoutX="14.0" layoutY="22.0" text="List Name :" />
-        <Label layoutX="14.0" layoutY="50.0" text="Amont :" />
-        <Label fx:id="labelListName" layoutX="106.0" layoutY="22.0" text="Label" />
-        <ListView layoutX="28.0" layoutY="101.0" prefHeight="231.0" prefWidth="564.0" />
-        <Label layoutX="14.0" layoutY="78.0" text="Budgets" />
-        <Label layoutX="373.0" layoutY="47.0" text="Amount left" />
-        <Label fx:id="labelAmountLeft" layoutX="481.0" layoutY="47.0" text="Label" />
-        <Button fx:id="updateButton" font="$x1" layoutX="526.0" layoutY="18.0" mnemonicParsing="false" onAction="#updateAction" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;" text="Modifier" textFill="$x2" />
+        <Label fx:id="labelAmount" layoutX="125.0" layoutY="56.0" text="Label" textFill="WHITE">
+          <font>
+            <Font name="System Italic" size="15.0" fx:id="x3" />
+          </font>
+        </Label>
+        <Label font="$x1" layoutX="7.0" layoutY="38.0" text="List Name :" textFill="WHITE" />
+        <Label font="$x1" layoutX="7.0" layoutY="60.0" text="Amont :" textFill="WHITE" />
+        <Label fx:id="labelListName" font="$x3" layoutX="125.0" layoutY="35.0" text="Label" textFill="WHITE" />
+        <ListView blendMode="SOFT_LIGHT" layoutX="0.0" layoutY="101.0" prefHeight="241.00019999999495" prefWidth="618.0" />
+        <Label font="$x1" layoutX="7.0" layoutY="80.0" text="Amount left:" textFill="WHITE" />
+        <Label fx:id="labelAmountLeft" font="$x3" layoutX="125.0" layoutY="80.0" text="Label" textFill="WHITE" />
+        <Button fx:id="updateButton" font="$x1" layoutX="500.0" layoutY="62.0" mnemonicParsing="false" onAction="#updateAction" prefWidth="97.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;" text="Modifier" textFill="$x2" />
       </children>
     </Pane>
   </children>

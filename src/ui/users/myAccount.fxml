@@ -22,11 +22,11 @@
     <TextField fx:id="firstNameTF" layoutX="21.0" layoutY="159.0" opacity="0.9" prefHeight="26.951171875" prefWidth="385.0" style="-fx-text-fill: grey;" />
     <TextField fx:id="nameTF" layoutX="20.0" layoutY="217.0" opacity="0.9" prefHeight="26.951171875" prefWidth="385.0" style="-fx-text-fill: grey;" />
     <TextField fx:id="phoneTF" layoutX="20.0" layoutY="274.0" opacity="0.9" prefHeight="26.951171875" prefWidth="385.0" style="-fx-text-fill: grey" />
-    <Label layoutX="20.0" layoutY="197.0" text="Name" />
-    <Label layoutX="21.0" layoutY="139.0" text="firstName" />
-    <Label layoutX="19.0" layoutY="254.0" text="Phone" />
+    <Label layoutX="20.0" layoutY="197.0" text="Name" textFill="WHITE" />
+    <Label layoutX="21.0" layoutY="139.0" text="firstName" textFill="WHITE" />
+    <Label layoutX="19.0" layoutY="254.0" text="Phone" textFill="WHITE" />
     <Label fx:id="mailLabel" font="$x1" layoutX="58.0" layoutY="106.0" text="mail" />
-    <Label layoutX="14.0" layoutY="355.0" text="Change password" />
+    <Label font="$x1" layoutX="14.0" layoutY="355.0" text="Change password" textFill="WHITE" />
     <Separator layoutY="344.0" prefWidth="701.0000999999975" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="47.0" />
     <Label fx:id="roleLabel" font="$x1" layoutX="505.0" layoutY="106.0" text="name" />
     <Pane fx:id="changePwdPane" layoutX="14.0" layoutY="375.0" prefHeight="249.0" prefWidth="713.0" style="-fx-border-color:blue;&#10;-fx-border-width:3px;">
@@ -35,9 +35,9 @@
         <PasswordField fx:id="oldPwdTextField" layoutX="14.0" layoutY="42.0" prefHeight="26.951171875" prefWidth="445.0" />
         <PasswordField fx:id="newPwdTextField1" layoutX="14.0" layoutY="137.0" prefHeight="26.951171875" prefWidth="445.0" />
         <PasswordField fx:id="newPwdTextField2" layoutX="14.0" layoutY="201.0" prefHeight="27.000022070315026" prefWidth="445.0" />
-        <Label labelFor="$changePwdPane" layoutX="14.0" layoutY="22.0" text="old password" />
-        <Label layoutX="14.0" layoutY="110.0" text="new password" />
-        <Label layoutX="14.0" layoutY="174.0" text="retype it:" />
+        <Label labelFor="$changePwdPane" layoutX="14.0" layoutY="22.0" text="old password" textFill="WHITE" />
+        <Label layoutX="14.0" layoutY="110.0" text="new password" textFill="WHITE" />
+        <Label layoutX="14.0" layoutY="174.0" text="retype it:" textFill="WHITE" />
         <Separator layoutX="19.0" layoutY="103.0" prefHeight="6.0" prefWidth="618.0" />
       </children>
     </Pane>

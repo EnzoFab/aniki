@@ -37,11 +37,14 @@ public class InventoryManagementController implements Initializable, ViewBridge 
         showDialogAddArticle();
     }
 
+    @FXML private void addNewType(MouseEvent mouseEvent) {
+        showAddTypeDialog();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         articleData = FXCollections.observableArrayList();
     }
-
 
 
     private void init(){
@@ -154,9 +157,7 @@ public class InventoryManagementController implements Initializable, ViewBridge 
 
 
 
-    @FXML private void addNewType(MouseEvent mouseEvent) {
-        showAddTypeDialog();
-    }
+
 
     @Override
     public void setData(FacadeManager fm, String... p) {

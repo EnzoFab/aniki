@@ -34,8 +34,8 @@ public class UserFacade {
      */
     public boolean create(String mail, String fn, String name, String pwd, String phone) {
         User user = new User(mail,name,fn,pwd, phone);
-        if(dao.insert(user)) return false;
-        else return false;
+       return dao.insert(user);
+
     }
 
     /**
@@ -84,6 +84,10 @@ public class UserFacade {
 
     public boolean checkPwd(String pwd){
         return connectedUser.getPassword().equals(pwd) ;
+    }
+
+    public LightUser getLightUser(){
+        return this.connectedUser;
     }
 
 }
