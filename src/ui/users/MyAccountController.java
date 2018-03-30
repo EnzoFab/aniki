@@ -94,14 +94,6 @@ public class MyAccountController implements Initializable, ViewBridge {
 
 
 
-    public void setData(FacadeManager facadeManager){
-        this.facadeManager = facadeManager;
-        this.user =facadeManager.getLightUser();
-        this.userFacade = this.facadeManager.createUserFacade();
-
-        this.init();
-    }
-
 
     /**
      * initializate all components of the frame
@@ -133,6 +125,12 @@ public class MyAccountController implements Initializable, ViewBridge {
     }
 
 
+    @Override
+    public void setData(FacadeManager fm, String... p) {
+        this.facadeManager = fm;
+        this.user =facadeManager.getLightUser();
+        this.userFacade = this.facadeManager.createUserFacade();
 
-
+        this.init();
+    }
 }

@@ -1,31 +1,16 @@
 package ui;
 
 import facade.FacadeManager;
-import facade.LoginFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import persistent.ConnectionDB;
-import ui.Main;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import ui.users.CreateUserController;
-import ui.users.MyAccountController;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import static ui.Main.changeScene;
 
@@ -47,47 +32,46 @@ public class DashboardController implements Initializable, ViewBridge{
     }
 
     @FXML private void LinkTeamsVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"teams/teamsManagement.fxml","teams");
+        //Main.changeScene(getClass(),"teams/teamsManagement.fxml","teams");
+        performBridge("/ui/teams/teamsManagement.fxml","teams");
 
     }
-    @FXML private void LinkAddTeamVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"teams/addTeam.fxml","AddTeam");
 
-    }
     @FXML private void LinkContactVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"contact/contactManagement.fxml","Contacts");
+        //Main.changeScene(getClass(),"contact/contactManagement.fxml","Contacts");
+        performBridge("/ui/contact/contactManagement.fxml","Contacts");
 
     }
     @FXML private void LinkAddContactVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"contact/addContact.fxml","AddContact");
+        //Main.changeScene(getClass(),"contact/addContact.fxml","AddContact");
+        performBridge("/ui/contact/addContact.fxml","Add contact");
 
     }
 
     @FXML private void LinkEventsVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"events/eventsManagement.fxml","Events");
-
-    }
-    @FXML private void LinkAddEventVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"events/addEvent.fxml","AddEventController");
+        performBridge("/ui/events/eventsManagement.fxml","Events");
 
     }
 
     @FXML private void LinkTransactionVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"treasury/transactionManagement.fxml","Transactions");
+        //Main.changeScene(getClass(),"treasury/transactionManagement.fxml","Transactions");
+        this.performBridge("/ui/treasury/transactionManagement.fxml","Transactions");
 
     }
     @FXML private void LinkBudgetVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"treasury/budgetManagement.fxml","Budget");
+        //Main.changeScene(getClass(),"treasury/budgetManagement.fxml","Budget");
+        performBridge("/ui/treasury/budgetManagement.fxml","Budget");
 
     }
 
     @FXML private void LinkAnnualBudgetVueGlobal(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"treasury/annualBudgetManagement.fxml","AnnualBudget");
+        //Main.changeScene(getClass(),"treasury/annualBudgetManagement.fxml","AnnualBudget");
+        performBridge("/ui/treasury/annualBudgetManagement.fxml","AnnualBudget");
 
     }
 
     @FXML private void LinkInventoryVueGlobal(ActionEvent actionEvent) throws IOException {
-        preformBridge("/ui/inventory/inventoryManagement.fxml","Inventory");
+        performBridge("/ui/inventory/inventoryManagement.fxml","Inventory");
 
     }
 
@@ -95,23 +79,26 @@ public class DashboardController implements Initializable, ViewBridge{
 
     @FXML private void linkToUserManagement(ActionEvent actionEvent) {
         //System.out.println("manager null ? " +(facadeManager == null));
-        preformBridge("/ui/users/myAccount.fxml","My Account");
+        performBridge("/ui/users/myAccount.fxml","My Account");
 
     }
 
     @FXML private void linkToCreateUser(ActionEvent actionEvent) {
-        preformBridge("/ui/users/createUser.fxml","Create member");
+        performBridge("/ui/users/createUser.fxml","Create member");
+    }
 
+    @FXML private void logoff(ActionEvent actionEvent) throws IOException {
+        facadeManager = null; // reset facade manager
+        changeScene(getClass(),"users/login.fxml","login");
     }
 
 
-
     /**
-     * Move to the destination
+     * Perform bridge meanse that the scene is changed and we passe data to a ViewBridge
      * @param destination
      * @param title
      */
-    private void preformBridge(String destination, String title){
+    private void performBridge(String destination, String title){
         FXMLLoader loader = new FXMLLoader(getClass().getResource(destination));
         Parent root ;
         try {
@@ -126,16 +113,14 @@ public class DashboardController implements Initializable, ViewBridge{
     }
 
 
-    /**
-     * get Data from previous stage
-     * @param fm
-     */
-    public void setData(FacadeManager fm){
+
+
+    @Override
+    public void setData(FacadeManager fm, String... p) {
         if(facadeManager == null)
             facadeManager = fm;
+
     }
-
-
 
 
 }

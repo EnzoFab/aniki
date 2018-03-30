@@ -3,6 +3,7 @@ package ui.treasury;
 import business_logic.Transaction;
 import facade.AnualBudgetFacade;
 import facade.ExpenseFacade;
+import facade.FacadeManager;
 import facade.LoginFacade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,8 +25,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.TextField;
+import ui.ViewBridge;
 
-public class TransactionManagementController implements Initializable {
+public class TransactionManagementController implements Initializable, ViewBridge {
 
 
     private ExpenseFacade expenseFacade;
@@ -43,10 +45,27 @@ public class TransactionManagementController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
+
+    }
+
+    @FXML private void LinkAddTransaction(ActionEvent actionEvent) throws IOException {
+        Main.changeScene(getClass(),"addTransaction.fxml","AddTransaction");
+
+    }
+
+
+    @Override
+    public void setData(FacadeManager fm, String... p) {
+        expenseFacade = fm.createExpenseFacade();
+        init();
+    }
+
+
+    private void init(){
         this.total=0;
         this.totalCredit=0;
         this.totalDebit=0;
-        expenseFacade = new ExpenseFacade();
+
         ArrayList<Transaction> transactions = null;
         transactions = expenseFacade.getTransactionsList();
         ObservableList<String> data = FXCollections.observableArrayList();
@@ -89,11 +108,4 @@ public class TransactionManagementController implements Initializable {
 
 
     }
-
-    @FXML private void LinkAddTransaction(ActionEvent actionEvent) throws IOException {
-        Main.changeScene(getClass(),"addTransaction.fxml","AddTransaction");
-
-    }
-
-
 }

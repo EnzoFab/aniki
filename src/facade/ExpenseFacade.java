@@ -2,6 +2,7 @@ package facade;
 
 import business_logic.Budget;
 import business_logic.Transaction;
+import business_logic.User;
 import persistent.daos.PaymentMethodDAO;
 import persistent.daos.TransactionDAO;
 import persistent.factories.DaoFactory;
@@ -22,14 +23,15 @@ public class ExpenseFacade {
     private PaymentMethodDAO paymentmethodDao;
     private ArrayList<Transaction> transactionsList;
     private ArrayList<String> paymentMethodsList;
+    private final User connectUser;
 
-    private final DaoFactory factory;
-    private FacadeManager facadeManager;
+
     /**
      * Default constructor
      */
-    public ExpenseFacade() {
-        factory = DaoPostgresFactory.getInstance();
+    public ExpenseFacade(User user) {
+        this.connectUser = user;
+        DaoFactory factory = DaoPostgresFactory.getInstance();
         this.transactionDao = factory.createTransactionDAO();
         this.paymentmethodDao = factory.createPaymentMethodDAO();
 

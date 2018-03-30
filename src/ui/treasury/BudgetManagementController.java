@@ -1,6 +1,7 @@
 package ui.treasury;
 
 import facade.BudgetFacade;
+import facade.FacadeManager;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,12 +11,13 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
+import ui.ViewBridge;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class BudgetManagementController  implements Initializable{
+public class BudgetManagementController  implements Initializable, ViewBridge{
     public ComboBox comboBoxSelectEventAdd;
     public TextField textFieldAmount;
     public BudgetFacade budgetFacade;
@@ -24,7 +26,7 @@ public class BudgetManagementController  implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        budgetFacade = new BudgetFacade();
+
     }
 
     public void onActionAdd(ActionEvent actionEvent) {
@@ -104,5 +106,10 @@ public class BudgetManagementController  implements Initializable{
         dialog.showAndWait();
 
 
+    }
+
+    @Override
+    public void setData(FacadeManager fm, String... p) {
+        budgetFacade = fm.createBudgetFacade();
     }
 }

@@ -42,11 +42,7 @@ public class InventoryManagementController implements Initializable, ViewBridge 
         articleData = FXCollections.observableArrayList();
     }
 
-    @Override
-    public void setData(FacadeManager fm) {
-        facade= fm.createInventoryFacade();
-        init();
-    }
+
 
     private void init(){
         for (Article a :facade.getArticlesList() ){
@@ -140,7 +136,7 @@ public class InventoryManagementController implements Initializable, ViewBridge 
     }
 
     private void showAddTypeDialog(){
-        TextInputDialog dialog = new TextInputDialog("Type");
+        TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Create Type");
         dialog.setHeaderText("Please fill the field");
         dialog.setContentText("Add your new Type");
@@ -148,7 +144,8 @@ public class InventoryManagementController implements Initializable, ViewBridge 
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()){
-            facade.createType(result.get());
+            if(!result.get().isEmpty() )
+                facade.createType(result.get());
         }
 
 
@@ -159,5 +156,11 @@ public class InventoryManagementController implements Initializable, ViewBridge 
 
     @FXML private void addNewType(MouseEvent mouseEvent) {
         showAddTypeDialog();
+    }
+
+    @Override
+    public void setData(FacadeManager fm, String... p) {
+        facade= fm.createInventoryFacade();
+        init();
     }
 }

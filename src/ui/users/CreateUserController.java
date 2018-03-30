@@ -36,9 +36,6 @@ public class CreateUserController implements Initializable, ViewBridge {
     @FXML private PasswordField pwdTF2;
 
 
-
-
-
     @FXML private Label errorLabel;
     @FXML private Pane errorPane;
 
@@ -67,19 +64,7 @@ public class CreateUserController implements Initializable, ViewBridge {
         }
     }
 
-   /* @FXML private void keyPressPane(KeyEvent keyEvent) {
-        hideError();
-    }
 
-    @FXML private void clickOnPane(MouseEvent mouseEvent) {
-        hideError();
-    }*/
-
-
-    public void setData(FacadeManager facadeManager){
-        this.facadeManager = facadeManager;
-        userFacade =this.facadeManager.createUserFacade();
-    }
 
     /**
      * return true if at least one field is empty
@@ -103,4 +88,10 @@ public class CreateUserController implements Initializable, ViewBridge {
     }
 
 
+    @Override
+    public void setData(FacadeManager fm, String... p) {
+        this.facadeManager = fm;
+        userFacade =this.facadeManager.createUserFacade();
+
+    }
 }

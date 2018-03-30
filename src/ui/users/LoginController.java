@@ -92,11 +92,6 @@ public class LoginController implements Initializable {
 
     }
 
-    /*@FXML private void hyperlinkClickQuickAcces(MouseEvent mouseEvent) throws IOException {
-       //Main.changeScene(getClass(),"../general/home.fxml","home");
-       Main.changeScene(getClass(),"../dashboard.fxml","home");
-    }*/
-
     @FXML private void hyperlinkMouseEntered(MouseEvent mouseEvent) {
         forgotPwd.setStyle("-fx-text-fill: #d6d6f5; -fx-text-fill:"+BUTTON_DEFAULT_TXT_COLOR);
     }
@@ -262,7 +257,4 @@ public class LoginController implements Initializable {
 
     }
 
-    public void hyperlinkClickQuickAcces(MouseEvent mouseEvent) throws IOException {
-        Main.changeScene(getClass(),"/ui/dashboard.fxml","home");
-    }
 }

@@ -1,5 +1,7 @@
 package facade;
 
+import business_logic.User;
+
 import java.util.*;
 
 /**
@@ -7,10 +9,12 @@ import java.util.*;
  */
 public class AllTeamFacade {
 
+    private User connectedUser;
     /**
      * Default constructor
      */
-    public AllTeamFacade() {
+    public AllTeamFacade(User user) {
+        this.connectedUser = user ;
     }
 
 

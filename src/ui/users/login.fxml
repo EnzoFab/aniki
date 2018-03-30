@@ -58,6 +58,5 @@
         <Image url="@../../media/img/red_cross.png" />
       </image>
     </ImageView>
-    <Hyperlink id="forgotPwd" fx:id="hyperlinkQuickAcces" alignment="CENTER" font="$x1" layoutX="194.0" layoutY="306.0" onMouseClicked="#hyperlinkClickQuickAcces" opacity="0.64" prefWidth="167.0" text="Accès Dashboard" textAlignment="CENTER" textFill="$x3" textOverrun="ELLIPSIS" underline="true" />
   </children>
 </AnchorPane>

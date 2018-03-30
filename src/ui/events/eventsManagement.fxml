@@ -9,15 +9,17 @@
 
 <AnchorPane prefHeight="452.0" prefWidth="684.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.events.EventsManagementController">
   <children>
-    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0">
-      <children>
-        <ListView fx:id="listEvents" layoutX="14.0" layoutY="138.0" prefHeight="409.0" prefWidth="690.0" />
-        <Label layoutX="275.0" layoutY="107.0" text="Liste des évènements" textFill="WHITE">
-          <font>
-            <Font name="System Bold" size="17.0" />
-          </font>
-        </Label>
-      </children>
-    </fx:include>
+    <fx:include source="../dashboard.fxml" layoutX="0.0" layoutY="0.0" />
+    <ListView fx:id="listEvents" blendMode="SOFT_LIGHT" layoutX="14.0" layoutY="138.0" prefHeight="350.0" prefWidth="690.0" />
+    <Label layoutX="306.0" layoutY="107.0" text="Event list" textFill="WHITE">
+      <font>
+        <Font name="System Bold" size="17.0" />
+      </font>
+    </Label>
+    <Button layoutX="288.0" layoutY="507.0" mnemonicParsing="false" onMousePressed="#addNewEventClick" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="add new Event" textFill="#ffcc00">
+      <font>
+        <Font name="System Bold" size="15.0" />
+      </font>
+    </Button>
   </children>
 </AnchorPane>

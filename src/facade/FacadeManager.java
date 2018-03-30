@@ -93,6 +93,41 @@ public class FacadeManager {
         return inventoryFacade;
     }
 
+    public EventFacade createEventFacade(String team){
+        if(this.eventFacade == null){
+            eventFacade = new EventFacade(team,connectedUser);
+        }
+        return this.eventFacade;
+    }
+
+    public EventFacade createEventFacade(){
+        if(this.eventFacade == null){
+            eventFacade = new EventFacade(connectedUser);
+        }
+        return this.eventFacade;
+    }
+
+    public ExpenseFacade createExpenseFacade(){
+        if(this.expenseFacade == null){
+            expenseFacade = new ExpenseFacade(connectedUser);
+        }
+        return this.expenseFacade;
+    }
+
+    public ContactFacade createContactFacade(){
+        if(this.contactFacade == null)
+            this.contactFacade = new ContactFacade(connectedUser);
+        return contactFacade;
+    }
+
+    public AllTeamFacade createAllTeamFacade(){
+        if(allTeamFacade == null)
+            allTeamFacade = new AllTeamFacade(connectedUser);
+        return allTeamFacade;
+    }
+
+
+
 
     public void setConnectedUser(User connectedUser) {
         this.connectedUser = connectedUser;
@@ -177,4 +212,15 @@ public class FacadeManager {
         return this.connectedUser;
     }
 
+    public AnualBudgetFacade createAnualBudgetFacade() {
+        if(anualBudgetFacade == null)
+            anualBudgetFacade = new AnualBudgetFacade();
+        return anualBudgetFacade;
+    }
+
+    public BudgetFacade createBudgetFacade() {
+        if(budgetFacade == null)
+            budgetFacade =  new BudgetFacade();
+        return budgetFacade;
+    }
 }

@@ -64,6 +64,7 @@ public class InventoryFacade {
     }
 
     /**
+     * idT is the index of the event in the arrayList
      * @param idA
      * @return
      */

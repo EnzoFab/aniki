@@ -2,6 +2,7 @@ package facade;
 
 import business_logic.Event;
 import business_logic.Team;
+import business_logic.User;
 import persistent.daos.ContactDAO;
 import persistent.daos.EventDAO;
 import persistent.factories.DaoFactory;
@@ -20,29 +21,54 @@ public class EventFacade {
     /**
      * attributes
      */
+    private User connectedUser;
     private Team team;
     private EventDAO eventDao;
     private ContactDAO contactDao;
     private ArrayList<Event> eventList;
+    private ArrayList<Team> teamList;
 
-    private final DaoFactory factory;
-    private FacadeManager facadeManager;
+
 
     /**
      * Default constructor
      */
-    public EventFacade(String team_name) {
-        factory = DaoPostgresFactory.getInstance();
+    public EventFacade(String team_name, User user) {
+        this.team = new Team(team_name);
+        init(user);
+
+    }
+
+    public EventFacade(User user){
+        init(user);
+    }
+
+    /**
+     * Change the team name
+     * @param team
+     */
+    public void setTeam(String team){
+        this.team = new Team(team);
+    }
+
+
+    private void init(User user){
+        connectedUser = user;
+
+        DaoFactory factory = DaoPostgresFactory.getInstance();
         this.eventDao = factory.createEventDAO();
         this.contactDao = factory.createContactDAO();
         this.eventList = new ArrayList<>();
-        this.team = new Team(team_name);
+        this.teamList = new ArrayList<>();
+
         try {
-            this.getAllEvents();
+            this.loadEvent();
+            this.loadTeam();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     /**
      * @param label
@@ -51,17 +77,17 @@ public class EventFacade {
      * @param number_entrant
      * @return
      */
-    public boolean addEvent(String label, Date date_start,Date date_end, int number_entrant) throws SQLException {
+    public Event addEvent(String label, Date date_start,Date date_end, int number_entrant, String team) throws SQLException {
         Event event = new Event(label, date_start, date_end, number_entrant);
-        boolean state = this.eventDao.insert(event, this.team.getName());
 
-        if (state) {
+        if (this.eventDao.insert(event, team)) {
             // If the insert is ok, we get the id given by the database and add it to the java object before inserted it in the arrayList
             int idE = (int) this.eventDao.selectLast().getObject("event_id");
             event.setIdE(idE);
             this.eventList.add(event);
+            return event;
         }
-        return state;
+        return null;
     }
 
     /**
@@ -69,6 +95,10 @@ public class EventFacade {
      */
     public ArrayList<Event> getAllEvent() {
         return this.eventList;
+    }
+
+    public ArrayList<Team> getAllTeam(){
+        return this.teamList;
     }
 
     /**
@@ -132,7 +162,7 @@ public class EventFacade {
         return null;
     }
 
-    public void getAllEvents() throws SQLException {
+    public void loadEvent() throws SQLException {
         ResultSet result = this.eventDao.selectAll();
         Event event;
         if (result.first()) {
@@ -147,6 +177,21 @@ public class EventFacade {
         }
         //return result.isAfterLast();
     }
+
+    private void loadTeam() throws SQLException {
+        ResultSet result = this.eventDao.selectAllTeam();
+        Team team;
+        if (result.first()) {
+            //team_name
+            team = new Team(result.getString("team_name"));
+            this.teamList.add(team);
+            while(result.next()){
+                team = new Team(result.getString("team_name"));
+                this.teamList.add(team);
+            }
+        }
+    }
+
 
     public ArrayList<Event> getEventList() {
         return eventList;

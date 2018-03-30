@@ -52,4 +52,9 @@ public class Team {
     public void setContacts(ArrayList<Contact> contacts) {
         this.contacts = contacts;
     }
+
+
+    public String toString(){
+        return this.name;
+    }
 }

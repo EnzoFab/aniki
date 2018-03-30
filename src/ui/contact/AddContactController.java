@@ -1,5 +1,7 @@
 package ui.contact;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,8 +21,11 @@ import java.text.ParseException;
 
 import facade.*;
 import ui.Main;
+import ui.ViewBridge;
 
-public class AddContactController {
+import static ui.Main.changeScene;
+
+public class AddContactController implements ViewBridge{
 
     public TextField inputName;
     public TextField inputFirstName;
@@ -29,22 +34,40 @@ public class AddContactController {
     public TextField inputMail;
 
     private ContactFacade contactFacade;
+    private FacadeManager facadeManager;
 
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.contactFacade = new ContactFacade();
 
-    }
 
     public void addNewContact(ActionEvent actionEvent) throws SQLException, ParseException, IOException {
-        this.contactFacade = new ContactFacade();
         if(!inputName.getText().isEmpty() && !inputFirstName.getText().isEmpty() && !inputAdress.getText().isEmpty() && !inputPhone.getText().isEmpty() && !inputMail.getText().isEmpty()){
 
             contactFacade.addContact(inputName.getText(),inputFirstName.getText(),inputAdress.getText(),inputMail.getText(),inputPhone.getText());
 
-            Main.changeScene(getClass(),"contactManagement.fxml","Contacts Management");
+            preformBridge("contactManagement.fxml","Contacts Management");
 
         }
+    }
+
+    @Override
+    public void setData(FacadeManager fm, String... p) {
+        facadeManager = fm ;
+        contactFacade = fm.createContactFacade();
+
+    }
+
+    private void preformBridge( String destination, String title){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(destination));
+        Parent root ;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        ViewBridge bridge = loader.getController();
+        bridge.setData(facadeManager);
+        changeScene(root,title);
     }
 
 }

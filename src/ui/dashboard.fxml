@@ -15,7 +15,7 @@
         <Menu mnemonicParsing="false" text="User">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#linkToUserManagement" text="My account" fx:id="accountGestureMenu" />
-            <MenuItem mnemonicParsing="false" text="Logoff" />
+            <MenuItem mnemonicParsing="false" onAction="#logoff" text="Logoff" />
             <MenuItem mnemonicParsing="false" onAction="#linkToCreateUser" text="create member" fx:id="createUserMenu" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Quit" />
@@ -28,15 +28,14 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Events">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#LinkEventsVueGlobal" text="Vue global" fx:id="EventsVueGlobalButton" />
-            <MenuItem mnemonicParsing="false" onAction="#LinkAddEventVueGlobal" text="Ajouter évènement" fx:id="addEventButton" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkEventsVueGlobal" text="Show all events" fx:id="EventsVueGlobalButton" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Treasury">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#LinkTransactionVueGlobal" style="-fx-background-color: #8080ff;" text="Vue Global" fx:id="TransactionVueGlobalButton" />
-            <MenuItem mnemonicParsing="false" onAction="#LinkBudgetVueGlobal" text="Budget Teams" fx:id="BudgetVueGlobalButton" />
-            <MenuItem mnemonicParsing="false" onAction="#LinkAnnualBudgetVueGlobal" text="Budget Annuel" fx:id="AnnualBudgetVueGlobalButton" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkTransactionVueGlobal" style="-fx-background-color: #8080ff;" text="Show treasury" fx:id="TransactionVueGlobalButton" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkBudgetVueGlobal" text="Team budget" fx:id="BudgetVueGlobalButton" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkAnnualBudgetVueGlobal" text="Anual budget" fx:id="AnnualBudgetVueGlobalButton" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Inventory">
@@ -46,7 +45,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Contacts">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#LinkContactVueGlobal" text="Vue Global" />
+            <MenuItem mnemonicParsing="false" onAction="#LinkContactVueGlobal" text="Show contact" />
             <MenuItem mnemonicParsing="false" onAction="#LinkAddContactVueGlobal" text="Add new contact" fx:id="addContactButton" />
           </items>
         </Menu>

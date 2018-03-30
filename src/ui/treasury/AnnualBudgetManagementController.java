@@ -1,6 +1,7 @@
 package ui.treasury;
 
 import facade.AnualBudgetFacade;
+import facade.FacadeManager;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
+import ui.ViewBridge;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -16,7 +18,7 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 
 
-public class AnnualBudgetManagementController implements Initializable {
+public class AnnualBudgetManagementController implements Initializable, ViewBridge {
 
     public ComboBox comboBoxAnualBudget;
     public Label labelAmount;
@@ -44,7 +46,11 @@ public class AnnualBudgetManagementController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         comboBoxAnualBudget.getItems().clear();
-        anualBudgetFacade = new AnualBudgetFacade();
+
+    }
+
+    private void init(){
+
         try {
             listNameSet = anualBudgetFacade.getAll();
         } catch (SQLException e) {
@@ -178,5 +184,11 @@ public class AnnualBudgetManagementController implements Initializable {
 
         dialog.showAndWait();
 
+    }
+
+    @Override
+    public void setData(FacadeManager fm, String... p) {
+        anualBudgetFacade = fm.createAnualBudgetFacade();
+        init();
     }
 }

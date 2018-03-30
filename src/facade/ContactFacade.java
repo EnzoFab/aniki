@@ -2,6 +2,7 @@ package facade;
 
 import business_logic.Contact;
 import business_logic.LightContact;
+import business_logic.User;
 import persistent.daos.ContactDAO;
 import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
@@ -18,14 +19,14 @@ public class ContactFacade {
     private ContactDAO contactDao;
     private ArrayList<Contact> contactList;
 
-    private final DaoFactory factory;
-    private FacadeManager facadeManager;
+    private final User connectedUser;
 
     /**
      * Default constructor
      */
-    public ContactFacade() {
-        factory = DaoPostgresFactory.getInstance();
+    public ContactFacade(User user) {
+        connectedUser = user;
+        DaoFactory factory = DaoPostgresFactory.getInstance();
         this.contactDao = factory.createContactDAO();
         this.contactList = new ArrayList<>();
         try {

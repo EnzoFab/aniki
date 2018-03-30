@@ -15,7 +15,7 @@
       <Label layoutX="337.0" layoutY="281.0" text="Adress" textFill="WHITE" />
       <Label layoutX="339.0" layoutY="350.0" text="Phone" textFill="WHITE" />
       <Label layoutX="346.0" layoutY="421.0" text="Mail" textFill="WHITE" />
-      <Label layoutX="278.0" layoutY="113.0" text="Add new Contact" textFill="WHITE">
+      <Label layoutX="278.0" layoutY="113.0" text="Add new contact" textFill="WHITE">
         <font>
           <Font name="System Bold" size="20.0" />
         </font>
@@ -25,7 +25,11 @@
       <TextField fx:id="inputAdress" layoutX="261.0" layoutY="313.0" prefWidth="200.0" />
       <TextField fx:id="inputPhone" layoutX="261.0" layoutY="382.0" prefWidth="200.0" />
       <TextField fx:id="inputMail" layoutX="261.0" layoutY="451.0" prefWidth="200.0" />
-      <Button layoutX="326.0" layoutY="511.0" mnemonicParsing="false" onAction="#addNewContact" text="ADD" textFill="WHITE" />
+      <Button layoutX="292.0" layoutY="512.0" mnemonicParsing="false" onAction="#addNewContact" prefWidth="128.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;       -fx-background-color: #6666ff;&#10;-fx-background-radius: 10;&#10;&#10;" text="Add contact" textFill="#ffcc00">
+        <font>
+          <Font name="System Bold" size="15.0" />
+        </font>
+      </Button>
     </children>
   </fx:include>
 </AnchorPane>

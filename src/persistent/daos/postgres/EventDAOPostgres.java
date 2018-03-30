@@ -111,4 +111,46 @@ public class EventDAOPostgres extends EventDAO {
         }
     }
 
+    @Override
+    public ResultSet getEventsWithoutBudget() {
+        /*Connection connect = getConnection();
+        try {
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            ResultSet set =  state.executeQuery("SELECT * FROM event WHERE budget_id IS NULL");
+            return set;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }*/
+        return null;
+    }
+
+    @Override
+    public ResultSet selectEventWithNameWithoutBudget(String name){
+        Connection connect = getConnection();
+        try {
+            System.out.println("he");
+            Statement state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            ResultSet set =  state.executeQuery("SELECT * FROM event WHERE budget_id IS NULL AND event_label = '"+name+"'");
+            return set;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public ResultSet selectAllTeam() {
+        try {
+            Statement state = getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.TYPE_FORWARD_ONLY);
+            ResultSet set =  state.executeQuery("SELECT * FROM team");
+            return set;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

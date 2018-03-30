@@ -8,5 +8,5 @@ public interface ViewBridge {
      * Allows to get facade manager
      * @param fm
      */
-    void setData(FacadeManager fm);
+    void setData(FacadeManager fm, String ...p);
 }
