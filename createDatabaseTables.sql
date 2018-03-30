@@ -204,16 +204,16 @@ CREATE TABLE IF NOT EXISTS "transaction" (
   FOREIGN KEY ("anualbudget_year") REFERENCES anualbudget(anualbudget_year)
 );
 
-INSERT INTO paymentmethod VALUES ('CB');
-INSERT INTO paymentmethod VALUES ('Virement');
-INSERT INTO paymentmethod VALUES ('Chèque');
-INSERT INTO paymentmethod VALUES ('Paypal');
+INSERT INTO paymentmethod VALUES ('cb');
+INSERT INTO paymentmethod VALUES ('virement');
+INSERT INTO paymentmethod VALUES ('chèque');
+INSERT INTO paymentmethod VALUES ('paypal');
 
-INSERT INTO team VALUES ('Beach');
-INSERT INTO team VALUES ('Gala');
-INSERT INTO team VALUES ('Ski');
+INSERT INTO team VALUES ('beach');
+INSERT INTO team VALUES ('gala');
+INSERT INTO team VALUES ('ski');
 
-INSERT INTO contact (contact_name, contact_first_name, contact_adress, contact_mail, contact_phone) VALUES ('James', 'TERRIEN', '18 rue Saint-Firmin', 'james@gmail.com', '0622151403');
+INSERT INTO contact (contact_name, contact_first_name, contact_adress, contact_mail, contact_phone) VALUES ('James', 'TERRIEN', '18 rue Saint-firmin', 'james@gmail.com', '0622151403');
 
 INSERT INTO anualbudget ("anualbudget_listname", anualbudget_amount, anualbudget_year) VALUES ('taber',10000, 2017);
 INSERT INTO transaction (transaction_label,transaction_amount,transaction_date,transaction_state,transaction_type) VALUES ('Campo',200,'2018-05-11',1,'debit');
