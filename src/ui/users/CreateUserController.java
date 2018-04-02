@@ -9,11 +9,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import logs.ConnectionLog;
-import ui.Main;
 import ui.ViewBridge;
 
 import java.net.URL;
@@ -103,7 +101,7 @@ public class CreateUserController implements Initializable, ViewBridge {
 
 
     @Override
-    public void setData(FacadeManager fm, String... p) {
+    public void setData(FacadeManager fm, Object... p) {
         this.facadeManager = fm;
         userFacade =this.facadeManager.createUserFacade();
 

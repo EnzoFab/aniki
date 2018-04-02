@@ -10,8 +10,6 @@ import javafx.collections.ObservableList;
 import ui.ViewBridge;
 
 import java.net.URL;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -30,7 +28,7 @@ public class ContactManagementController implements Initializable, ViewBridge{
 
 
     @Override
-    public void setData(FacadeManager fm, String... p) {
+    public void setData(FacadeManager fm, Object... p) {
         contactFacade= fm.createContactFacade();
         init();
 

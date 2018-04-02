@@ -9,6 +9,9 @@ import persistent.factories.DaoPostgresFactory;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ *
+ */
 public class LoginFacade {
     private User user;
     private final DaoFactory factory;
@@ -54,13 +57,21 @@ public class LoginFacade {
         return result;
     }
 
+    /**
+     * Check if the user exists
+     * @param mail
+     * @return
+     */
     public boolean exists(String mail){
         UserDAO dao = factory.createUserDAO();
         return dao.select(mail) != null;
 
     }
 
-
+    /**
+     * Return the facade manager
+     * @return
+     */
     public FacadeManager getFacadeManager() {
         return facadeManager;
     }

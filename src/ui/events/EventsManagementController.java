@@ -1,7 +1,7 @@
 package ui.events;
 
-import business_logic.Article;
 import business_logic.Event;
+import business_logic.Team;
 import facade.EventFacade;
 import facade.FacadeManager;
 import javafx.application.Platform;
@@ -19,7 +19,6 @@ import ui.ViewBridge;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -27,6 +26,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+/**
+ *
+ */
 public class EventsManagementController implements Initializable, ViewBridge{
     private EventFacade eventFacade;
     @FXML
@@ -37,7 +39,10 @@ public class EventsManagementController implements Initializable, ViewBridge{
 
     }
 
-
+    /**
+     * initialize components of the frame
+     * called instead of the <b>initialize</b> method
+     */
     private void init(){
         ArrayList<Event> events = null;
         events = eventFacade.getEventList();
@@ -62,15 +67,18 @@ public class EventsManagementController implements Initializable, ViewBridge{
     }
 
     @Override
-    public void setData(FacadeManager fm, String ...p) {
+    public void setData(FacadeManager fm, Object... p) {
         if(p.length >=1)
-            eventFacade = fm.createEventFacade(p[0]);
+            eventFacade = fm.createEventFacade(p[0].toString());
         else
             eventFacade = fm.createEventFacade();
         init();
     }
 
-
+    /**
+     * Show an alert dialog allowing to create a new Event
+     * This method will add a new event to the table view if every conditions filled
+     */
     private void showDialogAddEvent(){
         Dialog<Pair<String, String>> dialog = new Dialog<>();
         dialog.setTitle("Add new Event");
@@ -95,7 +103,7 @@ public class EventsManagementController implements Initializable, ViewBridge{
                 FXCollections.observableArrayList(eventFacade.getAllTeam());
 
 
-        ComboBox<String> teamCB= new ComboBox<>(options);
+        ComboBox<Team> teamCB= new ComboBox<Team>(options);
         teamCB.getSelectionModel().selectFirst();
 
         Node submitButton = dialog.getDialogPane().lookupButton(buttonInserEvent);
@@ -110,6 +118,22 @@ public class EventsManagementController implements Initializable, ViewBridge{
             submitButton.setDisable(newValue.trim().isEmpty());
         }));
 
+        teamCB.promptTextProperty().addListener( ((observable, oldValue, newValue) -> {
+            submitButton.setDisable(newValue.trim().isEmpty());
+        }));
+
+        datePickerBeginEvent.pickOnBoundsProperty().addListener(((observable, oldValue, newValue) -> {
+            submitButton.setDisable(newValue.toString().isEmpty());
+        }));
+
+        datePickerEndEvent.pickOnBoundsProperty().addListener(((observable, oldValue, newValue) -> {
+            submitButton.setDisable(newValue.toString().isEmpty());
+        }));
+
+
+
+
+
 
         dialog.getDialogPane().setContent(new VBox(8,eventNameTF,quantityTF, datePickerBeginEvent,datePickerEndEvent,teamCB));
 
@@ -120,7 +144,7 @@ public class EventsManagementController implements Initializable, ViewBridge{
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == buttonInserEvent) {
                 addEvent(eventNameTF.getText(),datePickerBeginEvent.getValue(), datePickerEndEvent.getValue(),
-                        Integer.parseInt(quantityTF.getText()), teamCB.getValue());
+                        Integer.parseInt(quantityTF.getText()), teamCB.getValue().toString());
             }
             return null;
         });

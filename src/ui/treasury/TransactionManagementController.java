@@ -1,10 +1,8 @@
 package ui.treasury;
 
 import business_logic.Transaction;
-import facade.AnualBudgetFacade;
 import facade.ExpenseFacade;
 import facade.FacadeManager;
-import facade.LoginFacade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,18 +11,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import ui.Main;
-import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-import javafx.scene.control.TextField;
 import ui.ViewBridge;
 
 public class TransactionManagementController implements Initializable, ViewBridge {
@@ -55,7 +48,7 @@ public class TransactionManagementController implements Initializable, ViewBridg
 
 
     @Override
-    public void setData(FacadeManager fm, String... p) {
+    public void setData(FacadeManager fm, Object... p) {
         expenseFacade = fm.createExpenseFacade();
         init();
     }

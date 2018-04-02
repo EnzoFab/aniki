@@ -17,6 +17,7 @@ public class HomePageController implements Initializable {
         facadeManager = null;
     }
 
+
     public void setFacadeManager(FacadeManager facadeManager){
         this.facadeManager = facadeManager;
         this.userName.setText(facadeManager.getLightUser().getFirstName());

@@ -5,7 +5,7 @@ import ui.ViewBridge;
 
 public class TeamsManagementController implements ViewBridge{
     @Override
-    public void setData(FacadeManager fm, String... p) {
+    public void setData(FacadeManager fm, Object... p) {
 
     }
 }

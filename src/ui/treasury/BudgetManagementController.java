@@ -109,7 +109,7 @@ public class BudgetManagementController  implements Initializable, ViewBridge{
     }
 
     @Override
-    public void setData(FacadeManager fm, String... p) {
+    public void setData(FacadeManager fm, Object... p) {
         budgetFacade = fm.createBudgetFacade();
     }
 }

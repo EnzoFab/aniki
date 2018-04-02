@@ -1,26 +1,14 @@
 package ui.contact;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.ResourceBundle;
 import java.text.ParseException;
 
 import facade.*;
-import ui.Main;
 import ui.ViewBridge;
 
 import static ui.Main.changeScene;
@@ -50,7 +38,7 @@ public class AddContactController implements ViewBridge{
     }
 
     @Override
-    public void setData(FacadeManager fm, String... p) {
+    public void setData(FacadeManager fm, Object... p) {
         facadeManager = fm ;
         contactFacade = fm.createContactFacade();
 

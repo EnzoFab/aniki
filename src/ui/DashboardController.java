@@ -14,6 +14,9 @@ import javafx.fxml.Initializable;
 
 import static ui.Main.changeScene;
 
+/**
+ *
+ */
 public class DashboardController implements Initializable, ViewBridge{
 
     @FXML private AnchorPane anchorPane;
@@ -116,7 +119,7 @@ public class DashboardController implements Initializable, ViewBridge{
 
 
     @Override
-    public void setData(FacadeManager fm, String... p) {
+    public void setData(FacadeManager fm, Object... p) {
         if(facadeManager == null)
             facadeManager = fm;
 

@@ -4,7 +4,6 @@ import facade.ExpenseFacade;
 import facade.FacadeManager;
 import javafx.event.ActionEvent;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -14,8 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.text.DateFormat;
-import javafx.event.ActionEvent;
+
 import javafx.scene.control.TextField;
 import ui.Main;
 import ui.ViewBridge;
@@ -56,7 +54,7 @@ public class addTransactionController implements ViewBridge {
     }
 
     @Override
-    public void setData(FacadeManager fm, String... p) {
+    public void setData(FacadeManager fm, Object... p) {
         expensefacade = fm.createExpenseFacade();
     }
 }

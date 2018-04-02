@@ -12,16 +12,19 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.util.Properties;
 
+/**
+ * MailSender is a class helper that provides method to send mail
+ */
 public final class MailSender {
 
     private MailSender(){}
 
     /**
-     * Send an Html mail
-     * @param to
-     * @param from
-     * @param subject
-     * @param content
+     * Send an Html mail return true if the mail is correctly send
+     * @param to : to whom
+     * @param from : from whom
+     * @param subject : the subject the mail will deal with
+     * @param content : the content of the mail
      */
     public static boolean sendHtmlMail(String to, String from, String subject, String content){
         // modify to send img as well
@@ -47,12 +50,12 @@ public final class MailSender {
 
 
     /**
-     * Send a mail with a file attached
-     * @param to
-     * @param from
-     * @param subject
-     * @param content
-     * @param fileName
+     * Send a mail with a file attached return true if the mail is send with success
+     * @param to : to whom
+     * @param from : from whom
+     * @param subject : the subject
+     * @param content : the mail content
+     * @param fileName : the path of the file
      * @return
      */
     public static boolean sendAttachedMail(String to, String from, String subject, String content, String fileName){
