@@ -15,7 +15,8 @@ import javafx.fxml.Initializable;
 import static ui.Main.changeScene;
 
 /**
- *
+ * The menu Controller
+ * @see ViewBridge
  */
 public class DashboardController implements Initializable, ViewBridge{
 

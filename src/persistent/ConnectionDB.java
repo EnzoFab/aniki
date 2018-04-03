@@ -6,9 +6,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public abstract class ConnectionDB {
+/**
+ * A factory which role is to create a Connection instance
+ * in order to connect to the database
+ */
+public class ConnectionDB {
 
     private static Connection connect;
+
+    private ConnectionDB(){}
 
     /**
      * Try to connect to the database

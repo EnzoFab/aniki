@@ -34,8 +34,9 @@ public class ToDoListFacade {
     }
 
     /**
-     * @param idTD 
-     * @return
+     * Delete the task that matchs with the primary key
+     * @param idTD : primary key
+     * @return true if the action is executed with success
      */
     public boolean deleteToDoList(int idTD) {
         // TODO implement here
@@ -43,6 +44,8 @@ public class ToDoListFacade {
     }
 
     /**
+     * add a new Task to the TODO list
+     * return true if action is a success
      * @param idTD 
      * @param name 
      * @param date 
@@ -54,6 +57,8 @@ public class ToDoListFacade {
     }
 
     /**
+     * Delete a task to the TODO List
+     * return true if the action is done with success
      * @param idTa 
      * @return
      */
@@ -72,6 +77,7 @@ public class ToDoListFacade {
     }
 
     /**
+     * Update the name of A Todo list
      * @param idTD 
      * @param label 
      * @return

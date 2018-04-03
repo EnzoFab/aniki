@@ -24,6 +24,7 @@ import java.sql.SQLException;
 public class Main extends Application {
 
     private static Stage applicationStage;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         applicationStage = primaryStage;
@@ -64,22 +65,30 @@ public class Main extends Application {
 
     /**
      * Fade in or out a Region
-     * all component extends of Region
+     * all components extend of Region
      * a and b determine the type of fade
      * if a =1 and b= 0 fade out else if
      * a= 0 and b= 1 fade in
-     * @param a
-     * @param b
+     * Nothing is done if a or b not in [0,1]
+     * @param a : 0 or 1
+     * @param b : 0 or 1
      * @param duration
      * @param n
      */
     public static void fadeEffect(int a, int b, int duration,Node n){
-        FadeTransition ft = new FadeTransition(Duration.millis(duration), n);
-        ft.setFromValue(a);
-        ft.setToValue(b);
-        ft.play();
+        if( a >1 || a <0 ||b >1 || b <1 ){
+            FadeTransition ft = new FadeTransition(Duration.millis(duration), n);
+            ft.setFromValue(a);
+            ft.setToValue(b);
+            ft.play();
+        }
+
     }
 
+    /**
+     * Play a brief sound
+     * @param filename : the media filename
+     */
     public static void playSound(String filename){
         Media sound = new Media(new File(filename).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
