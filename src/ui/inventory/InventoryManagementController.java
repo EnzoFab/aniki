@@ -107,8 +107,11 @@ public class InventoryManagementController implements Initializable, ViewBridge 
             submitButton.setDisable(newValue.trim().isEmpty());
         }));
 
+        VBox vBox = new VBox(8,nameTF,quantityTF, descriptionTF, typeCB);
+        vBox.setStyle("background-color: #8080ff;" +
+                "effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
 
-        dialog.getDialogPane().setContent(new VBox(8,nameTF,quantityTF, descriptionTF, typeCB));
+        dialog.getDialogPane().setContent(vBox);
 
 
         Platform.runLater(() -> nameTF.requestFocus());

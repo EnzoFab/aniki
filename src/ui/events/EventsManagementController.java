@@ -68,10 +68,8 @@ public class EventsManagementController implements Initializable, ViewBridge{
 
     @Override
     public void setData(FacadeManager fm, Object... p) {
-        if(p.length >=1)
-            eventFacade = fm.createEventFacade(p[0].toString());
-        else
-            eventFacade = fm.createEventFacade();
+
+        eventFacade = fm.createEventFacade();
         init();
     }
 
