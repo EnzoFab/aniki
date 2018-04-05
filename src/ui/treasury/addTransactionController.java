@@ -34,6 +34,13 @@ public class addTransactionController implements ViewBridge {
     }
 
 
+    /**
+     *
+     * @param actionEvent
+     * @throws SQLException
+     * @throws ParseException
+     * @throws IOException
+     */
     public void addTransaction(ActionEvent actionEvent) throws SQLException, ParseException, IOException {
 
         if(!inputLabel.getText().isEmpty() && !inputDate.getText().isEmpty() && !inputMontant.getText().isEmpty() && !inputType.getText().isEmpty()){
@@ -54,6 +61,9 @@ public class addTransactionController implements ViewBridge {
     }
 
     @Override
+    /**
+     *
+     */
     public void setData(FacadeManager fm, Object... p) {
         expensefacade = fm.createExpenseFacade();
     }
