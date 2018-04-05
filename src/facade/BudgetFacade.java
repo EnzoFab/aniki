@@ -23,6 +23,12 @@ public class BudgetFacade {
     private EventDAO eventDAO;
     private TeamDAO teamDAO;
     /**
+     *
+     */
+    private AnualBudget anual;
+
+
+    /**
      * Default constructor
      * @param connectedUser
      */
@@ -34,11 +40,6 @@ public class BudgetFacade {
         this.eventDAO = DaoPostgresFactory.getInstance().createEventDAO();
         this.teamDAO = DaoPostgresFactory.getInstance().createTeamDAO();
     }
-
-    /**
-     * 
-     */
-    public AnualBudget anual;
 
 
     /**
