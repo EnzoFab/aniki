@@ -1,6 +1,7 @@
 package facade;
 
 import business_logic.Event;
+import business_logic.User;
 
 import java.util.*;
 
@@ -11,8 +12,9 @@ public class ToDoListFacade {
 
     /**
      * Default constructor
+     * @param connectedUser
      */
-    public ToDoListFacade() {
+    public ToDoListFacade(User connectedUser) {
     }
 
     /**

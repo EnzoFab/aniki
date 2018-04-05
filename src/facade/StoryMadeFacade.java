@@ -1,18 +1,24 @@
 package facade;
 
 import business_logic.Event;
+import business_logic.User;
 
 import java.util.*;
 
 /**
- * 
+ * Make the link between view, buisiness logic and persistent data that deals with StoryMade
+ * Not implemented yet
  */
 public class StoryMadeFacade {
 
+    private final User connectedUser;
+
     /**
      * Default constructor
+     * @param connectedUser
      */
-    public StoryMadeFacade() {
+    public StoryMadeFacade(User connectedUser) {
+        this.connectedUser = connectedUser;
     }
 
     /**

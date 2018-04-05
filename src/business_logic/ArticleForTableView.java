@@ -4,6 +4,11 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * A copy of Article
+ * can be display in table view 
+ * @see Article
+ */
 public class ArticleForTableView {
     private SimpleStringProperty name;
 

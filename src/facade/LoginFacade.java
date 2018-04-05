@@ -70,32 +70,22 @@ public class LoginFacade {
 
     /**
      * Return the facade manager
+     * @see FacadeManager
      * @return
      */
     public FacadeManager getFacadeManager() {
         return facadeManager;
     }
 
-    /*/**
-     * Reset the user password and send the newClass one by mail
+
+    /**
+     * Send by mail the password of the user that math the mail given in parameter
+     * if there is a user that have the same mail as the parameter and  the mail is sent with success
+     * return true, otherwise return false and catch the error
+     * @see MailSender
      * @param mail
-     * @see Couple
      * @return
      */
-    /*public boolean resetPwd(String mail){
-        boolean result = false;
-        String newPasswordValue = ""; // change the password
-        if(factory.createUserDao().update(mail, newClass Couple("password",newPasswordValue)) ){
-            // essaie de mettre a jour le mail mot de passe de l'utilisateur si c'est ok on l'envoie par mail
-            String content = "<img src='media/img/logo-aniki.png'/><p>" +
-                    "Your password has been update to: <i>" + newPasswordValue+"</i></p><b>Don't lose it ;) </b>";
-            return MailSender.sendHtmlMail(mail,"aniki","New password",content);
-        }
-        return  result;
-    }*/
-
-
-
     public boolean forgotPwd(String mail){
         ResultSet resultSet = factory.createUserDAO().select(mail);
         if(resultSet != null){

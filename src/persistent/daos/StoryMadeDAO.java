@@ -11,7 +11,10 @@ import java.util.*;
  */
 public abstract class StoryMadeDAO extends DAO {
 
-
+    /**
+     * @see DAO
+     * @param connection
+     */
     public StoryMadeDAO(Connection connection) {
         super(connection);
     }

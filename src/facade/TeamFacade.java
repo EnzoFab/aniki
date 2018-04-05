@@ -1,6 +1,7 @@
 package facade;
 
 import business_logic.Team;
+import business_logic.User;
 import persistent.daos.TeamDAO;
 import persistent.factories.DaoPostgresFactory;
 
@@ -16,8 +17,9 @@ public class TeamFacade {
 
     /**
      * Default constructor
+     * @param connectedUser
      */
-    public TeamFacade() {
+    public TeamFacade(User connectedUser) {
         teamDAO = DaoPostgresFactory.getInstance().createTeamDAO();
     }
 

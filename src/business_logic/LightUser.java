@@ -3,28 +3,28 @@ package business_logic;
 import java.util.*;
 
 /**
- * 
+ * Permit to have a read only object and to hide some attribute
  */
 public interface LightUser {
 
     /**
      * @return
      */
-    public String getMail();
+     String getMail();
 
     /**
      * @return
      */
-    public String getName();
+     String getName();
 
     /**
      * @return
      */
-    public String getFirstName();
+     String getFirstName();
 
     /**
      * @return
      */
-    public String getPhone();
+     String getPhone();
 
 }
