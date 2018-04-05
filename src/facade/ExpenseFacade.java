@@ -147,7 +147,8 @@ public class ExpenseFacade {
     }
 
     /**
-     * @return
+     * load all existing transactions
+     * @throws SQLException
      */
     public void getAllTransaction() throws SQLException {
         ResultSet result = this.transactionDao.selectAll();

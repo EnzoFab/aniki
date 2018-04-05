@@ -34,6 +34,7 @@ public class EventFacade {
      *
      * @param team_name
      * @param user
+     *
      */
     public EventFacade(String team_name, User user) {
         this.team = new Team(team_name);
@@ -194,8 +195,6 @@ public class EventFacade {
     }
 
     /**
-     * @return
-     *
      * Get all events from the Database
      *
      */

@@ -142,9 +142,8 @@ public class ContactFacade {
         return state;    }
 
     /**
-     * @return
-     *
-     * Get all contacts from the Database
+
+     * load all contacts from the Database
      *
      */
     public void getAllContacts() throws SQLException {
