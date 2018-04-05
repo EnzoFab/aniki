@@ -5,6 +5,7 @@ import business_logic.Team;
 import business_logic.User;
 import persistent.daos.ContactDAO;
 import persistent.daos.EventDAO;
+import persistent.daos.TeamDAO;
 import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
 
@@ -25,6 +26,7 @@ public class EventFacade {
     private Team team;
     private EventDAO eventDao;
     private ContactDAO contactDao;
+    private TeamDAO teamDAO;
     private ArrayList<Event> eventList;
     private ArrayList<Team> teamList;
 
@@ -56,6 +58,7 @@ public class EventFacade {
         DaoFactory factory = DaoPostgresFactory.getInstance();
         this.eventDao = factory.createEventDAO();
         this.contactDao = factory.createContactDAO();
+        this.teamDAO = factory.createTeamDAO();
         this.eventList = new ArrayList<>();
         this.teamList = new ArrayList<>();
 
@@ -209,7 +212,7 @@ public class EventFacade {
      *
      */
     private void loadTeam() throws SQLException {
-        ResultSet result = this.eventDao.selectAllTeam();
+        ResultSet result = this.teamDAO.selectAll();
         Team team;
         if (result.first()) {
             //team_name

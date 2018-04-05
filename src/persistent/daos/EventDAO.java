@@ -76,6 +76,5 @@ public abstract class EventDAO  extends DAO{
 
     public abstract ResultSet selectByNameWithoutB(String s);
 
-    public abstract ResultSet selectAllTeam();
 }
 
