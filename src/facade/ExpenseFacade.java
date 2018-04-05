@@ -96,6 +96,12 @@ public class ExpenseFacade {
         return state;
     }
 
+    /**
+     *
+     * @param idT
+     * @param paymentmethod_name
+     * @return
+     */
     public boolean addPaymentMethod(int idT, String paymentmethod_name) {
         //idT is the index of the event in the arrayList
         System.out.println("Hey");
@@ -125,6 +131,10 @@ public class ExpenseFacade {
         return false;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public void getAllPaymentmethods() throws SQLException {
         ResultSet result = this.paymentmethodDao.getAll();
         String payment;
@@ -160,10 +170,18 @@ public class ExpenseFacade {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Transaction> getTransactionsList() {
         return transactionsList;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getPaymentMethodsList() {
         return paymentMethodsList;
     }

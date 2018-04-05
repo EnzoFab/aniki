@@ -12,7 +12,11 @@ public class Budget {
      */
     private int Amount;
 
-    private String event;
+    private int event;
+
+    private String team;
+
+    private String anualBudget;
 
     private ArrayList transactions;
 
@@ -21,9 +25,9 @@ public class Budget {
      * @param amount
      */
 
-    public Budget(int amount, String event) {
+    public Budget(int amount, String anual) {
         Amount = amount;
-        this.event = event;
+        this.anualBudget = anual;
     }
 
     public int getAmount() {
@@ -34,8 +38,28 @@ public class Budget {
         Amount = amount;
     }
 
-    public String getEvent(){
+    public int getEvent(){
         return this.event;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public String getAnualBudget() {
+        return anualBudget;
+    }
+
+    public void setAnualBudget(String anualBudget) {
+        this.anualBudget = anualBudget;
+    }
+
+    public void setEvent(int event) {
+        this.event = event;
     }
 
     public ArrayList getTransactions() {

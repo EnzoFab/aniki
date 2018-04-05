@@ -28,15 +28,13 @@ public class BudgetDAOPostgres extends BudgetDAO {
             int anneeEnCours = calendrier.get(Calendar.YEAR);
             connect.setAutoCommit(false);
             Statement state = connect.createStatement();
-            String sql = "insert into budget(budget_amount, anualbudget_id, team_id)"
-                    +"values ("+budget.getAmount()+", "+anneeEnCours+", "+budget.getEvent()+");";
+            String sql = "insert into budget(budget_amount, anualbudget_id,event_id, team_id) values ('"+budget.getAmount()+"', '"+anneeEnCours+"', '"+budget.getEvent()+"', '"+budget.getTeam()+"' );";
             state.executeUpdate(sql);
             state.close();
             connect.commit();
             connect.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("hello");
             return false;
         }
         return true;

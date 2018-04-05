@@ -74,10 +74,6 @@ public abstract class EventDAO  extends DAO{
      */
     public abstract boolean update(int idE, String label, Date date_start,Date date_end, int number_entrant, String team_name);
 
-    public abstract ResultSet getEventsWithoutBudget();
-
-    public abstract ResultSet selectEventWithNameWithoutBudget(String name);
-
-    public abstract ResultSet selectAllTeam();
+    public abstract ResultSet selectByNameWithoutB(String s);
 }
 
