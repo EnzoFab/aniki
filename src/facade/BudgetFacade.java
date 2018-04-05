@@ -8,6 +8,7 @@ import persistent.factories.DaoPostgresFactory;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * 
@@ -36,14 +37,6 @@ public class BudgetFacade {
      */
     public AnualBudget anual;
 
-    /**
-     * @param amount
-     * @return
-     */
-    public boolean allocateNewBudget(int amount, String event){
-        // TODO implement here
-        return false;
-    }
 
     /**
      * @return
@@ -115,5 +108,24 @@ public class BudgetFacade {
             eventName.add(team.getString("team_name"));
         }
         return eventName;
+    }
+
+    public boolean create(int amount, String s, String t) throws SQLException {
+        Calendar calendrier;
+        calendrier = Calendar.getInstance();
+        String anneeEnCours = String.valueOf(calendrier.get(Calendar.YEAR));
+        Budget b = new Budget(amount, anneeEnCours);
+        ResultSet set = eventDAO.selectByNameWithoutB(s);
+        int id = 0;
+        if(set.first()){
+            id = set.getInt("event_id");
+        }
+        b.setEvent(id);
+        b.setTeam(t);
+        boolean value = this.budgetDAO.insert(b);
+        if(value){
+            return true;
+        }
+        return false;
     }
 }

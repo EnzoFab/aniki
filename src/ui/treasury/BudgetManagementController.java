@@ -50,10 +50,6 @@ public class BudgetManagementController  implements Initializable, ViewBridge{
         ButtonType buttonInsertArticle = new ButtonType("Insert", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(buttonInsertArticle, ButtonType.CANCEL);
 
-
-        TextField nameTF = new TextField();
-        nameTF.setPromptText("Name");
-
         TextField quantityTF = new TextField();
         quantityTF.setPromptText("Quantity");
 
@@ -81,24 +77,27 @@ public class BudgetManagementController  implements Initializable, ViewBridge{
         submitButton.setDisable(true);
 
 
-        nameTF.textProperty().addListener((observable, oldValue, newValue) -> {
-            submitButton.setDisable(newValue.trim().isEmpty());
-        });
-
         quantityTF.textProperty().addListener( ((observable, oldValue, newValue) -> {
             submitButton.setDisable(newValue.trim().isEmpty());
         }));
 
 
-        dialog.getDialogPane().setContent(new VBox(8,nameTF,quantityTF, event, team));
+        dialog.getDialogPane().setContent(new VBox(8,quantityTF, event, team));
 
-
-        Platform.runLater(() -> nameTF.requestFocus());
+        //selection the first field
+        Platform.runLater(() -> quantityTF.requestFocus());
 
 
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == buttonInsertArticle) {
-
+                int amount = Integer.parseInt(quantityTF.getText());
+                String t = team.getValue();
+                String s = event.getValue();
+                try {
+                    boolean a = budgetFacade.create(amount, s, t);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
             return null;
         });
