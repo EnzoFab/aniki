@@ -16,9 +16,11 @@ import java.util.ArrayList;
  */
 public class ContactFacade {
 
+    /**
+     * attributes
+     */
     private ContactDAO contactDao;
     private ArrayList<Contact> contactList;
-
     private final User connectedUser;
 
     /**
@@ -42,6 +44,9 @@ public class ContactFacade {
      * @param place 
      * @param mail 
      * @return
+     *
+     * Add a contact into the Database
+     *
      */
     public boolean addContact(String name, String first_name, String place, String mail, String phone) throws SQLException {
         Contact contact = new Contact(name, first_name, place, mail, phone);
@@ -63,6 +68,9 @@ public class ContactFacade {
      * @param place 
      * @param mail 
      * @return
+     *
+     * Update a contact from the Database
+     *
      */
     public boolean updateContact(int idC, String name, String first_name, String phone, String place, String mail) {
         //idC is the index of the event in the arrayList, not his real id in the database
@@ -80,6 +88,9 @@ public class ContactFacade {
     /**
      * @param idC 
      * @return
+     *
+     * Delete a contact from the Database
+     *
      */
     public boolean deleteContact(int idC) {
         // idC is the index of the event in the arrayList
@@ -91,6 +102,14 @@ public class ContactFacade {
         return state;
     }
 
+    /**
+     * @param idC
+     * @param team_name
+     * @return
+     *
+     * Delete a link between a contact and a team from the Database
+     *
+     */
     public boolean deleteLink(int idC, String team_name) {
         Contact contact = this.contactList.get(idC);
         boolean state = this.contactDao.deleteLink(contact.getIdC(), team_name);
@@ -104,6 +123,14 @@ public class ContactFacade {
         return state;
     }
 
+    /**
+     * @param idC
+     * @param team_name
+     * @return
+     *
+     * Add a link between a contact and a team
+     *
+     */
     public boolean addLink(int idC, String team_name){
         Contact contact = this.contactList.get(idC);
         boolean state = this.contactDao.insertLink(contact.getIdC(), team_name);
@@ -114,6 +141,12 @@ public class ContactFacade {
         }
         return state;    }
 
+    /**
+     * @return
+     *
+     * Get all contacts from the Database
+     *
+     */
     public void getAllContacts() throws SQLException {
         ResultSet result = this.contactDao.selectAll();
         Contact contact;
@@ -132,6 +165,9 @@ public class ContactFacade {
 
     /**
      * @return
+     *
+     * Get all contacts from the Database
+     *
      */
     public ArrayList<LightContact> getAllContact() {
         ResultSet result = this.contactDao.selectAll();

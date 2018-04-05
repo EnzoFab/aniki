@@ -28,8 +28,6 @@ public class EventFacade {
     private ArrayList<Event> eventList;
     private ArrayList<Team> teamList;
 
-
-
     /**
      * Default constructor
      */
@@ -53,14 +51,15 @@ public class EventFacade {
 
 
     private void init(User user){
+        // Initialize the Postgres Dao
         connectedUser = user;
-
         DaoFactory factory = DaoPostgresFactory.getInstance();
         this.eventDao = factory.createEventDAO();
         this.contactDao = factory.createContactDAO();
         this.eventList = new ArrayList<>();
         this.teamList = new ArrayList<>();
 
+        // Get all Events and Team from the Database into our local lists
         try {
             this.loadEvent();
             this.loadTeam();
@@ -69,13 +68,15 @@ public class EventFacade {
         }
     }
 
-
     /**
      * @param label
      * @param date_start
      * @param date_end
      * @param number_entrant
      * @return
+     *
+     * Add an event to the Database
+     *
      */
     public Event addEvent(String label, Date date_start,Date date_end, int number_entrant, String team) throws SQLException {
         Event event = new Event(label, date_start, date_end, number_entrant);
@@ -97,6 +98,9 @@ public class EventFacade {
         return this.eventList;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Team> getAllTeam(){
         return this.teamList;
     }
@@ -104,6 +108,9 @@ public class EventFacade {
     /**
      * @param idE 
      * @return
+     *
+     * Delete an event from the Database
+     *
      */
     public boolean deleteEvent(int idE) throws SQLException {
         // idE is the index of the event in the arrayList
@@ -121,6 +128,9 @@ public class EventFacade {
      * @param date_end
      * @param number_entrant
      * @return
+     *
+     * Update an event from the Database
+     *
      */
     public boolean updateEvent(int idE, String label, Date date_start, Date date_end, int number_entrant) {
         //idE is the index of the event in the arrayList
@@ -138,6 +148,9 @@ public class EventFacade {
      * @param idE 
      * @param idC 
      * @return
+     *
+     * Add a link between an event and a contact
+     *
      */
     public boolean addLink(int idE, int idC) {
         return false;
@@ -147,6 +160,9 @@ public class EventFacade {
      * @param idE 
      * @param idC 
      * @return
+     *
+     * Delete a link between an event and a contact
+     *
      */
     public boolean deleteLink(int idE, String idC) {
         this.contactDao.deleteLink(idE, idC);
@@ -156,12 +172,21 @@ public class EventFacade {
     /**
      * @param idE 
      * @return
+     *
+     * Get all contact from a single event
+     *
      */
     public ArrayList getAllContactForEvent(int idE) {
         ResultSet result = this.contactDao.selectAll();
         return null;
     }
 
+    /**
+     * @return
+     *
+     * Get all events from the Database
+     *
+     */
     public void loadEvent() throws SQLException {
         ResultSet result = this.eventDao.selectAll();
         Event event;
@@ -175,9 +200,14 @@ public class EventFacade {
                 this.eventList.add(event);
             }
         }
-        //return result.isAfterLast();
     }
 
+    /**
+     * @return
+     *
+     * Get all teams from the Database
+     *
+     */
     private void loadTeam() throws SQLException {
         ResultSet result = this.eventDao.selectAllTeam();
         Team team;
@@ -192,7 +222,9 @@ public class EventFacade {
         }
     }
 
-
+    /**
+     * @return
+     */
     public ArrayList<Event> getEventList() {
         return eventList;
     }
