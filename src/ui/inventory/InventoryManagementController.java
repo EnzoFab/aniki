@@ -28,10 +28,7 @@ public class InventoryManagementController implements Initializable, ViewBridge 
 
 
     @FXML private TableView<ArticleForTableView> articleTableView;
-    @FXML private TableColumn nameArticleColumn;
-    @FXML private TableColumn quantityArticleColumn;
-    @FXML private TableColumn typeArticleColumn;
-    @FXML private TableColumn descriptionArticleColumn;
+
 
     @FXML private void addNewArticleAction(MouseEvent mouseEvent) {
         showDialogAddArticle();
