@@ -7,11 +7,14 @@ import java.sql.ResultSet;
 import java.util.*;
 
 /**
- * 
+ * This Dao link the Event table from database and facades. We can insert, delete, select and update
  */
 public abstract class EventDAO  extends DAO{
 
-
+    /**
+     * @see DAO
+     * @param connection
+     */
     public EventDAO(Connection connection) {
         super(connection);
     }
@@ -76,6 +79,12 @@ public abstract class EventDAO  extends DAO{
 
     public abstract ResultSet selectByNameWithoutB(String s);
 
+    /**
+     * @return
+     *
+     * Select all team from the Database
+     *
+     */
     public abstract ResultSet selectAllTeam();
 }
 

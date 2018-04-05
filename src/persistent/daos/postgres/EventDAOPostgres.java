@@ -125,4 +125,9 @@ public class EventDAOPostgres extends EventDAO {
         }
     }
 
+    @Override
+    public ResultSet selectAllTeam() {
+        return null;
+    }
+
 }

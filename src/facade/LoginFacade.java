@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
+ * This facade link the login View and the Database, to check for the login or the creation of a new user.
  */
 public class LoginFacade {
     private User user;

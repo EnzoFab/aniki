@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * 
+ * Link the Contact model the Contact classe of the Database
  */
 public class ContactFacade {
 
@@ -174,6 +174,10 @@ public class ContactFacade {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Contact> getContactList() {
         return contactList;
     }

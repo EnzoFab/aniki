@@ -14,16 +14,19 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * 
+ *
  */
 public class ExpenseFacade {
 
-
+    /**
+     *
+     */
     private TransactionDAO transactionDao;
     private PaymentMethodDAO paymentmethodDao;
     private ArrayList<Transaction> transactionsList;
     private ArrayList<String> paymentMethodsList;
     private final User connectUser;
+    private Budget budget;
 
 
     /**
@@ -44,11 +47,6 @@ public class ExpenseFacade {
             e.printStackTrace();
         }
     }
-
-    /**
-     * 
-     */
-    private Budget budget;
 
     /**
      * @param amount  

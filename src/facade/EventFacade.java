@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * 
+ * The event facade link the Event model to the Event from the database
  */
 public class EventFacade {
 
@@ -37,6 +37,10 @@ public class EventFacade {
 
     }
 
+    /**
+     *
+     * @param user
+     */
     public EventFacade(User user){
         init(user);
     }
@@ -49,7 +53,10 @@ public class EventFacade {
         this.team = new Team(team);
     }
 
-
+    /**
+     *
+     * @param user
+     */
     private void init(User user){
         // Initialize the Postgres Dao
         connectedUser = user;
