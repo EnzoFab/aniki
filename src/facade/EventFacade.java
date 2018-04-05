@@ -24,14 +24,16 @@ public class EventFacade {
      */
     private User connectedUser;
     private Team team;
-    private EventDAO eventDao;
-    private ContactDAO contactDao;
-    private TeamDAO teamDAO;
+    private  EventDAO eventDao;
+    private  ContactDAO contactDao;
+    private  TeamDAO teamDAO;
     private ArrayList<Event> eventList;
     private ArrayList<Team> teamList;
 
     /**
-     * Default constructor
+     *
+     * @param team_name
+     * @param user
      */
     public EventFacade(String team_name, User user) {
         this.team = new Team(team_name);
@@ -64,8 +66,8 @@ public class EventFacade {
         connectedUser = user;
         DaoFactory factory = DaoPostgresFactory.getInstance();
         this.eventDao = factory.createEventDAO();
-        this.contactDao = factory.createContactDAO();
         this.teamDAO = factory.createTeamDAO();
+        this.contactDao = factory.createContactDAO();
         this.eventList = new ArrayList<>();
         this.teamList = new ArrayList<>();
 

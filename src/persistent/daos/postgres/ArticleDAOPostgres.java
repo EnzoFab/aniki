@@ -70,7 +70,7 @@ public class ArticleDAOPostgres extends ArticleDAO {
     }
 
     @Override
-    public boolean update(String articleId, String descprtion, int quantity) {
+    public boolean update(String articleId, String description, int quantity) {
         return false;
     }
 

@@ -17,8 +17,7 @@ public abstract class BudgetDAO extends DAO {
     }
 
     /**
-     * @param budget 
-     * @param team 
+     * @param budget
      * @return
      */
     public abstract boolean insert(Budget budget);

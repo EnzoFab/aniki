@@ -2,6 +2,7 @@ package facade;
 
 import business_logic.AnualBudget;
 import business_logic.Budget;
+import business_logic.User;
 import persistent.daos.*;
 import persistent.factories.DaoPostgresFactory;
 
@@ -14,7 +15,7 @@ import java.util.Calendar;
  * 
  */
 public class BudgetFacade {
-
+    private final User connectUser;
     private BudgetDAO budgetDAO;
     private AnualBudgetDAO anualBudgetDAO;
     private TransactionDAO transactionDAO;
@@ -22,20 +23,23 @@ public class BudgetFacade {
     private EventDAO eventDAO;
     private TeamDAO teamDAO;
     /**
-     * Default constructor
+     *
      */
-    public BudgetFacade() {
+    private AnualBudget anual;
+
+
+    /**
+     * Default constructor
+     * @param connectedUser
+     */
+    public BudgetFacade(User connectedUser) {
+        this.connectUser = connectedUser;
         this.budgetDAO = DaoPostgresFactory.getInstance().createBudgetDAO();
         this.anualBudgetDAO = DaoPostgresFactory.getInstance().createAnualBudgetDAO();
         this.transactionDAO = DaoPostgresFactory.getInstance().createTransactionDAO();
         this.eventDAO = DaoPostgresFactory.getInstance().createEventDAO();
         this.teamDAO = DaoPostgresFactory.getInstance().createTeamDAO();
     }
-
-    /**
-     * 
-     */
-    public AnualBudget anual;
 
 
     /**

@@ -34,6 +34,14 @@ public class User implements LightUser {
     private String phone;
 
 
+    /**
+     *Constructor
+     * @param mail
+     * @param name
+     * @param firstName
+     * @param password
+     * @param phone
+     */
     public User(String mail, String name, String firstName, String password, String phone) {
         this.mail = mail;
         this.name = name;

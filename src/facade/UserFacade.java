@@ -8,7 +8,7 @@ import persistent.factories.DaoPostgresFactory;
 import java.util.*;
 
 /**
- * 
+ * Make the link between view, buisiness logic and persistent data that deals with users
  */
 public class UserFacade {
     private User connectedUser;
@@ -24,7 +24,7 @@ public class UserFacade {
 
 
     /**
-     *
+     *Try to create a new user return true if it's done successfully
      * @param mail
      * @param fn
      * @param name
@@ -39,7 +39,7 @@ public class UserFacade {
     }
 
     /**
-     * Update an user
+     * Try to update and user
      * @param mail 
      * @param firsName 
      * @param name
@@ -56,6 +56,12 @@ public class UserFacade {
         return false;
     }
 
+    /**
+     * Try to update the password of the user
+     * @param mail
+     * @param pwd
+     * @return
+     */
     public boolean updatePwd(String mail, String pwd){
         if(dao.update(mail, connectedUser.getFirstName(),connectedUser.getName(),pwd,
                 connectedUser.getPhone())){
@@ -75,6 +81,7 @@ public class UserFacade {
     }
 
     /**
+     * Return an ArrayList of LightUser representing all the user in the database
      * @return
      */
     public ArrayList<LightUser> getAll() {
@@ -82,10 +89,19 @@ public class UserFacade {
         return null;
     }
 
+    /**
+     * return true if the paramater match the password of the user currently connected
+     * @param pwd
+     * @return
+     */
     public boolean checkPwd(String pwd){
         return connectedUser.getPassword().equals(pwd) ;
     }
 
+    /**
+     *
+     * @return
+     */
     public LightUser getLightUser(){
         return this.connectedUser;
     }

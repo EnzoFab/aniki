@@ -31,6 +31,13 @@ public class Article {
     private String type;
 
 
+    /**
+     *
+     * @param name
+     * @param description
+     * @param quantity
+     * @param type
+     */
     public Article(String name, String description, int quantity, String type) {
         this.name = name;
         this.description = description;
@@ -78,6 +85,10 @@ public class Article {
         this.idA = idA;
     }
 
+    /**
+     * create an ArticleForTableView in order to be display in a table view
+     * @return
+     */
     public ArticleForTableView createArticleForTableView(){
         return new ArticleForTableView(name,description,quantity,type);
     }

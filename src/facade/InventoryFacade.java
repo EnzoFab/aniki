@@ -3,7 +3,6 @@ package facade;
 import business_logic.Article;
 import business_logic.User;
 import persistent.daos.ArticleDAO;
-import persistent.factories.DaoFactory;
 import persistent.factories.DaoPostgresFactory;
 
 import java.sql.ResultSet;
@@ -11,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * 
+ * Make the link between view, buisiness logic and persistent data that deals with articles
  */
 public class InventoryFacade {
 
@@ -31,7 +30,7 @@ public class InventoryFacade {
         this.articleDAO = DaoPostgresFactory.getInstance().createArticleDAO();
         this.articlesList = new ArrayList();
         try {
-            this.getArticles();
+            this.loadArticles();
             this.loadTypes();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -43,6 +42,8 @@ public class InventoryFacade {
 
 
     /**
+     * Create a new article and insert it into the database
+     * if the operation fails return null otherwise return the Article
      * @param name 
      * @param description 
      * @param quantity 
@@ -78,6 +79,7 @@ public class InventoryFacade {
     }
 
     /**
+     * Try to update an Article
      * @param capacity 
      * @param name
      */
@@ -86,12 +88,11 @@ public class InventoryFacade {
     }
 
 
-
     /**
-     * @param
-     * @return
+     * Load all existing Articles into a ArrayList
+     * @throws SQLException
      */
-    private void getArticles() throws SQLException {
+    private void loadArticles() throws SQLException {
         ResultSet result = this.articleDAO.selectAll();
         Article article;
         if (result.first()) {
@@ -107,6 +108,9 @@ public class InventoryFacade {
     }
 
 
+    /**
+     * load all existing types into an ArrayList
+     */
     private void loadTypes(){
         ResultSet result = this.articleDAO.selectAllType();
         typeList = new ArrayList();
@@ -123,6 +127,11 @@ public class InventoryFacade {
         }
     }
 
+    /**
+     * Try to create a new type
+     * @param type
+     * @return
+     */
     public boolean createType(String type){
         if(DaoPostgresFactory.getInstance().createArticleDAO().insertType(type)){
             typeList.add(type);
@@ -133,6 +142,7 @@ public class InventoryFacade {
     }
 
     /**
+     * Return all the existing types
      * @return
      */
     public ArrayList<String> getTypes() {
@@ -140,6 +150,10 @@ public class InventoryFacade {
         return typeList;
     }
 
+    /**
+     * Return all the existing Articles
+     * @return
+     */
     public ArrayList<Article> getArticlesList() {
         return articlesList;
     }

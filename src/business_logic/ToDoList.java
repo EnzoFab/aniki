@@ -19,6 +19,11 @@ public class ToDoList {
      */
     private String label;
 
+    /**
+     * Constructor
+     * @param idTD
+     * @param label
+     */
     public ToDoList(int idTD, String label) {
         this.idTD = idTD;
         this.label = label;

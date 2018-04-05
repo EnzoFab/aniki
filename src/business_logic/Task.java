@@ -26,6 +26,13 @@ public class Task {
      */
     private Date date;
 
+    /**
+     * Constructor
+     * @param idTa
+     * @param state
+     * @param name
+     * @param date
+     */
     public Task(int idTa, boolean state, String name, Date date) {
         this.idTa = idTa;
         this.state = state;
