@@ -51,6 +51,7 @@ public class BudgetFacade {
     }
 
     /**
+     * update an amount from a budget, return true if it is a success
      * @param team 
      * @param amount 
      * @return
@@ -77,13 +78,18 @@ public class BudgetFacade {
         return false;
     }
 
+    /**
+     * Return all the budget which do not have any event assigned
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<String> getEventLeft() throws SQLException {
-        System.out.println("heu");
+        //select all the event and the budget
         ResultSet setBudget = budgetDAO.selectAll();
         ResultSet setEvent = eventDAO.selectAll();
         ArrayList<String> listIdEvent = new ArrayList<>();
         ArrayList<String> listIdEventFromBudget = new ArrayList<>();
-
+        //select the event which does not have a budget
         if(setBudget != null && setBudget.first()){
             while(setBudget.next()){
                 listIdEventFromBudget.add(setBudget.getString("event_id"));
@@ -105,6 +111,11 @@ public class BudgetFacade {
         return listIdEvent;
     }
 
+    /**
+     * Return all the team
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<String> getTeam() throws SQLException {
         ResultSet team = teamDAO.selectAll();
         ArrayList<String> eventName = new ArrayList<>();
@@ -114,7 +125,16 @@ public class BudgetFacade {
         return eventName;
     }
 
+    /**
+     * create a budget with a team and an event, return true if it is a success
+     * @param amount
+     * @param s
+     * @param t
+     * @return
+     * @throws SQLException
+     */
     public boolean create(int amount, String s, String t) throws SQLException {
+        //get the actual year
         Calendar calendrier;
         calendrier = Calendar.getInstance();
         String anneeEnCours = String.valueOf(calendrier.get(Calendar.YEAR));

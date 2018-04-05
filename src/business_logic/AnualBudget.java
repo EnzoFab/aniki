@@ -23,6 +23,12 @@ public class AnualBudget {
     private String listname;
     private ArrayList listTranstaction;
 
+    /**
+     *
+     * @param amount
+     * @param year
+     * @param listname
+     */
     public AnualBudget(int amount, int year, String listname) {
         this.amount = amount;
         this.year = year;

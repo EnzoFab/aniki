@@ -30,6 +30,7 @@ public class AnualBudgetFacade {
 
 
     /**
+     * Create a annual budget
      * @param listName 
      * @param year 
      * @param amount 
@@ -41,13 +42,13 @@ public class AnualBudgetFacade {
         boolean value = this.anualBudgetDAO.insert(anualB);
         if(value) {
             this.anualBudget = anualB;
-            System.out.println("hey");
             return true;
         }
         return false;
     }
 
     /**
+     * update the amount for actual annual budget
      * @param listName 
      * @param amount
      * @return
@@ -64,7 +65,9 @@ public class AnualBudgetFacade {
     }
 
     /**
+     * Return all the annual budget
      * @return
+     * @throws SQLException
      */
     public ArrayList<Integer> getAll() throws SQLException {
         // TODO implement here
@@ -77,7 +80,8 @@ public class AnualBudgetFacade {
     }
 
     /**
-     * @param year 
+     * delete an annual budget
+     * @param year
      * @return
      */
     public boolean delete(int year) {
@@ -88,6 +92,11 @@ public class AnualBudgetFacade {
         return false;
     }
 
+    /**
+     * Return the annual budget from the year selected
+     * @param year
+     * @return
+     */
     public int getAnulaBudgetFromYear(int year){
         ResultSet set = anualBudgetDAO.getAnualBudgetFromYear(year);
         int amount = 0;
@@ -105,6 +114,10 @@ public class AnualBudgetFacade {
         return amount;
     }
 
+    /**
+     * get the list name from an annual budget
+     * @return
+     */
     public String getListName() {
         return anualBudget.getListname();
     }

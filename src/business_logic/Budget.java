@@ -21,10 +21,10 @@ public class Budget {
     private ArrayList transactions;
 
     /**
-     * Default constructor
+     *
      * @param amount
+     * @param anual
      */
-
     public Budget(int amount, String anual) {
         Amount = amount;
         this.anualBudget = anual;
